@@ -1,0 +1,21 @@
+{
+  "theme": "light",
+  "usedBy": "shell.nav[light-wide|light-narrow], changelog.*, docs.*, shell.footer[brand-two-groups-subpage] on shells B/C, auth.form-mock",
+  "resolve": {
+    "text.primary": "{color.base.ink}",
+    "text.muted": "{color.neutral.proseMuted}",
+    "text.link": "{color.base.ink}",
+    "text.linkMuted": "{color.neutral.nav}",
+    "surface.page": "{color.base.white}",
+    "surface.control": "{color.grey.f2}",
+    "surface.controlHover": "{color.grey.e7}",
+    "text.onControl": "{color.base.black}",
+    "logo.fill": "{color.brand.accent}",
+    "accent.brand": "{color.brand.accent}"
+  },
+  "evidence": [
+    "pages.shells",
+    "pages.nav-shared",
+    "src.css.shell-vars"
+  ]
+}

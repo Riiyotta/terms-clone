@@ -1,0 +1,384 @@
+{
+  "version": "1.1.0",
+  "$description": "Rhythm/position/dependency rules. Rules here and RULES in schema/semantic_validate.py are two sources for one fact; verify_all.py fails if their ids or severities diverge.",
+  "toneModel": {
+    "tones": [
+      "hero",
+      "surface",
+      "light",
+      "app"
+    ],
+    "sequence": "shell A (home, about, pricing): hero (nav, hero, photo stack) then surface (demos, safety table, plans, footer); never back to hero. Shells B/C/E: light throughout. Shell D: app throughout.",
+    "evidence": [
+      "spec.0.page-bg",
+      "spec.1.nav-layout",
+      "spec.7.footer",
+      "pages.shells",
+      "pages.legal-shell",
+      "pages.auth"
+    ]
+  },
+  "adjacency": {
+    "shell.nav": {
+      "recommendedBefore": [
+        "hero.typewriter-home",
+        "hero.typewriter-intro",
+        "changelog.header",
+        "docs.header"
+      ]
+    },
+    "hero.typewriter-home": {
+      "recommendedAfter": [
+        "shell.nav"
+      ],
+      "recommendedBefore": [
+        "feature.demo-card"
+      ]
+    },
+    "feature.demo-card": {
+      "recommendedAfter": [
+        "hero.typewriter-home",
+        "feature.demo-card"
+      ],
+      "recommendedBefore": [
+        "feature.demo-card",
+        "shell.footer"
+      ],
+      "note": "consecutive demo cards are the measured rhythm (one grid, gap 96); the variant order draft -> questions -> comments is fixed"
+    },
+    "hero.typewriter-intro": {
+      "recommendedAfter": [
+        "shell.nav"
+      ],
+      "recommendedBefore": [
+        "media.photo-stack",
+        "pricing.plan-cards"
+      ]
+    },
+    "media.photo-stack": {
+      "recommendedAfter": [
+        "hero.typewriter-intro"
+      ],
+      "recommendedBefore": [
+        "about.safety-table"
+      ]
+    },
+    "about.safety-table": {
+      "recommendedAfter": [
+        "media.photo-stack"
+      ],
+      "recommendedBefore": [
+        "shell.footer"
+      ]
+    },
+    "pricing.plan-cards": {
+      "recommendedAfter": [
+        "hero.typewriter-intro"
+      ],
+      "recommendedBefore": [
+        "shell.footer"
+      ]
+    },
+    "changelog.header": {
+      "recommendedAfter": [
+        "shell.nav"
+      ],
+      "recommendedBefore": [
+        "changelog.releases"
+      ]
+    },
+    "changelog.releases": {
+      "recommendedAfter": [
+        "changelog.header"
+      ],
+      "recommendedBefore": [
+        "shell.footer"
+      ]
+    },
+    "docs.header": {
+      "recommendedAfter": [
+        "shell.nav"
+      ],
+      "recommendedBefore": [
+        "docs.section"
+      ]
+    },
+    "docs.section": {
+      "recommendedAfter": [
+        "docs.header",
+        "docs.section"
+      ],
+      "recommendedBefore": [
+        "docs.section",
+        "shell.footer"
+      ],
+      "note": "consecutive sections are the measured rhythm (gap 32)"
+    },
+    "shell.app-header": {
+      "recommendedBefore": [
+        "legal.switcher"
+      ]
+    },
+    "legal.switcher": {
+      "recommendedAfter": [
+        "shell.app-header"
+      ],
+      "recommendedBefore": [
+        "legal.intro"
+      ]
+    },
+    "legal.intro": {
+      "recommendedAfter": [
+        "legal.switcher"
+      ],
+      "recommendedBefore": [
+        "legal.contents"
+      ]
+    },
+    "legal.contents": {
+      "recommendedAfter": [
+        "legal.intro"
+      ],
+      "recommendedBefore": [
+        "legal.section"
+      ]
+    },
+    "legal.section": {
+      "recommendedAfter": [
+        "legal.contents",
+        "legal.section"
+      ],
+      "recommendedBefore": [
+        "legal.section",
+        "legal.footer"
+      ]
+    },
+    "legal.footer": {
+      "recommendedAfter": [
+        "legal.section"
+      ]
+    },
+    "shell.footer": {
+      "recommendedAfter": [
+        "feature.demo-card",
+        "about.safety-table",
+        "pricing.plan-cards",
+        "changelog.releases",
+        "docs.section"
+      ]
+    },
+    "auth.form-mock": {
+      "note": "the only node of template.auth"
+    }
+  },
+  "motionBudget": {
+    "loopingDemosPerPage": 3,
+    "note": "at most one card runs at a time in practice: each clock runs only while >= 12% of its card is visible. Sub-routes: one typewriter (about, pricing), one photo stack (about); changelog, docs, legal and auth have no page motion.",
+    "evidence": [
+      "spec.3b.engine",
+      "pages.headline-typewriter",
+      "pages.changelog-content",
+      "pages.legal-layout"
+    ]
+  },
+  "rules": [
+    {
+      "id": "ROUTE_MATCHES_TEMPLATE",
+      "severity": "error",
+      "description": "PageSpec.route must be one of the declared template's routes (and the template must exist).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_UNKNOWN_NODE",
+      "severity": "error",
+      "description": "Every node's (section, variant) must be a node of the DECLARED template, cross-referenced against templates.json, not checked in isolation.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "NO_REPEAT",
+      "severity": "error",
+      "description": "A (section, variant) may repeat only when its template node is repeatable:true, and then at most maxRepeat times (docs.section 6, legal.section 21). feature.demo-card appears up to three times on home, once per variant.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_NODE_ORDER",
+      "severity": "error",
+      "description": "Nodes follow the template's order exactly; optional nodes may be skipped, never moved; repeatable nodes stay contiguous.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TEMPLATE_REQUIRED_NODES",
+      "severity": "error",
+      "description": "Every template node marked required:true is present (home: nav, hero, draft demo, footer; every sub-route template: all of its nodes).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "OPTIONAL_NODE_OMITTED",
+      "severity": "warn",
+      "description": "An optional node (questions or comments demo) is omitted: valid, but the only measured composition contains it.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "POSITION_FIXED",
+      "severity": "error",
+      "description": "Nodes with position first/last are nodes[0] / the last node: shell.nav, shell.app-header and auth.form-mock first; shell.footer and legal.footer last.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ANCHOR_ID_MATCH",
+      "severity": "error",
+      "description": "Each node's anchorId equals its template node's anchorId (draft / questions / comments / safety; null otherwise). '{slug}' (docs.section, legal.section) means a per-instance slug is required.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TONE_MATCHES_TEMPLATE",
+      "severity": "error",
+      "description": "Node tone equals the template node tone: hero (gradient band), surface (page tint), light (white landing shells B/C and auth), app (legal app shell).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ANCHOR_LINK_RESOLVES",
+      "severity": "error",
+      "description": "Every '#id' href resolves to a node anchorId on the same page or a template pageAnchor (legal: #top).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "INTERNAL_LINK_KNOWN",
+      "severity": "error",
+      "description": "Every '/route' href is a built route or a documented pending-build route in templates/routes.json.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "PENDING_ROUTE_LINK",
+      "severity": "warn",
+      "description": "An href targets a pending-build route; the target project must supply that page (one warning per route). v1.1.0 has no pending-build routes, so it cannot fire until one is added.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "MOTION_MATCHES_CONTRACT",
+      "severity": "error",
+      "description": "node.motion equals the section contract's motion for that variant (the schema const-locks the same values).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "REDUCED_MOTION_REQUIRED",
+      "severity": "error",
+      "description": "node.motion.reducedMotionFallback is present and equals the contract's pinned value.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "MAX_WORDS",
+      "severity": "error",
+      "description": "Every text and prose field respects its contract maxWords (runs are counted joined).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "MAX_CHARS",
+      "severity": "error",
+      "description": "Every text and prose field respects its contract maxChars.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "TYPED_TEXT_FITS_TIMELINE",
+      "severity": "error",
+      "description": "Typed/streamed text finishes inside its fixed timeline window: len <= floor((endMs - startMs)/msPerChar).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ASSET_ROLE_ALLOWED",
+      "severity": "error",
+      "description": "A media slot's assetRole is one of the roles that slot allows.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ASSET_POLICY_PINNED",
+      "severity": "error",
+      "description": "A media object's generationPolicy equals its role's policy in assets/asset-roles.json (catches a swap to another valid policy).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ASSET_REF_NOT_SOURCE",
+      "severity": "error",
+      "description": "assetRef must not name a source-site file (basename match against asset-roles sourceFiles).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "PROTECTED_LONGFORM",
+      "severity": "error",
+      "description": "No string (or sentence of >= 5 words) matches a fingerprint of terms.so's proprietary long-form text (home + the six live sub-pages).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "BRAND_NOT_SOURCE",
+      "severity": "error",
+      "description": "brand.name is not the source brand, and no string references a source domain (terms.so, the operator's studio/founder sites, its source repository).",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "NAV_CURRENT_MATCHES_ROUTE",
+      "severity": "error",
+      "description": "shell.nav[on-hero-current].currentHref equals the PageSpec route and one of the nav links' hrefs.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "FOOTER_PRODUCT_LINKS",
+      "severity": "error",
+      "description": "shell.footer[brand-two-groups] (home) lists /changelog among its 5 Product links; shell.footer[brand-two-groups-subpage] lists 4 and no /changelog.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "LINK_SLOTS",
+      "severity": "error",
+      "description": "A prose field carries at most its contract maxLinks linked runs.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "ANCHOR_UNIQUE",
+      "severity": "error",
+      "description": "Per-instance anchorIds ('{slug}' nodes) are present and unique on the page, and never collide with another node's anchorId.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "CHANGELOG_ORDER",
+      "severity": "error",
+      "description": "changelog.releases are newest first (strictly descending datetime) and each datetime is a valid date.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "LEGAL_OPERATOR_SLOTS",
+      "severity": "error",
+      "description": "Legal pages carry every required project-supplied operator slot ({{operator.legalName}}, {{operator.postalAddress}}, {{operator.country}}, {{operator.governingJurisdiction}}); body text may reference only those tokens.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "LEGAL_REVIEW_NOTICE",
+      "severity": "error",
+      "description": "legal.intro.counselReview is 'required-before-publication': generated legal text must be replaced/reviewed by the operator's counsel; placeholder copy is not legal advice.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "LEGAL_SWITCHER_CURRENT",
+      "severity": "error",
+      "description": "The legal switcher links to both legal routes of the template and the PageSpec route is one of them.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "AUTH_DEMO_NOTE_REQUIRED",
+      "severity": "error",
+      "description": "auth.form-mock.demoOnlyNote is present and says the form is a demo and not functional.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "AUTH_NO_CREDENTIAL_INTEGRATION",
+      "severity": "error",
+      "description": "auth.form-mock wires no real credential handling: behaviour consts intact, every href is an internal route, no endpoint URL anywhere in the node.",
+      "enforcedBy": "schema/semantic_validate.py"
+    },
+    {
+      "id": "AUTH_SWITCH_LINK",
+      "severity": "error",
+      "description": "auth.form-mock.switchLink points at the other auth route (/sign-in <-> /sign-up).",
+      "enforcedBy": "schema/semantic_validate.py"
+    }
+  ]
+}

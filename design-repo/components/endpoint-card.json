@@ -1,0 +1,13 @@
+{
+  "id": "component.endpoint-card",
+  "kind": "component",
+  "description": "Docs endpoint card: h3 title, 'METHOD path' code row, paragraph; border 1px #e5e5e5, radius 20, padding 24.",
+  "composes": [
+    "primitive.code-block"
+  ],
+  "evidence": [
+    "pages.docs-typo",
+    "src.docs.blocks"
+  ],
+  "instantiableInPageSpec": false
+}

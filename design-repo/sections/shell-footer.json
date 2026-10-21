@@ -1,0 +1,347 @@
+{
+  "id": "shell.footer",
+  "kind": "section",
+  "category": "SHELL",
+  "purpose": "Brand mark, one short product description and two link groups; always the last node of a landing shell. Home shows 5 Product links (with Changelog); every sub-page shows 4.",
+  "implementedBy": "src/components/Footer.jsx (showChangelog prop, true on home only)",
+  "region": "footer",
+  "tone": "surface",
+  "constraints": {
+    "onePerPage": true,
+    "mustBeLast": true
+  },
+  "variants": {
+    "brand-two-groups": {
+      "anchorId": null,
+      "purpose": "Home footer: Product has exactly 5 links and includes Changelog (/changelog). Rule FOOTER_PRODUCT_LINKS.",
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.7.footer",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.7.footer"
+          ]
+        },
+        "description": {
+          "type": "text",
+          "maxWords": 50,
+          "maxChars": 307,
+          "evidence": [
+            "spec.7.footer"
+          ],
+          "note": "the source's description is proprietary long-form text (fingerprinted in schema/protected-content.json); write original copy"
+        },
+        "groups": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 7,
+                  "evidence": [
+                    "spec.7.footer"
+                  ]
+                },
+                "links": {
+                  "type": "list",
+                  "item": {
+                    "type": "object",
+                    "fields": {
+                      "label": {
+                        "type": "text",
+                        "maxWords": 3,
+                        "maxChars": 16,
+                        "evidence": [
+                          "spec.7.footer",
+                          "src.footer.groups"
+                        ]
+                      },
+                      "href": {
+                        "type": "href",
+                        "kinds": [
+                          "route",
+                          "mailto"
+                        ],
+                        "evidence": [
+                          "spec.7.footer"
+                        ]
+                      }
+                    }
+                  },
+                  "minItems": 5,
+                  "maxItems": 5,
+                  "evidence": [
+                    "spec.7.footer",
+                    "pages.footer-by-route",
+                    "src.footer.changelog"
+                  ],
+                  "note": "home: exactly 5 Product links including Changelog (/changelog)"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 7,
+                  "evidence": [
+                    "spec.7.footer"
+                  ]
+                },
+                "links": {
+                  "type": "list",
+                  "item": {
+                    "type": "object",
+                    "fields": {
+                      "label": {
+                        "type": "text",
+                        "maxWords": 3,
+                        "maxChars": 16,
+                        "evidence": [
+                          "spec.7.footer",
+                          "src.footer.groups"
+                        ]
+                      },
+                      "href": {
+                        "type": "href",
+                        "kinds": [
+                          "route",
+                          "mailto"
+                        ],
+                        "evidence": [
+                          "spec.7.footer"
+                        ]
+                      }
+                    }
+                  },
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "evidence": [
+                    "spec.7.footer",
+                    "pages.footer-by-route"
+                  ]
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "spec.7.footer"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "spec.7.footer-hover",
+        "src.css.footer-link",
+        "qa.hover-real-mouse"
+      ],
+      "tones": [
+        "surface"
+      ]
+    },
+    "brand-two-groups-subpage": {
+      "anchorId": null,
+      "tones": [
+        "surface",
+        "light"
+      ],
+      "purpose": "Footer on every sub-page with a landing footer (/about, /pricing, /changelog, /docs): Product has exactly 4 links and NO Changelog link (verified live 2026-10-21). Tone follows the shell: surface below the band on shell A, light on shells B and C. Rule FOOTER_PRODUCT_LINKS.",
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.7.footer",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.7.footer"
+          ]
+        },
+        "description": {
+          "type": "text",
+          "maxWords": 50,
+          "maxChars": 307,
+          "evidence": [
+            "spec.7.footer"
+          ],
+          "note": "the source's description is proprietary long-form text (fingerprinted in schema/protected-content.json); write original copy"
+        },
+        "groups": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 7,
+                  "evidence": [
+                    "spec.7.footer"
+                  ]
+                },
+                "links": {
+                  "type": "list",
+                  "item": {
+                    "type": "object",
+                    "fields": {
+                      "label": {
+                        "type": "text",
+                        "maxWords": 3,
+                        "maxChars": 16,
+                        "evidence": [
+                          "spec.7.footer",
+                          "src.footer.groups"
+                        ]
+                      },
+                      "href": {
+                        "type": "href",
+                        "kinds": [
+                          "route",
+                          "mailto"
+                        ],
+                        "evidence": [
+                          "spec.7.footer"
+                        ]
+                      }
+                    }
+                  },
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "evidence": [
+                    "spec.7.footer",
+                    "pages.footer-by-route",
+                    "src.footer.changelog"
+                  ],
+                  "note": "sub-pages: exactly 4 Product links, Changelog absent (verified live 2026-10-21)"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 7,
+                  "evidence": [
+                    "spec.7.footer"
+                  ]
+                },
+                "links": {
+                  "type": "list",
+                  "item": {
+                    "type": "object",
+                    "fields": {
+                      "label": {
+                        "type": "text",
+                        "maxWords": 3,
+                        "maxChars": 16,
+                        "evidence": [
+                          "spec.7.footer",
+                          "src.footer.groups"
+                        ]
+                      },
+                      "href": {
+                        "type": "href",
+                        "kinds": [
+                          "route",
+                          "mailto"
+                        ],
+                        "evidence": [
+                          "spec.7.footer"
+                        ]
+                      }
+                    }
+                  },
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "evidence": [
+                    "spec.7.footer",
+                    "pages.footer-by-route"
+                  ]
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "spec.7.footer"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "spec.7.footer-hover",
+        "src.css.footer-link",
+        "pages.footer-by-route",
+        "src.footer.changelog"
+      ],
+      "responsive": {
+        "desktop": [
+          "columns minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) inside the shell's content width: 960 -> 384/240/240, 1152 -> 469.33/293.33/293.33, 720 -> 277.33/173.34/173.34 (brand description wraps to 108px)"
+        ],
+        "bp600": [
+          "grid 1fr 1fr (159/159), brand spans 1/-1",
+          "gap 40px 24px, padding 56px 0, 426.8px tall"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.footer-columns",
+        "src.footer.markup"
+      ]
+    }
+  },
+  "responsive": {
+    "bp600": [
+      "grid 1fr 1fr (159/159), brand spans 1/-1",
+      "gap 40px 24px, padding 56px 0"
+    ]
+  },
+  "responsiveEvidence": [
+    "spec.7.footer",
+    "src.footer.markup"
+  ],
+  "composes": [
+    "primitive.footer-link",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.7.footer",
+    "src.footer.markup",
+    "pages.footer-by-route",
+    "src.footer.changelog"
+  ],
+  "copyPolicy": "Budgets are the measured home-page values. maxWords/maxChars are enforced per instance by schema/semantic_validate.py (MAX_WORDS, MAX_CHARS); typed/streamed fields must also fit their timeline window (TYPED_TEXT_FITS_TIMELINE)."
+}

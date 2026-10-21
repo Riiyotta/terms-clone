@@ -1,0 +1,13 @@
+{
+  "id": "component.contract-paper",
+  "kind": "component",
+  "description": "Document toolbar (12px #888, status stack) + paper (14px/1.55 #555, max 68ch) with title block and numbered sections revealing over .3s.",
+  "composes": [
+    "primitive.reveal"
+  ],
+  "evidence": [
+    "spec.3d.parts",
+    "src.parts.paper"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,173 @@
+{
+  "id": "changelog.releases",
+  "kind": "section",
+  "category": "CONTENT",
+  "purpose": "Dated releases, newest first: a date column and a list of entries (bold title + body + commit links), then one note line. No images, tags, badges, filters, sticky elements or motion.",
+  "implementedBy": "src/pages/Changelog.jsx",
+  "region": "main",
+  "tone": "light",
+  "constraints": {
+    "onePerPage": true,
+    "newestFirst": true
+  },
+  "variants": {
+    "dated-list": {
+      "anchorId": null,
+      "content": {
+        "releases": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "dateLabel": {
+                "type": "text",
+                "maxWords": 3,
+                "maxChars": 18,
+                "evidence": [
+                  "pages.changelog-content"
+                ]
+              },
+              "datetime": {
+                "type": "text",
+                "maxWords": 1,
+                "maxChars": 10,
+                "evidence": [
+                  "pages.changelog"
+                ],
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                "note": "time[datetime]; also h2#release-<datetime>"
+              },
+              "entries": {
+                "type": "list",
+                "item": {
+                  "type": "object",
+                  "fields": {
+                    "title": {
+                      "type": "text",
+                      "maxWords": 10,
+                      "maxChars": 49,
+                      "evidence": [
+                        "pages.changelog-content"
+                      ],
+                      "note": "entry title, 500 #000 inline at the start of the paragraph; titles may be short verbatim UI"
+                    },
+                    "body": {
+                      "type": "prose",
+                      "maxWords": 34,
+                      "maxChars": 255,
+                      "maxLinks": 0,
+                      "marks": [
+                        "none",
+                        "strong"
+                      ],
+                      "longForm": true,
+                      "evidence": [
+                        "pages.changelog-content"
+                      ],
+                      "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+                      "note": "measured 10-34 words, median ~21"
+                    },
+                    "commits": {
+                      "type": "list",
+                      "item": {
+                        "type": "object",
+                        "fields": {
+                          "sha": {
+                            "type": "text",
+                            "maxWords": 1,
+                            "maxChars": 7,
+                            "evidence": [
+                              "pages.changelog"
+                            ],
+                            "pattern": "^[0-9a-f]{7}$"
+                          },
+                          "href": {
+                            "type": "href",
+                            "kinds": [
+                              "external"
+                            ],
+                            "evidence": [
+                              "pages.changelog"
+                            ]
+                          }
+                        }
+                      },
+                      "minItems": 1,
+                      "maxItems": 3,
+                      "evidence": [
+                        "pages.changelog-content"
+                      ],
+                      "note": "project-supplied commit URLs; aria-label 'View commit <sha> for <title>'"
+                    }
+                  }
+                },
+                "minItems": 1,
+                "maxItems": 8,
+                "evidence": [
+                  "pages.changelog-content"
+                ],
+                "note": "measured 1-8 entries per release"
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 15,
+          "evidence": [
+            "pages.changelog-content"
+          ],
+          "note": "measured 15 releases / 61 entries / 80 commit links"
+        },
+        "note": {
+          "type": "prose",
+          "maxWords": 15,
+          "maxChars": 113,
+          "maxLinks": 0,
+          "marks": [
+            "none",
+            "strong"
+          ],
+          "longForm": true,
+          "evidence": [
+            "pages.changelog-typo"
+          ],
+          "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+          "note": "one sentence, 400 12/18 #73706d"
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.commitLink",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.changelog-typo",
+        "src.css.commit-link"
+      ],
+      "tones": [
+        "light"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "releases max-width 880 centred; each release grid 176px minmax(0,1fr), gap 48, padding 40px 0, border-top .75px #e5e5e5 (no bottom border on the last)"
+    ],
+    "bp600": [
+      "release grid one column (date above the list), gap 24, padding 32px 0"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.changelog",
+    "src.changelog.composition"
+  ],
+  "composes": [
+    "component.release-entry",
+    "primitive.commit-link"
+  ],
+  "evidence": [
+    "pages.changelog",
+    "pages.changelog-content",
+    "src.changelog.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

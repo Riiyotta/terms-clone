@@ -1,0 +1,51 @@
+{
+  "$description": "Max-width breakpoints (desktop-first) from CLONE_SPEC.md 'Breakpoints used' and tailwind.config.js screens. 1000/760/600/480 are the structural ones; 800 changes one font size only.",
+  "breakpoint": {
+    "bp1000": {
+      "$type": "dimension",
+      "$value": "1000px",
+      "evidence": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ],
+      "query": "(max-width: 1000px)"
+    },
+    "bp800": {
+      "$type": "dimension",
+      "$value": "800px",
+      "evidence": [
+        "src.tailwind.screens",
+        "spec.4.draft-layout"
+      ],
+      "query": "(max-width: 800px)",
+      "note": "recent-contract title 15px only"
+    },
+    "bp760": {
+      "$type": "dimension",
+      "$value": "760px",
+      "evidence": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ],
+      "query": "(max-width: 760px)"
+    },
+    "bp600": {
+      "$type": "dimension",
+      "$value": "600px",
+      "evidence": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ],
+      "query": "(max-width: 600px)"
+    },
+    "bp480": {
+      "$type": "dimension",
+      "$value": "480px",
+      "evidence": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ],
+      "query": "(max-width: 480px)"
+    }
+  }
+}

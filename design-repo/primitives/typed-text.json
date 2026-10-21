@@ -1,0 +1,10 @@
+{
+  "id": "primitive.typed-text",
+  "kind": "primitive",
+  "description": "typed(text, t, start, msPerChar) = text.slice(0, floor((t-start)/msPerChar)); a hidden full copy reserves the final height so layout never shifts.",
+  "evidence": [
+    "spec.3b.engine",
+    "spec.2.typewriter"
+  ],
+  "instantiableInPageSpec": false
+}

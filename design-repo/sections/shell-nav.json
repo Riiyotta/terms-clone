@@ -1,0 +1,422 @@
+{
+  "id": "shell.nav",
+  "kind": "section",
+  "category": "SHELL",
+  "purpose": "Brand mark plus four account/marketing links; always the first node of a landing shell (A dark hero, B light wide, C light narrow). Variant = shell.",
+  "implementedBy": "src/components/Navbar.jsx (shell + current props)",
+  "region": "header",
+  "tone": "hero",
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirst": true
+  },
+  "variants": {
+    "on-hero": {
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.1.nav-layout",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "aria-label of the mark link; the target project's own brand name"
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 2,
+                "maxChars": 7,
+                "evidence": [
+                  "spec.1.nav-layout",
+                  "src.navbar.links"
+                ]
+              },
+              "href": {
+                "type": "href",
+                "kinds": [
+                  "route"
+                ],
+                "evidence": [
+                  "spec.1.nav-layout"
+                ]
+              },
+              "emphasis": {
+                "type": "enum",
+                "values": [
+                  "muted",
+                  "bright"
+                ],
+                "evidence": [
+                  "spec.1.nav-color-hover",
+                  "src.navbar.links"
+                ]
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "measured rail holds 4 links (249.5px at 1440)"
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLink",
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      },
+      "motionEvidence": [
+        "spec.1.nav-color-hover",
+        "src.css.nav-link",
+        "qa.hover-real-mouse"
+      ],
+      "tones": [
+        "hero"
+      ]
+    },
+    "on-hero-current": {
+      "anchorId": null,
+      "purpose": "Shell A sub-pages (/about, /pricing): same dark-hero nav, with the current page's link marked aria-current, which keeps it bright. The resting pill ([data-pill-active]) stays on 'Sign up' as on home (CLONE_SPEC_PAGES 10 corrects section 0). The current link gets no focus ring.",
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.1.nav-layout",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "aria-label of the mark link; the target project's own brand name"
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 2,
+                "maxChars": 7,
+                "evidence": [
+                  "spec.1.nav-layout",
+                  "src.navbar.links"
+                ]
+              },
+              "href": {
+                "type": "href",
+                "kinds": [
+                  "route"
+                ],
+                "evidence": [
+                  "spec.1.nav-layout"
+                ]
+              },
+              "emphasis": {
+                "type": "enum",
+                "values": [
+                  "muted",
+                  "bright"
+                ],
+                "evidence": [
+                  "spec.1.nav-color-hover",
+                  "src.navbar.links"
+                ]
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "measured rail holds 4 links (249.5px at 1440)"
+        },
+        "currentHref": {
+          "type": "href",
+          "kinds": [
+            "route"
+          ],
+          "evidence": [
+            "pages.nav-shared",
+            "src.navbar.current"
+          ],
+          "note": "must equal the PageSpec route and one of the links' hrefs (rule NAV_CURRENT_MATCHES_ROUTE); that link renders aria-current=page, is bright through aria-current (the resting pill stays on Sign up) and gets no focus ring"
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLink",
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      },
+      "motionEvidence": [
+        "pages.nav-shared",
+        "pages.corr-nav-pill",
+        "pages.corr-nav-focus",
+        "src.css.nav-link",
+        "src.css.focus",
+        "src.css.nav-instant",
+        "src.navbar.current",
+        "src.navbar.instant"
+      ],
+      "responsive": {
+        "bp600": [
+          "identical to on-hero: padding 20px 0, gap 12px, one row, 84px tall"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.shells",
+        "src.navbar.shells"
+      ],
+      "tones": [
+        "hero"
+      ]
+    },
+    "light-wide": {
+      "anchorId": null,
+      "tones": [
+        "light"
+      ],
+      "purpose": "Shell B (/changelog): the same link rail on flat #fff, 1152px column. Muted links #655c53, Login / Sign up #161512, logo #e53d00. The pill highlight is transparent, so hover is a colour change only.",
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.1.nav-layout",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "aria-label of the mark link; the target project's own brand name"
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 2,
+                "maxChars": 7,
+                "evidence": [
+                  "spec.1.nav-layout",
+                  "src.navbar.links"
+                ]
+              },
+              "href": {
+                "type": "href",
+                "kinds": [
+                  "route"
+                ],
+                "evidence": [
+                  "spec.1.nav-layout"
+                ]
+              },
+              "emphasis": {
+                "type": "enum",
+                "values": [
+                  "muted",
+                  "bright"
+                ],
+                "evidence": [
+                  "spec.1.nav-color-hover",
+                  "src.navbar.links"
+                ]
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "measured rail holds 4 links (249.5px at 1440)"
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLinkLight",
+        "pillHighlightVisible": false,
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      },
+      "motionEvidence": [
+        "pages.nav-shared",
+        "src.css.nav-link",
+        "src.css.shell-vars"
+      ],
+      "responsive": {
+        "desktop": [
+          "padding 32px 0, gap 16px, 114.4px tall"
+        ],
+        "bp600": [
+          "padding 20px 0, gap 12px, one row, 84px tall"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.shells",
+        "src.navbar.shells"
+      ]
+    },
+    "light-narrow": {
+      "anchorId": null,
+      "tones": [
+        "light"
+      ],
+      "purpose": "Shell C (/docs): light nav in the 720px column; at <=600 the mark and the rail stack into a column.",
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "spec.1.nav-layout",
+            "assets.inline-svgs"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "aria-label of the mark link; the target project's own brand name"
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 2,
+                "maxChars": 7,
+                "evidence": [
+                  "spec.1.nav-layout",
+                  "src.navbar.links"
+                ]
+              },
+              "href": {
+                "type": "href",
+                "kinds": [
+                  "route"
+                ],
+                "evidence": [
+                  "spec.1.nav-layout"
+                ]
+              },
+              "emphasis": {
+                "type": "enum",
+                "values": [
+                  "muted",
+                  "bright"
+                ],
+                "evidence": [
+                  "spec.1.nav-color-hover",
+                  "src.navbar.links"
+                ]
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "evidence": [
+            "spec.1.nav-layout"
+          ],
+          "note": "measured rail holds 4 links (249.5px at 1440)"
+        }
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLinkLight",
+        "pillHighlightVisible": false,
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      },
+      "motionEvidence": [
+        "pages.nav-shared",
+        "src.css.nav-link",
+        "src.css.shell-vars"
+      ],
+      "responsive": {
+        "desktop": [
+          "padding 96px 0, gap 0, 242.4px tall"
+        ],
+        "bp600": [
+          "flex-direction column, align-items flex-start, gap 32px, padding 48px 0 (199px tall)"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.shells",
+        "src.navbar.shells"
+      ]
+    }
+  },
+  "responsive": {
+    "bp600": [
+      "padding 20px 0, gap 12px, still one row (84px tall)",
+      "links min-height 44px, padding 14px clamp(2px,12.5vw - 38px,10px), 14px type"
+    ]
+  },
+  "responsiveEvidence": [
+    "spec.1.nav-layout",
+    "src.navbar.markup"
+  ],
+  "composes": [
+    "primitive.nav-link",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.1.nav-layout",
+    "spec.1.nav-color-hover",
+    "src.navbar.markup",
+    "pages.shells",
+    "pages.nav-shared"
+  ],
+  "focus": "Landing links get a 1px #777 outline at 3px offset; nav pills use the focus shadow ring with outline-offset 0; the current page's link gets no ring. Keyboard focus puts the rail in instant mode ([data-instant]: links transition background .15s only, colour and ring switch instantly) until the pointer enters a link (src/index.css, CLONE_SPEC_PAGES 10).",
+  "focusEvidence": [
+    "src.css.focus",
+    "src.css.nav-instant",
+    "pages.corr-nav-focus",
+    "src.navbar.instant"
+  ],
+  "copyPolicy": "Budgets are the measured home-page values. maxWords/maxChars are enforced per instance by schema/semantic_validate.py (MAX_WORDS, MAX_CHARS); typed/streamed fields must also fit their timeline window (TYPED_TEXT_FITS_TIMELINE)."
+}

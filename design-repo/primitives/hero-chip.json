@@ -1,0 +1,10 @@
+{
+  "id": "primitive.hero-chip",
+  "kind": "primitive",
+  "description": "6px-radius 15px chips on the gradient: primary white chip (#fff -> #f2f2f2) and translucent 'watch' chip with an 18px leading icon (.1 -> .18 white), background .15s.",
+  "evidence": [
+    "spec.2.chips",
+    "qa.hover-real-mouse"
+  ],
+  "instantiableInPageSpec": false
+}

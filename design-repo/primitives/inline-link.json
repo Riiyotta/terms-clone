@@ -1,0 +1,13 @@
+{
+  "id": "primitive.inline-link",
+  "kind": "primitive",
+  "description": "Inline prose link: landing prose underline from-font in the text colour; docs underline offset 3px, weight 400, no hover change; legal/app shell #000 with the UA underline. Focus in landing shells: 1px #777 outline at 3px offset.",
+  "evidence": [
+    "pages.about-typo",
+    "pages.docs-typo",
+    "pages.legal-shell",
+    "src.css.prose",
+    "src.css.focus"
+  ],
+  "instantiableInPageSpec": false
+}

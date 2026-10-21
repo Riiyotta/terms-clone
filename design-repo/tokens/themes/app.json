@@ -1,0 +1,21 @@
+{
+  "theme": "app",
+  "usedBy": "shell.app-header, legal.* (/privacy, /terms)",
+  "resolve": {
+    "text.primary": "{color.base.black}",
+    "text.muted": "{color.grey.666}",
+    "text.link": "{color.base.black}",
+    "text.linkMuted": "{color.base.black}",
+    "surface.page": "{color.base.white}",
+    "surface.control": "{color.grey.f2}",
+    "surface.controlHover": "{color.grey.e7}",
+    "text.onControl": "{color.base.black}",
+    "logo.fill": "{color.brand.accent}",
+    "accent.brand": "{color.brand.accent}"
+  },
+  "evidence": [
+    "pages.legal-shell",
+    "pages.legal-layout",
+    "src.css.legal"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "component.preview-timeline",
+  "kind": "component",
+  "description": "Loop engine: 40ms fixed ticks while >= 12% in view, tab visible and not paused; end-of-loop fade-out (D-680), rewind (D-440), fade-in (D-320); pause also pauses in-flight CSS transitions; reduced motion starts paused on the still frame.",
+  "composes": [],
+  "evidence": [
+    "spec.3b.engine",
+    "src.timeline.consts",
+    "src.timeline.loopstate",
+    "qa.demo-loop"
+  ],
+  "instantiableInPageSpec": false
+}

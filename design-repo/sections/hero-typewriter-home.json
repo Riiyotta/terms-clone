@@ -1,0 +1,252 @@
+{
+  "id": "hero.typewriter-home",
+  "kind": "section",
+  "category": "HERO",
+  "purpose": "State the product promise in four typed lines on the gradient band, then offer sign-up and a jump to the first demo.",
+  "implementedBy": "src/components/Hero.jsx",
+  "region": "main",
+  "tone": "hero",
+  "constraints": {
+    "onePerPage": true,
+    "mustFollowNav": true
+  },
+  "variants": {
+    "typewriter-chips-poetry": {
+      "anchorId": null,
+      "content": {
+        "headline": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "src.headline.lines"
+                  ]
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "brand-muted",
+                  "evidence": [
+                    "spec.2.headline"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "src.headline.lines"
+                  ]
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "brand-muted",
+                  "evidence": [
+                    "spec.2.headline"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "src.headline.lines"
+                  ]
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "brand-muted",
+                  "evidence": [
+                    "spec.2.headline"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "src.headline.lines"
+                  ]
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "bright",
+                  "evidence": [
+                    "spec.2.headline"
+                  ]
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "spec.2.headline",
+            "spec.2.typewriter"
+          ]
+        },
+        "primaryCta": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 2,
+              "maxChars": 7,
+              "evidence": [
+                "spec.2.chips"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "route"
+              ],
+              "evidence": [
+                "spec.2.chips"
+              ]
+            }
+          }
+        },
+        "demoCta": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 3,
+              "maxChars": 12,
+              "evidence": [
+                "spec.2.chips"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "anchor"
+              ],
+              "evidence": [
+                "spec.2.chips",
+                "qa.watch-demo-anchor"
+              ],
+              "const": "#draft"
+            },
+            "behavior": {
+              "type": "const",
+              "value": "smooth-scroll-anchor",
+              "evidence": [
+                "spec.2.chips",
+                "qa.watch-demo-anchor"
+              ]
+            },
+            "icon": {
+              "type": "media",
+              "roles": [
+                "ui.icon"
+              ],
+              "evidence": [
+                "spec.2.chips",
+                "assets.manifest"
+              ]
+            }
+          },
+          "note": "no modal, no video: an in-page anchor to the draft demo"
+        },
+        "poetryPhrases": {
+          "type": "list",
+          "item": {
+            "type": "text",
+            "maxWords": 8,
+            "maxChars": 43,
+            "evidence": [
+              "spec.2.poetry",
+              "src.poetry.phrases"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "evidence": [
+            "spec.2.poetry",
+            "src.poetry.phrases"
+          ],
+          "note": "decorative, aria-hidden; pool of up to 20 short prompt fragments"
+        }
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriter",
+        "chipsToken": "headline.chipsReveal",
+        "poetryToken": "poetry.typing",
+        "poetryMinViewportPx": 1040,
+        "loops": false,
+        "reducedMotionFallback": "headline-complete-chips-fade-200ms-poetry-static"
+      },
+      "motionEvidence": [
+        "spec.2.typewriter",
+        "spec.2.poetry",
+        "mt.headline",
+        "mt.poetry",
+        "src.headline.timing",
+        "src.css.chips",
+        "src.css.reduced-motion",
+        "qa.typewriter-once",
+        "qa.poetry-wide-only"
+      ],
+      "tones": [
+        "hero"
+      ]
+    }
+  },
+  "responsive": {
+    "bp1000": [
+      "h1 font-size clamp(32px,5.4vw,56px)"
+    ],
+    "bp600": [
+      "h1 wraps (white-space normal), clamp(28px,8.5vw,34px)",
+      "main padding 48px 0, gap 32px, min-height clamp(320px,68svh - 100px,440px)",
+      "gradient band 720px instead of 840px"
+    ],
+    "poetry": [
+      "renders only when (viewport + 160 - 960)/2 >= 120, i.e. viewport above ~1040px"
+    ]
+  },
+  "responsiveEvidence": [
+    "spec.2.headline",
+    "spec.2.hero-layout",
+    "spec.2.poetry",
+    "src.css.hero-height-mobile"
+  ],
+  "composes": [
+    "component.headline-typewriter",
+    "component.poetry-layer",
+    "primitive.hero-chip",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.2.hero-layout",
+    "spec.2.headline",
+    "spec.2.chips",
+    "src.hero.markup"
+  ],
+  "copyPolicy": "Budgets are the measured home-page values. maxWords/maxChars are enforced per instance by schema/semantic_validate.py (MAX_WORDS, MAX_CHARS); typed/streamed fields must also fit their timeline window (TYPED_TEXT_FITS_TIMELINE)."
+}

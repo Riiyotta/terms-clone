@@ -1,0 +1,103 @@
+{
+  "id": "docs.header",
+  "kind": "section",
+  "category": "HERO",
+  "purpose": "API reference header: h1, one intro paragraph and a row of up to three resource links separated by ' · '.",
+  "implementedBy": "src/pages/Docs.jsx",
+  "region": "main",
+  "tone": "light",
+  "constraints": {
+    "onePerPage": true,
+    "mustFollowNav": true
+  },
+  "variants": {
+    "title-links": {
+      "anchorId": null,
+      "content": {
+        "title": {
+          "type": "text",
+          "maxWords": 3,
+          "maxChars": 19,
+          "evidence": [
+            "pages.docs-content"
+          ]
+        },
+        "intro": {
+          "type": "prose",
+          "maxWords": 24,
+          "maxChars": 180,
+          "maxLinks": 0,
+          "marks": [
+            "none",
+            "strong"
+          ],
+          "longForm": true,
+          "evidence": [
+            "pages.docs-content"
+          ],
+          "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+        },
+        "links": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 4,
+                "maxChars": 28,
+                "evidence": [
+                  "pages.docs-content"
+                ]
+              },
+              "href": {
+                "type": "href",
+                "kinds": [
+                  "route",
+                  "external"
+                ],
+                "evidence": [
+                  "pages.docs-content"
+                ]
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 3,
+          "evidence": [
+            "pages.docs-content"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.docs"
+      ],
+      "tones": [
+        "light"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "main margin 64px auto, padding 48px 0 96px, flex column gap 32; header stack gap 16; h1 500 32/36.8 -.03em"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.docs",
+    "pages.docs-typo",
+    "src.docs.composition"
+  ],
+  "composes": [
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.docs",
+    "pages.docs-content",
+    "src.docs.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

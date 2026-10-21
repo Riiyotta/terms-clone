@@ -1,0 +1,13 @@
+{
+  "id": "component.plan-card",
+  "kind": "component",
+  "description": "Pricing card: name, price + ' / month', allowance line, brand 'Try it out' button pinned to the bottom. No hover.",
+  "composes": [
+    "primitive.action-button"
+  ],
+  "evidence": [
+    "pages.pricing-card",
+    "src.css.plan-card"
+  ],
+  "instantiableInPageSpec": false
+}

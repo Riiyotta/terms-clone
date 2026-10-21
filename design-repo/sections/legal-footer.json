@@ -1,0 +1,116 @@
+{
+  "id": "legal.footer",
+  "kind": "section",
+  "category": "SHELL",
+  "purpose": "Simple footer row under the document: contact line pushed left, 'Back to top' (#top) and a home link right. Not the landing footer.",
+  "implementedBy": "src/components/LegalDocument.jsx",
+  "region": "footer",
+  "tone": "app",
+  "constraints": {
+    "onePerPage": true,
+    "mustBeLast": true
+  },
+  "variants": {
+    "contact-row": {
+      "anchorId": null,
+      "content": {
+        "questionsLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 10,
+          "evidence": [
+            "pages.legal-layout"
+          ]
+        },
+        "contactHref": {
+          "type": "href",
+          "kinds": [
+            "mailto"
+          ],
+          "evidence": [
+            "pages.legal-layout"
+          ]
+        },
+        "backToTop": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 3,
+              "maxChars": 11,
+              "evidence": [
+                "pages.legal-layout"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "anchor"
+              ],
+              "evidence": [
+                "pages.legal-layout"
+              ],
+              "const": "#top"
+            }
+          }
+        },
+        "home": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 2,
+              "maxChars": 10,
+              "evidence": [
+                "pages.legal-layout"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "route"
+              ],
+              "evidence": [
+                "pages.legal-layout"
+              ],
+              "const": "/"
+            }
+          }
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.legal-layout"
+      ],
+      "tones": [
+        "app"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "border-top 1px #eee, padding-top 24, flex wrap gap 16; 14/21 #666"
+    ],
+    "bp600": [
+      "wraps to two rows (83 tall)"
+    ],
+    "print": [
+      "hidden (with switcher and contents)"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.legal-layout",
+    "src.css.print"
+  ],
+  "composes": [
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.legal-layout",
+    "src.legal.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

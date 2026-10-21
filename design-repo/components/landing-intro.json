@@ -1,0 +1,14 @@
+{
+  "id": "component.landing-intro",
+  "kind": "component",
+  "description": "p.landing-prose.landing-intro: bold lead (500, hero text) + muted continuation (400, --hero-prose-muted .62 white), max-width 560, margin-top -16px.",
+  "composes": [
+    "component.rich-text"
+  ],
+  "evidence": [
+    "pages.about-typo",
+    "src.intro",
+    "src.css.prose"
+  ],
+  "instantiableInPageSpec": false
+}

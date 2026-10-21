@@ -1,0 +1,23 @@
+section,category,templates,routes,Home,About,Pricing,Changelog,API reference,Legal document,Auth
+chrome.landing-nav,CHROME,5,5,x,x,x,x,x,,
+chrome.landing-footer,CHROME,5,5,x,x,x,x,x,,
+hero.page-typewriter,HERO,2,2,,x,x,,,,
+chrome.app-header,CHROME,1,2,,,,,,x,
+legal.doc-switcher,LEGAL,1,2,,,,,,x,
+legal.doc-header,LEGAL,1,2,,,,,,x,
+legal.contents-card,LEGAL,1,2,,,,,,x,
+legal.numbered-sections,LEGAL,1,2,,,,,,x,
+legal.footer-row,LEGAL,1,2,,,,,,x,
+auth.form-card,AUTH,1,2,,,,,,,x
+hero.home-typewriter,HERO,1,1,x,,,,,,
+demo.draft-card,DEMO,1,1,x,,,,,,
+demo.questions-card,DEMO,1,1,x,,,,,,
+demo.comments-card,DEMO,1,1,x,,,,,,
+content.photo-stack,CONTENT,1,1,,x,,,,,
+content.trust-table,CONTENT,1,1,,x,,,,,
+commerce.plan-cards,COMMERCE,1,1,,,x,,,,
+content.changelog-header,CONTENT,1,1,,,,x,,,
+content.changelog-releases,CONTENT,1,1,,,,x,,,
+content.docs-header,CONTENT,1,1,,,,,x,,
+content.docs-sections,CONTENT,1,1,,,,,x,,
+ROUTE COUNT,,,9,1,1,1,1,1,2,2

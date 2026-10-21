@@ -1,0 +1,12 @@
+{
+  "id": "component.rich-text",
+  "kind": "component",
+  "description": "Minimal inline markup for long-form strings: links, inline code and bold (maps to PageSpec prose runs: href / mark).",
+  "composes": [
+    "component.smart-link"
+  ],
+  "evidence": [
+    "src.richtext"
+  ],
+  "instantiableInPageSpec": false
+}

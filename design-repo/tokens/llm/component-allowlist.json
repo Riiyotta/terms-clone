@@ -1,0 +1,970 @@
+{
+  "version": "1.1.0",
+  "$description": "Closed list of what a generator may instantiate or set. verify_all.py checks parity with the contract files on disk and with the schema (sections, variants, node props, content fields, motion fields, asset roles, policies).",
+  "pageSpecTopLevel": [
+    "pageSpecVersion",
+    "template",
+    "route",
+    "brand",
+    "meta",
+    "nodes"
+  ],
+  "templates": [
+    "template.home",
+    "template.about",
+    "template.pricing",
+    "template.changelog",
+    "template.docs",
+    "template.legal",
+    "template.auth"
+  ],
+  "entries": [
+    {
+      "id": "shell.nav",
+      "kind": "section",
+      "file": "sections/shell-nav.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "on-hero",
+        "on-hero-current",
+        "light-wide",
+        "light-narrow"
+      ],
+      "settableContentFieldsByVariant": {
+        "on-hero": [
+          "brandMark",
+          "brandLabel",
+          "links"
+        ],
+        "on-hero-current": [
+          "brandMark",
+          "brandLabel",
+          "links",
+          "currentHref"
+        ],
+        "light-wide": [
+          "brandMark",
+          "brandLabel",
+          "links"
+        ],
+        "light-narrow": [
+          "brandMark",
+          "brandLabel",
+          "links"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "on-hero": [
+          "pattern",
+          "hoverToken",
+          "keyboardFocus",
+          "reducedMotionFallback"
+        ],
+        "on-hero-current": [
+          "pattern",
+          "hoverToken",
+          "keyboardFocus",
+          "reducedMotionFallback"
+        ],
+        "light-wide": [
+          "pattern",
+          "hoverToken",
+          "pillHighlightVisible",
+          "keyboardFocus",
+          "reducedMotionFallback"
+        ],
+        "light-narrow": [
+          "pattern",
+          "hoverToken",
+          "pillHighlightVisible",
+          "keyboardFocus",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "hero.typewriter-home",
+      "kind": "section",
+      "file": "sections/hero-typewriter-home.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "typewriter-chips-poetry"
+      ],
+      "settableContentFieldsByVariant": {
+        "typewriter-chips-poetry": [
+          "headline",
+          "primaryCta",
+          "demoCta",
+          "poetryPhrases"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "typewriter-chips-poetry": [
+          "pattern",
+          "headlineToken",
+          "chipsToken",
+          "poetryToken",
+          "poetryMinViewportPx",
+          "loops",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "feature.demo-card",
+      "kind": "section",
+      "file": "sections/feature-demo-card.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "draft",
+        "questions",
+        "comments"
+      ],
+      "settableContentFieldsByVariant": {
+        "draft": [
+          "frame",
+          "intro",
+          "composer",
+          "recents",
+          "chat",
+          "document"
+        ],
+        "questions": [
+          "frame",
+          "intro",
+          "composer",
+          "thinkingLabel",
+          "answer",
+          "citation"
+        ],
+        "comments": [
+          "frame",
+          "document",
+          "sidebar",
+          "cursor"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "draft": [
+          "pattern",
+          "engineToken",
+          "timelineToken",
+          "loopMs",
+          "stillFrameMs",
+          "startThreshold",
+          "pauseControl",
+          "reducedMotionFallback"
+        ],
+        "questions": [
+          "pattern",
+          "engineToken",
+          "timelineToken",
+          "loopMs",
+          "stillFrameMs",
+          "startThreshold",
+          "pauseControl",
+          "reducedMotionFallback"
+        ],
+        "comments": [
+          "pattern",
+          "engineToken",
+          "timelineToken",
+          "loopMs",
+          "stillFrameMs",
+          "startThreshold",
+          "pauseControl",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "shell.footer",
+      "kind": "section",
+      "file": "sections/shell-footer.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "brand-two-groups",
+        "brand-two-groups-subpage"
+      ],
+      "settableContentFieldsByVariant": {
+        "brand-two-groups": [
+          "brandMark",
+          "brandLabel",
+          "description",
+          "groups"
+        ],
+        "brand-two-groups-subpage": [
+          "brandMark",
+          "brandLabel",
+          "description",
+          "groups"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "brand-two-groups": [
+          "pattern",
+          "hoverToken",
+          "reducedMotionFallback"
+        ],
+        "brand-two-groups-subpage": [
+          "pattern",
+          "hoverToken",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "hero.typewriter-intro",
+      "kind": "section",
+      "file": "sections/hero-typewriter-intro.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "about",
+        "pricing"
+      ],
+      "settableContentFieldsByVariant": {
+        "about": [
+          "headline",
+          "intro"
+        ],
+        "pricing": [
+          "headline",
+          "intro"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "about": [
+          "pattern",
+          "headlineToken",
+          "lineCount",
+          "doneAtMs",
+          "loops",
+          "chips",
+          "poetry",
+          "reducedMotionFallback"
+        ],
+        "pricing": [
+          "pattern",
+          "headlineToken",
+          "lineCount",
+          "doneAtMs",
+          "loops",
+          "chips",
+          "poetry",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "media.photo-stack",
+      "kind": "section",
+      "file": "sections/media-photo-stack.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "three-cards"
+      ],
+      "settableContentFieldsByVariant": {
+        "three-cards": [
+          "groupLabel",
+          "nextLabel",
+          "frontLabel",
+          "photos"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "three-cards": [
+          "pattern",
+          "hoverToken",
+          "tossToken",
+          "reorder",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "about.safety-table",
+      "kind": "section",
+      "file": "sections/about-safety-table.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "prose-table"
+      ],
+      "settableContentFieldsByVariant": {
+        "prose-table": [
+          "safety",
+          "table"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "prose-table": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "pricing.plan-cards",
+      "kind": "section",
+      "file": "sections/pricing-plan-cards.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "four-plans"
+      ],
+      "settableContentFieldsByVariant": {
+        "four-plans": [
+          "plans"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "four-plans": [
+          "pattern",
+          "cardHover",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "changelog.header",
+      "kind": "section",
+      "file": "sections/changelog-header.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "centered"
+      ],
+      "settableContentFieldsByVariant": {
+        "centered": [
+          "title",
+          "intro"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "centered": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "changelog.releases",
+      "kind": "section",
+      "file": "sections/changelog-releases.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "dated-list"
+      ],
+      "settableContentFieldsByVariant": {
+        "dated-list": [
+          "releases",
+          "note"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "dated-list": [
+          "pattern",
+          "hoverToken",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "docs.header",
+      "kind": "section",
+      "file": "sections/docs-header.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "title-links"
+      ],
+      "settableContentFieldsByVariant": {
+        "title-links": [
+          "title",
+          "intro",
+          "links"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "title-links": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "docs.section",
+      "kind": "section",
+      "file": "sections/docs-section.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "prose-blocks"
+      ],
+      "settableContentFieldsByVariant": {
+        "prose-blocks": [
+          "title",
+          "blocks"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "prose-blocks": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "shell.app-header",
+      "kind": "section",
+      "file": "sections/shell-app-header.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "centered-logo"
+      ],
+      "settableContentFieldsByVariant": {
+        "centered-logo": [
+          "brandMark",
+          "brandLabel",
+          "signIn"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "centered-logo": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "legal.switcher",
+      "kind": "section",
+      "file": "sections/legal-switcher.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "two-links"
+      ],
+      "settableContentFieldsByVariant": {
+        "two-links": [
+          "links"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "two-links": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "legal.intro",
+      "kind": "section",
+      "file": "sections/legal-intro.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "title-updated-intro"
+      ],
+      "settableContentFieldsByVariant": {
+        "title-updated-intro": [
+          "title",
+          "updatedPrefix",
+          "updated",
+          "intro",
+          "operator",
+          "counselReview"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "title-updated-intro": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "legal.contents",
+      "kind": "section",
+      "file": "sections/legal-contents.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "two-column-toc"
+      ],
+      "settableContentFieldsByVariant": {
+        "two-column-toc": [
+          "heading"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "two-column-toc": [
+          "pattern",
+          "sticky",
+          "scrollSpy",
+          "smoothScroll",
+          "anchorScrollMarginTopPx",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "legal.section",
+      "kind": "section",
+      "file": "sections/legal-section.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "numbered"
+      ],
+      "settableContentFieldsByVariant": {
+        "numbered": [
+          "title",
+          "blocks"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "numbered": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "legal.footer",
+      "kind": "section",
+      "file": "sections/legal-footer.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "contact-row"
+      ],
+      "settableContentFieldsByVariant": {
+        "contact-row": [
+          "questionsLabel",
+          "contactHref",
+          "backToTop",
+          "home"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "contact-row": [
+          "pattern",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "auth.form-mock",
+      "kind": "section",
+      "file": "sections/auth-form-mock.json",
+      "instantiableInPageSpec": true,
+      "settableNodeProperties": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "variants": [
+        "email-first"
+      ],
+      "settableContentFieldsByVariant": {
+        "email-first": [
+          "logo",
+          "logoLabel",
+          "title",
+          "subtitle",
+          "fieldLabel",
+          "placeholder",
+          "submitLabel",
+          "social",
+          "switchPrompt",
+          "switchLink",
+          "legalLinks",
+          "demoOnlyNote",
+          "behavior"
+        ]
+      },
+      "motionFieldsByVariant": {
+        "email-first": [
+          "pattern",
+          "fieldToken",
+          "buttonToken",
+          "pageMotion",
+          "reducedMotionFallback"
+        ]
+      }
+    },
+    {
+      "id": "primitive.action-button",
+      "kind": "primitive",
+      "file": "primitives/action-button.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.hero-chip",
+      "kind": "primitive",
+      "file": "primitives/hero-chip.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.nav-link",
+      "kind": "primitive",
+      "file": "primitives/nav-link.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.footer-link",
+      "kind": "primitive",
+      "file": "primitives/footer-link.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.icon",
+      "kind": "primitive",
+      "file": "primitives/icon.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.inline-link",
+      "kind": "primitive",
+      "file": "primitives/inline-link.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.commit-link",
+      "kind": "primitive",
+      "file": "primitives/commit-link.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.code-block",
+      "kind": "primitive",
+      "file": "primitives/code-block.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.text-input",
+      "kind": "primitive",
+      "file": "primitives/text-input.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.reveal",
+      "kind": "primitive",
+      "file": "primitives/reveal.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "primitive.typed-text",
+      "kind": "primitive",
+      "file": "primitives/typed-text.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.headline-typewriter",
+      "kind": "component",
+      "file": "components/headline-typewriter.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.poetry-layer",
+      "kind": "component",
+      "file": "components/poetry-layer.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.squircle-card",
+      "kind": "component",
+      "file": "components/squircle-card.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.preview-frame",
+      "kind": "component",
+      "file": "components/preview-frame.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.preview-timeline",
+      "kind": "component",
+      "file": "components/preview-timeline.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.composer",
+      "kind": "component",
+      "file": "components/composer.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.chat-message",
+      "kind": "component",
+      "file": "components/chat-message.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.thinking-indicator",
+      "kind": "component",
+      "file": "components/thinking-indicator.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.contract-paper",
+      "kind": "component",
+      "file": "components/contract-paper.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.recent-agreements",
+      "kind": "component",
+      "file": "components/recent-agreements.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.landing-intro",
+      "kind": "component",
+      "file": "components/landing-intro.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.photo-stack",
+      "kind": "component",
+      "file": "components/photo-stack.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.rich-text",
+      "kind": "component",
+      "file": "components/rich-text.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.smart-link",
+      "kind": "component",
+      "file": "components/smart-link.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.landing-table",
+      "kind": "component",
+      "file": "components/landing-table.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.plan-card",
+      "kind": "component",
+      "file": "components/plan-card.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.release-entry",
+      "kind": "component",
+      "file": "components/release-entry.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.endpoint-card",
+      "kind": "component",
+      "file": "components/endpoint-card.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.app-header",
+      "kind": "component",
+      "file": "components/app-header.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.legal-document",
+      "kind": "component",
+      "file": "components/legal-document.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.auth-mock",
+      "kind": "component",
+      "file": "components/auth-mock.json",
+      "instantiableInPageSpec": false
+    },
+    {
+      "id": "component.comment-thread",
+      "kind": "component",
+      "file": "components/comment-thread.json",
+      "instantiableInPageSpec": false
+    }
+  ],
+  "assetRoles": [
+    "brand.mark",
+    "demo.cursor",
+    "font.mono-geist",
+    "font.ui-diatype",
+    "photo.studio-people",
+    "social.og-image",
+    "ui.icon",
+    "vendor.google-icon"
+  ],
+  "generationPolicies": [
+    "generate-original",
+    "licensed-font-required",
+    "never-reproduce-or-fabricate",
+    "project-supplied-only",
+    "vendor-supplied-only",
+    "verify-licence-before-use"
+  ]
+}

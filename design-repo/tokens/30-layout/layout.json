@@ -1,0 +1,244 @@
+{
+  "$description": "Page and section geometry from CLONE_SPEC.md (1440/1280 desktop, 390 phone).",
+  "page": {
+    "contentWidth": {
+      "$type": "dimension",
+      "$value": "960px",
+      "evidence": [
+        "spec.0.page-bg",
+        "src.css.tokens"
+      ]
+    },
+    "gutter": {
+      "$type": "reference",
+      "$value": "{spacing.pageGutter}",
+      "evidence": [
+        "spec.0.page-bg"
+      ]
+    },
+    "column": {
+      "$type": "rule",
+      "$value": "every top-level block is .landing-col: width 100%, max-width 960px, centred",
+      "evidence": [
+        "spec.0.page-bg"
+      ]
+    }
+  },
+  "nav": {
+    "box": {
+      "$type": "rule",
+      "$value": "flex, space-between, center; 960 x 98.4 at desktop, 342 x 84 at 390",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    }
+  },
+  "hero": {
+    "box": {
+      "$type": "rule",
+      "$value": "flex column, align start, gap 64, padding 150 0 80; 554px tall at 1440x900",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    }
+  },
+  "poetry": {
+    "zone": {
+      "$type": "rule",
+      "$value": "zone = (viewport + 160 - 960)/2; renders only if zone >= 120; usable = zone - 48; cols = floor(usable/6.6); rows = 51",
+      "evidence": [
+        "spec.2.poetry",
+        "src.poetry.zone"
+      ]
+    }
+  },
+  "previews": {
+    "grid": {
+      "$type": "rule",
+      "$value": "display grid; gap 96 (64 at <=760); padding-bottom 32; one card per row",
+      "evidence": [
+        "spec.3.previews",
+        "src.home.composition"
+      ]
+    }
+  },
+  "feature": {
+    "header": {
+      "$type": "rule",
+      "$value": "grid minmax(0,1fr) auto; gap 4px 24px (16px column-gap <=760); min-height 144; padding calc(pp + .75px); border-bottom 1px",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "stageMinHeight": {
+      "$type": "dimension",
+      "$value": "calc(600px + 2 * var(--preview-padding))",
+      "evidence": [
+        "spec.3a.frame",
+        "spec.4.draft-layout"
+      ]
+    },
+    "stageMaxWidth": {
+      "$type": "dimension",
+      "$value": "calc(720px + 2 * var(--preview-padding))",
+      "evidence": [
+        "spec.4.draft-layout",
+        "spec.5.questions-layout"
+      ]
+    },
+    "draftWorkspace": {
+      "$type": "rule",
+      "$value": "grid minmax(0,.9fr) minmax(0,1.25fr); one column at <=760",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "commentWorkspace": {
+      "$type": "rule",
+      "$value": "grid minmax(0,1.25fr) minmax(0,.9fr); one column at <=760",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "citationCard": {
+      "$type": "rule",
+      "$value": "min(248px,100%) square, padding 20, gap 20",
+      "evidence": [
+        "spec.5.questions-layout"
+      ]
+    },
+    "squircle": {
+      "$type": "rule",
+      "$value": "Figma-style smoothed corners, radius 24, smoothing 0.6 (p = 1.6r), recomputed on resize; fallback border-radius 24 + 1px border",
+      "evidence": [
+        "spec.3a.frame",
+        "src.squircle"
+      ]
+    }
+  },
+  "footer": {
+    "grid": {
+      "$type": "rule",
+      "$value": "minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) = 384/240/240, gap 48, padding 96 0; <=600: 1fr 1fr, brand spans 1/-1, gap 40 24, padding 56 0",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    }
+  },
+  "shell": {
+    "contentWidthHero": {
+      "$type": "dimension",
+      "$value": "960px",
+      "evidence": [
+        "pages.shells",
+        "src.css.shell-vars"
+      ],
+      "note": "shell A: /, /about, /pricing"
+    },
+    "contentWidthWide": {
+      "$type": "dimension",
+      "$value": "1152px",
+      "evidence": [
+        "pages.shells",
+        "src.css.shell-vars"
+      ],
+      "note": "shell B: /changelog"
+    },
+    "contentWidthNarrow": {
+      "$type": "dimension",
+      "$value": "720px",
+      "evidence": [
+        "pages.shells",
+        "src.css.shell-vars"
+      ],
+      "note": "shell C: /docs"
+    },
+    "legalContainer": {
+      "$type": "dimension",
+      "$value": "768px",
+      "evidence": [
+        "pages.legal-layout"
+      ],
+      "note": "shell D: calc(720px + 2 * 24px)"
+    },
+    "authMaxWidth": {
+      "$type": "dimension",
+      "$value": "420px",
+      "evidence": [
+        "pages.auth-layout",
+        "pages.auth-rendered"
+      ],
+      "note": "shell E root"
+    },
+    "changelogReleasesMaxWidth": {
+      "$type": "dimension",
+      "$value": "880px",
+      "evidence": [
+        "pages.changelog"
+      ]
+    },
+    "appHeaderHeight": {
+      "$type": "dimension",
+      "$value": "60px",
+      "evidence": [
+        "pages.legal-shell"
+      ]
+    },
+    "shells": {
+      "$type": "rule",
+      "$value": "A dark hero (gradient, 960) / B light wide (#fff, 1152) / C light narrow (#fff, 720, nav stacks at <=600) / D app shell (60px header, 768 container, no landing nav or footer) / E auth (centred 420 form, no nav or footer)",
+      "evidence": [
+        "pages.shells",
+        "pages.legal-shell",
+        "pages.auth"
+      ]
+    }
+  },
+  "about": {
+    "photoStack": {
+      "$type": "rule",
+      "$value": "height calc(card-w*1.4 + 48) = 468 (300 at <=600); card-w 300 / 180; spread 190 / 70; three fixed slots",
+      "evidence": [
+        "pages.about-photos",
+        "src.css.photo-stack"
+      ]
+    },
+    "table": {
+      "$type": "rule",
+      "$value": "table-layout fixed, col 1 33.333%, cells padding 24 (16 at <=600), border .75px",
+      "evidence": [
+        "pages.about-table",
+        "src.css.table"
+      ]
+    }
+  },
+  "pricing": {
+    "plans": {
+      "$type": "rule",
+      "$value": "flex row, gap 12, 4 cards flex 1 1 0 (231 at 1440); column at <=600",
+      "evidence": [
+        "pages.pricing",
+        "src.pricing.composition"
+      ]
+    }
+  },
+  "changelog": {
+    "release": {
+      "$type": "rule",
+      "$value": "grid 176px minmax(0,1fr), gap 48, padding 40 0, border-top .75px; one column, gap 24, padding 32 0 at <=600",
+      "evidence": [
+        "pages.changelog"
+      ]
+    }
+  },
+  "legal": {
+    "toc": {
+      "$type": "rule",
+      "$value": "card padding 24, radius 16, 2 columns gap 32 (1 at <=600); not sticky",
+      "evidence": [
+        "pages.legal-layout",
+        "src.css.legal"
+      ]
+    }
+  }
+}

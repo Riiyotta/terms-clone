@@ -1,0 +1,89 @@
+{
+  "id": "shell.app-header",
+  "kind": "section",
+  "category": "SHELL",
+  "purpose": "App shell (D) header for legal pages: 60px, static, transparent, centred accent logo and a 'Sign in' text link at the right. Replaces the landing nav; no landing footer either.",
+  "implementedBy": "src/components/AppHeader.jsx",
+  "region": "header",
+  "tone": "app",
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirst": true,
+    "sticky": false
+  },
+  "variants": {
+    "centered-logo": {
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "pages.legal-shell",
+            "src.appheader"
+          ]
+        },
+        "brandLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "src.appheader"
+          ]
+        },
+        "signIn": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 2,
+              "maxChars": 7,
+              "evidence": [
+                "pages.legal-shell"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "route"
+              ],
+              "evidence": [
+                "pages.legal-shell"
+              ],
+              "const": "/sign-in"
+            }
+          }
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.legal-shell"
+      ],
+      "tones": [
+        "app"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "padding 12px 0, 60 tall; logo 19.35x26 centred at every width; Sign in 400 14/21 #000 underlined, absolute right 24px, top 7.5px"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.legal-shell",
+    "src.appheader"
+  ],
+  "composes": [
+    "component.app-header"
+  ],
+  "evidence": [
+    "pages.legal-shell",
+    "src.appheader"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

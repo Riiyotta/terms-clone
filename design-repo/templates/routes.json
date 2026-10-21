@@ -1,0 +1,110 @@
+{
+  "version": "1.1.0",
+  "routes": [
+    {
+      "path": "/",
+      "template": "template.home",
+      "status": "built",
+      "shell": "A",
+      "evidence": [
+        "src.home.composition"
+      ]
+    },
+    {
+      "path": "/about",
+      "template": "template.about",
+      "status": "built",
+      "shell": "A",
+      "evidence": [
+        "src.about.composition",
+        "pages.about-structure"
+      ]
+    },
+    {
+      "path": "/pricing",
+      "template": "template.pricing",
+      "status": "built",
+      "shell": "A",
+      "evidence": [
+        "src.pricing.composition",
+        "pages.pricing"
+      ]
+    },
+    {
+      "path": "/changelog",
+      "template": "template.changelog",
+      "status": "built",
+      "shell": "B",
+      "evidence": [
+        "src.changelog.composition",
+        "pages.changelog"
+      ]
+    },
+    {
+      "path": "/docs",
+      "template": "template.docs",
+      "status": "built",
+      "shell": "C",
+      "evidence": [
+        "src.docs.composition",
+        "pages.docs"
+      ]
+    },
+    {
+      "path": "/privacy",
+      "template": "template.legal",
+      "status": "built",
+      "shell": "D",
+      "evidence": [
+        "src.legal.pages",
+        "pages.legal-shell"
+      ]
+    },
+    {
+      "path": "/terms",
+      "template": "template.legal",
+      "status": "built",
+      "shell": "D",
+      "evidence": [
+        "src.legal.pages",
+        "pages.legal-shell"
+      ]
+    },
+    {
+      "path": "/sign-in",
+      "template": "template.auth",
+      "status": "built",
+      "shell": "E",
+      "evidence": [
+        "src.auth.mock",
+        "pages.auth"
+      ]
+    },
+    {
+      "path": "/sign-up",
+      "template": "template.auth",
+      "status": "built",
+      "shell": "E",
+      "evidence": [
+        "src.auth.mock",
+        "pages.auth"
+      ]
+    }
+  ],
+  "router": "react-router-dom v6 BrowserRouter (src/App.jsx)",
+  "routeSource": {
+    "evidence": [
+      "src.app.routes",
+      "src.smartlink"
+    ],
+    "note": "verify_all route-coverage compares this list with the <Route path> entries in ../src/App.jsx when the source project is present"
+  },
+  "sectionAnchors": [
+    "draft",
+    "questions",
+    "comments",
+    "safety"
+  ],
+  "pendingBuildRoutes": [],
+  "pendingBuildPolicy": "v1.1.0: no route is pending-build. All nine live routes are built, pixel-audited and bound to exactly one template. The pending-build mechanism stays: verify_all check 'pending-build-routes' requires this list to be empty and identical in the manifest, and that no route is left unbound; a future unbuilt route must be listed here with template null (warn PENDING_ROUTE_LINK when linked)."
+}

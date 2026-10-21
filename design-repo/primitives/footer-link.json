@@ -1,0 +1,10 @@
+{
+  "id": "primitive.footer-link",
+  "kind": "primitive",
+  "description": "14px/1.35 ink link; hover jumps to #989490 with no transition; focus outline 1px #777 offset 3px.",
+  "evidence": [
+    "spec.7.footer",
+    "spec.7.footer-hover"
+  ],
+  "instantiableInPageSpec": false
+}

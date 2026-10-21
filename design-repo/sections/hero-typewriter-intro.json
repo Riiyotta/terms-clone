@@ -1,0 +1,332 @@
+{
+  "id": "hero.typewriter-intro",
+  "kind": "section",
+  "category": "HERO",
+  "purpose": "Sub-page hero on the gradient band (shell A): the home typewriter headline with fewer lines and no chips or poetry, followed by a two-part intro paragraph (bold lead + muted continuation).",
+  "implementedBy": "src/pages/About.jsx, src/pages/Pricing.jsx (HeroHeadline + LandingIntro)",
+  "region": "main",
+  "tone": "hero",
+  "constraints": {
+    "onePerPage": true,
+    "mustFollowNav": true
+  },
+  "variantDecision": "One type, two variants: both pages reuse HeroHeadline with DEFAULT_TIMING for the first N lines and the same LandingIntro paragraph; they differ in line count, line tones, intro budgets and the mobile top padding.",
+  "variants": {
+    "about": {
+      "anchorId": null,
+      "purpose": "/about: two bright headline lines; intro lead (16w, up to 2 links) + muted rest (27w).",
+      "content": {
+        "headline": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "pages.headline-typewriter"
+                  ],
+                  "note": "same HeroHeadline component and nowrap 56px type as home, so the home line budget applies"
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "bright",
+                  "evidence": [
+                    "pages.pricing",
+                    "pages.about-typo"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "pages.headline-typewriter"
+                  ],
+                  "note": "same HeroHeadline component and nowrap 56px type as home, so the home line budget applies"
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "bright",
+                  "evidence": [
+                    "pages.pricing",
+                    "pages.about-typo"
+                  ]
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "pages.about-structure",
+            "pages.about-typo"
+          ]
+        },
+        "intro": {
+          "type": "object",
+          "fields": {
+            "lead": {
+              "type": "prose",
+              "maxWords": 16,
+              "maxChars": 120,
+              "maxLinks": 2,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.about-content",
+                "src.intro"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+              "note": "bold lead sentence, 500 rgba(255,255,255,.9); links underline from-font"
+            },
+            "rest": {
+              "type": "prose",
+              "maxWords": 27,
+              "maxChars": 203,
+              "maxLinks": 0,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.about-content",
+                "src.intro"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+              "note": "muted continuation, 400 --hero-prose-muted rgba(255,255,255,.62)"
+            }
+          },
+          "evidence": [
+            "pages.about-content",
+            "pages.about-typo",
+            "src.intro"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriterSubpage",
+        "lineCount": 2,
+        "doneAtMs": 3120,
+        "loops": false,
+        "chips": false,
+        "poetry": false,
+        "reducedMotionFallback": "headline-complete-at-once"
+      },
+      "motionEvidence": [
+        "pages.headline-typewriter",
+        "src.headline.schedule",
+        "src.headline.timing"
+      ],
+      "responsive": {
+        "bp1000": [
+          "h1 clamp(32px,5.4vw,56px)"
+        ],
+        "bp600": [
+          "main padding 64px 0 56px, gap 32px (live: h1 y148 - main y84 = 64; the spec prose says 72, see evidenceConflicts)",
+          "h1 wraps, clamp(28px,8.5vw,34px)"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.about-structure",
+        "src.about.mobile-pad",
+        "src.about.composition"
+      ],
+      "tones": [
+        "hero"
+      ]
+    },
+    "pricing": {
+      "anchorId": null,
+      "purpose": "/pricing: three headline lines, line 1 muted brand (plus-lighter), lines 2-3 bright; intro lead (9w) + muted rest (43w).",
+      "content": {
+        "headline": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "pages.headline-typewriter"
+                  ],
+                  "note": "same HeroHeadline component and nowrap 56px type as home, so the home line budget applies"
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "brand-muted",
+                  "evidence": [
+                    "pages.pricing",
+                    "pages.about-typo"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "pages.headline-typewriter"
+                  ],
+                  "note": "same HeroHeadline component and nowrap 56px type as home, so the home line budget applies"
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "bright",
+                  "evidence": [
+                    "pages.pricing",
+                    "pages.about-typo"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "text": {
+                  "type": "text",
+                  "maxWords": 5,
+                  "maxChars": 33,
+                  "evidence": [
+                    "spec.2.headline",
+                    "pages.headline-typewriter"
+                  ],
+                  "note": "same HeroHeadline component and nowrap 56px type as home, so the home line budget applies"
+                },
+                "tone": {
+                  "type": "const",
+                  "value": "bright",
+                  "evidence": [
+                    "pages.pricing",
+                    "pages.about-typo"
+                  ]
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "pages.pricing"
+          ]
+        },
+        "intro": {
+          "type": "object",
+          "fields": {
+            "lead": {
+              "type": "prose",
+              "maxWords": 9,
+              "maxChars": 68,
+              "maxLinks": 0,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.pricing",
+                "src.intro"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+            },
+            "rest": {
+              "type": "prose",
+              "maxWords": 43,
+              "maxChars": 323,
+              "maxLinks": 0,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.pricing",
+                "src.intro"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+            }
+          },
+          "evidence": [
+            "pages.pricing",
+            "src.intro"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriterSubpage",
+        "lineCount": 3,
+        "doneAtMs": 4220,
+        "loops": false,
+        "chips": false,
+        "poetry": false,
+        "reducedMotionFallback": "headline-complete-at-once"
+      },
+      "motionEvidence": [
+        "pages.headline-typewriter",
+        "src.headline.schedule",
+        "src.headline.timing",
+        "pages.corr-pricing-typewriter"
+      ],
+      "motionNote": "timed live (CLONE_SPEC_PAGES 10): last chars at ~600 / +917+700 / +1900+800 = +2700ms from the first char; identical to the first three default slots (starts 240/1160/2140, durations 700/760/880, last char at (n-1)/n of each). doneAtMs 4220 includes the 1200ms completion delay, which reveals nothing here.",
+      "responsive": {
+        "bp1000": [
+          "h1 clamp(32px,5.4vw,56px)"
+        ],
+        "bp600": [
+          "main padding 72px 0 56px, gap 32px",
+          "h1 wraps, clamp(28px,8.5vw,34px)"
+        ]
+      },
+      "responsiveEvidence": [
+        "pages.pricing",
+        "src.pricing.composition"
+      ],
+      "tones": [
+        "hero"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "main flex column, align-items flex-start, gap 64px, padding 150px 0 80px; intro max-width 560, margin-top -16px"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.about-structure",
+    "pages.pricing"
+  ],
+  "composes": [
+    "component.headline-typewriter",
+    "component.landing-intro",
+    "component.rich-text"
+  ],
+  "evidence": [
+    "pages.headline-typewriter",
+    "pages.about-structure",
+    "pages.pricing",
+    "src.about.composition",
+    "src.pricing.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

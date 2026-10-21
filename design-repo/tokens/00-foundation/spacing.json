@@ -1,0 +1,303 @@
+{
+  "$description": "Spacing values measured in CLONE_SPEC.md (desktop / <=760 / <=600 where they differ).",
+  "spacing": {
+    "pageGutter": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "pillButtonGap": {
+      "$type": "dimension",
+      "$value": "4px",
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout"
+      ]
+    },
+    "chipGap": {
+      "$type": "dimension",
+      "$value": "6px",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "navPadY": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "navPadYMobile": {
+      "$type": "dimension",
+      "$value": "20px",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "navGap": {
+      "$type": "dimension",
+      "$value": "16px",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "navGapMobile": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "heroPadTop": {
+      "$type": "dimension",
+      "$value": "150px",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    },
+    "heroPadBottom": {
+      "$type": "dimension",
+      "$value": "80px",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    },
+    "heroPadMobile": {
+      "$type": "dimension",
+      "$value": "48px",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    },
+    "heroGap": {
+      "$type": "dimension",
+      "$value": "64px",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    },
+    "heroGapMobile": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "spec.2.hero-layout"
+      ]
+    },
+    "previewsGap": {
+      "$type": "dimension",
+      "$value": "96px",
+      "evidence": [
+        "spec.3.previews"
+      ]
+    },
+    "previewsGapMobile": {
+      "$type": "dimension",
+      "$value": "64px",
+      "evidence": [
+        "spec.3.previews",
+        "spec.0.breakpoints"
+      ]
+    },
+    "previewsPadBottom": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "spec.3.previews"
+      ]
+    },
+    "previewPadding": {
+      "$type": "dimension",
+      "$value": "44px",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "previewPadding1000": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "spec.3a.frame",
+        "spec.0.breakpoints"
+      ]
+    },
+    "previewPadding760": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "spec.3a.frame",
+        "spec.0.breakpoints"
+      ]
+    },
+    "footerGap": {
+      "$type": "dimension",
+      "$value": "48px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerPadY": {
+      "$type": "dimension",
+      "$value": "96px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerPadYMobile": {
+      "$type": "dimension",
+      "$value": "56px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerGroupGap": {
+      "$type": "dimension",
+      "$value": "16px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerLinkGap": {
+      "$type": "dimension",
+      "$value": "10px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerBrandGap": {
+      "$type": "dimension",
+      "$value": "20px",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "messageGap": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "cardPadding": {
+      "$type": "dimension",
+      "$value": "20px",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "aboutHeroPadTopMobile": {
+      "$type": "dimension",
+      "$value": "64px",
+      "evidence": [
+        "pages.about-structure",
+        "src.about.mobile-pad"
+      ],
+      "note": "measured live (h1 y148 - main y84); the spec prose's 72 is wrong for /about"
+    },
+    "pricingHeroPadTopMobile": {
+      "$type": "dimension",
+      "$value": "72px",
+      "evidence": [
+        "pages.pricing",
+        "src.pricing.composition"
+      ]
+    },
+    "subpageHeroPadBottomMobile": {
+      "$type": "dimension",
+      "$value": "56px",
+      "evidence": [
+        "pages.about-structure",
+        "pages.pricing"
+      ]
+    },
+    "plansGap": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "pages.pricing"
+      ]
+    },
+    "cardPaddingLarge": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "pages.pricing-card",
+        "pages.docs-typo",
+        "pages.legal-layout"
+      ]
+    },
+    "navPadYWide": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "pages.shells"
+      ]
+    },
+    "navPadYNarrow": {
+      "$type": "dimension",
+      "$value": "96px",
+      "evidence": [
+        "pages.shells"
+      ]
+    },
+    "navPadYNarrowMobile": {
+      "$type": "dimension",
+      "$value": "48px",
+      "evidence": [
+        "pages.shells"
+      ]
+    },
+    "releaseGap": {
+      "$type": "dimension",
+      "$value": "48px",
+      "evidence": [
+        "pages.changelog"
+      ]
+    },
+    "releasePadY": {
+      "$type": "dimension",
+      "$value": "40px",
+      "evidence": [
+        "pages.changelog"
+      ]
+    },
+    "releasePadYMobile": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "pages.changelog"
+      ]
+    },
+    "docsMainMargin": {
+      "$type": "dimension",
+      "$value": "64px",
+      "evidence": [
+        "pages.docs"
+      ]
+    },
+    "appHeaderPadY": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "pages.legal-shell"
+      ]
+    },
+    "authPad": {
+      "$type": "dimension",
+      "$value": "48px 24px 12vh",
+      "evidence": [
+        "pages.auth"
+      ]
+    },
+    "authPadMobile": {
+      "$type": "dimension",
+      "$value": "32px 16px 48px",
+      "evidence": [
+        "pages.auth"
+      ]
+    }
+  }
+}

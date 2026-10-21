@@ -1,0 +1,125 @@
+{
+  "$description": "Shadows and filters from src/index.css :root.",
+  "elevation": {
+    "ringHairline": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px #0000000d",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "shadowCard": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px #0000000d, 0 .6px 1.1px #00000006, 0 1.7px 3.4px #00000008, 0 4.1px 8.2px #0000000a, 0 13px 27px #0000000e",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "focusShadow": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px #00000059, {elevation.shadowCard}",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "surfaceShadow": {
+      "$type": "shadow",
+      "$value": "0 2px 4px #00000003, 0 5px 10px #00000004, 0 10px 20px #00000005, 0 20px 40px #00000006, 0 40px 80px #00000008",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ],
+      "note": "--landing-surface-shadow: the About services table"
+    },
+    "shadowComposer": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px #eee, {elevation.shadowCard}",
+      "evidence": [
+        "src.css.tokens",
+        "spec.3d.parts"
+      ]
+    },
+    "shadowSelectionCard": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px #ccd6ff, {elevation.shadowCard}",
+      "evidence": [
+        "src.css.tokens",
+        "spec.6.comments-layout"
+      ]
+    },
+    "squircleDropShadow": {
+      "$type": "filter",
+      "$value": "drop-shadow(0 5.25px 7px #00000005) drop-shadow(0 9.4px 12.5px #00000008) drop-shadow(0 17.54px 23.39px #0000000a)",
+      "evidence": [
+        "src.css.tokens",
+        "spec.3a.frame"
+      ]
+    },
+    "landingCardShadow": {
+      "$type": "shadow",
+      "$value": "0 .5px 1.3px #00000003, 0 1.2px 3.1px #00000003, 0 2.3px 5.8px #00000003, 0 4px 10.5px #00000005, 0 7.5px 19px #00000005, 0 18px 47px #00000008",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.shells"
+      ]
+    },
+    "photoShadow": {
+      "$type": "shadow",
+      "$value": "0 12.5px 100px -10px rgba(50, 50, 73, .4), 0 10px 10px -10px rgba(50, 50, 73, .3)",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.shells"
+      ]
+    },
+    "photoShadowHover": {
+      "$type": "shadow",
+      "$value": "0 20px 110px -10px rgba(50, 50, 73, .45), 0 14px 14px -10px rgba(50, 50, 73, .3)",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.shells"
+      ]
+    },
+    "authInputShadow": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px rgba(238, 238, 238, .11), 0 0 1px rgba(238, 238, 238, .07)",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.auth-layout"
+      ]
+    },
+    "authInputShadowHover": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px rgba(238, 238, 238, .28), 0 0 1px rgba(238, 238, 238, .11)",
+      "evidence": [
+        "src.css.subpage-vars"
+      ]
+    },
+    "authInputShadowFocus": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px rgba(238, 238, 238, .28), 0 0 1px rgba(238, 238, 238, .11), 0 0 0 4px {color.auth.ring}",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.auth-layout"
+      ]
+    },
+    "authPrimaryShadow": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px {color.brand.accent}, inset 0 1px 1px rgba(255, 255, 255, .07), 0 2px 3px rgba(34, 42, 53, .2), 0 1px 1px rgba(0, 0, 0, .24)",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.auth-layout"
+      ]
+    },
+    "authSocialShadow": {
+      "$type": "shadow",
+      "$value": "0 0 0 1px rgba(238, 238, 238, .07), 0 2px 3px -1px rgba(0, 0, 0, .08), 0 1px 0 rgba(0, 0, 0, .02)",
+      "evidence": [
+        "src.css.subpage-vars",
+        "pages.auth-layout"
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$description": "The hero band gradient (31 stops), painted 100% x heroHeight over the page tint.",
+  "gradient": {
+    "hero": {
+      "band": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, #3a0303 0%, #3b0303 3.2258%, #3b0303 6.4516%, #3c0403 9.6774%, #3d0403 12.903%, #3f0503 16.129%, #400503 19.355%, #420603 22.581%, #440603 25.806%, #470703 29.032%, #4a0803 32.258%, #4d0903 35.484%, #510b03 38.71%, #550c03 41.935%, #5a0e02 45.161%, #601002 48.387%, #661202 51.613%, #6e1502 54.839%, #771802 58.065%, #821b02 61.29%, #902001 64.516%, #a12601 67.742%, #b72e01 70.968%, #d63800 74.194%, #e95a26 77.419%, #ef8863 80.645%, #f3ab91 83.871%, #f7c4b2 87.097%, #f9d7cb 90.323%, #fbe6df 93.548%, #fcf2ee 96.774%, #fefcfb 100%)",
+        "evidence": [
+          "spec.0.page-bg",
+          "src.css.tokens"
+        ]
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": "840px",
+        "evidence": [
+          "spec.0.css-vars",
+          "src.css.tokens"
+        ]
+      },
+      "heightMobile": {
+        "$type": "dimension",
+        "$value": "720px",
+        "evidence": [
+          "spec.0.css-vars",
+          "src.css.hero-height-mobile"
+        ]
+      }
+    }
+  }
+}

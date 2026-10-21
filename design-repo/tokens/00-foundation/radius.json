@@ -1,0 +1,77 @@
+{
+  "$description": "Radii from tailwind.config.js borderRadius and CLONE_SPEC.md.",
+  "radius": {
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px",
+      "evidence": [
+        "spec.0.buttons",
+        "src.tailwind.radius"
+      ]
+    },
+    "chip": {
+      "$type": "dimension",
+      "$value": "6px",
+      "evidence": [
+        "spec.2.chips",
+        "src.tailwind.radius"
+      ]
+    },
+    "card": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "spec.3a.frame",
+        "src.tailwind.radius"
+      ]
+    },
+    "composer": {
+      "$type": "dimension",
+      "$value": "20px",
+      "evidence": [
+        "spec.3d.parts",
+        "src.tailwind.radius"
+      ]
+    },
+    "thread": {
+      "$type": "dimension",
+      "$value": "16px",
+      "evidence": [
+        "spec.6.comments-layout",
+        "src.tailwind.radius"
+      ]
+    },
+    "citation": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "spec.5.questions-layout",
+        "src.tailwind.radius"
+      ]
+    },
+    "round": {
+      "$type": "dimension",
+      "$value": "50%",
+      "evidence": [
+        "spec.6.comments-layout",
+        "spec.3c.reveals"
+      ]
+    },
+    "photoCard": {
+      "$type": "dimension",
+      "$value": "16px",
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    },
+    "photoCardMobile": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    }
+  }
+}

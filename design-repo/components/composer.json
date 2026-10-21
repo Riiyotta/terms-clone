@@ -1,0 +1,14 @@
+{
+  "id": "component.composer",
+  "kind": "component",
+  "description": "20px-radius prompt box: 80px textarea + action row (Attach a file, Enter). Send turns primary when it has a value and is not busy; sending fades the text up 8px and presses the send button to .97.",
+  "composes": [
+    "primitive.action-button",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.3d.parts",
+    "src.parts.composer"
+  ],
+  "instantiableInPageSpec": false
+}

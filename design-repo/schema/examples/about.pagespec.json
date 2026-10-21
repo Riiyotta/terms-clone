@@ -1,0 +1,340 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.about",
+  "route": "/about",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "About — Clausewell",
+    "description": "Who builds Clausewell, why we made it, and which outside services it relies on to store, send and sign your agreements.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "nav",
+      "section": "shell.nav",
+      "variant": "on-hero-current",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Login",
+            "href": "/sign-in",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Sign up",
+            "href": "/sign-up",
+            "emphasis": "bright"
+          }
+        ],
+        "currentHref": "/about"
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLink",
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      }
+    },
+    {
+      "id": "hero",
+      "section": "hero.typewriter-intro",
+      "variant": "about",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "headline": [
+          {
+            "text": "Made by a small team",
+            "tone": "bright"
+          },
+          {
+            "text": "that reads contracts.",
+            "tone": "bright"
+          }
+        ],
+        "intro": {
+          "lead": [
+            {
+              "text": "Clausewell is an independent project from ",
+              "href": null,
+              "mark": "none"
+            },
+            {
+              "text": "Northwind Studio",
+              "href": "https://northwind.example",
+              "mark": "none"
+            },
+            {
+              "text": ", a small product studio run by ",
+              "href": null,
+              "mark": "none"
+            },
+            {
+              "text": "Ada Park",
+              "href": "https://adapark.example",
+              "mark": "none"
+            },
+            {
+              "text": ".",
+              "href": null,
+              "mark": "none"
+            }
+          ],
+          "rest": [
+            {
+              "text": "We send and sign agreements with clients every week, so we built the calm, browser-based tool we always wanted for that work.",
+              "href": null,
+              "mark": "none"
+            }
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriterSubpage",
+        "lineCount": 2,
+        "doneAtMs": 3120,
+        "loops": false,
+        "chips": false,
+        "poetry": false,
+        "reducedMotionFallback": "headline-complete-at-once"
+      }
+    },
+    {
+      "id": "photos",
+      "section": "media.photo-stack",
+      "variant": "three-cards",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "groupLabel": "Photos of our team",
+        "nextLabel": "Show the next photo",
+        "frontLabel": "Bring this photo forward",
+        "photos": [
+          {
+            "assetRole": "photo.studio-people",
+            "assetRef": "team/clausewell-team-1.jpg",
+            "generationPolicy": "never-reproduce-or-fabricate",
+            "alt": "Our team reviewing a draft together"
+          },
+          {
+            "assetRole": "photo.studio-people",
+            "assetRef": "team/clausewell-team-2.jpg",
+            "generationPolicy": "never-reproduce-or-fabricate",
+            "alt": "The meeting table in our office"
+          },
+          {
+            "assetRole": "photo.studio-people",
+            "assetRef": "team/clausewell-team-3.jpg",
+            "generationPolicy": "never-reproduce-or-fabricate",
+            "alt": "A shared desk by the window"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "photo-stack-toss",
+        "hoverToken": "hover.photoCard",
+        "tossToken": "photo.toss",
+        "reorder": "front-to-back-or-bring-to-front",
+        "reducedMotionFallback": "no-transition-no-animation"
+      }
+    },
+    {
+      "id": "safety",
+      "section": "about.safety-table",
+      "variant": "prose-table",
+      "tone": "surface",
+      "anchorId": "safety",
+      "content": {
+        "safety": {
+          "lead": [
+            {
+              "text": "Clausewell is maintained by a small team and has not been independently audited.",
+              "href": null,
+              "mark": "none"
+            }
+          ],
+          "rest": [
+            {
+              "text": "Before you rely on it for anything important, please ",
+              "href": null,
+              "mark": "none"
+            },
+            {
+              "text": "review the source code",
+              "href": "https://code.clausewell.example",
+              "mark": "none"
+            },
+            {
+              "text": " yourself. The table below lists each service we depend on and what it handles.",
+              "href": null,
+              "mark": "none"
+            }
+          ]
+        },
+        "table": {
+          "head": [
+            "Area",
+            "What we do"
+          ],
+          "rows": [
+            {
+              "label": "Hosting",
+              "body": [
+                {
+                  "text": "The app and its API run on ",
+                  "href": null,
+                  "mark": "none"
+                },
+                {
+                  "text": "a managed cloud host",
+                  "href": "https://host.example",
+                  "mark": "none"
+                },
+                {
+                  "text": ", served only over HTTPS.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ]
+            },
+            {
+              "label": "Database",
+              "body": [
+                {
+                  "text": "Agreements and comments are stored in a managed Postgres service with encryption at rest and daily backups.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ]
+            },
+            {
+              "label": "Email",
+              "body": [
+                {
+                  "text": "Signing requests and reminders go out through ",
+                  "href": null,
+                  "mark": "none"
+                },
+                {
+                  "text": "a transactional email provider",
+                  "href": "https://mail.example",
+                  "mark": "none"
+                },
+                {
+                  "text": " and contain a private link, never the document itself.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "footer",
+      "section": "shell.footer",
+      "variant": "brand-two-groups-subpage",
+      "tone": "surface",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "description": "Clausewell is a contract workspace for small teams. Draft agreements with AI, discuss clauses with the other side, and collect signatures without leaving the document.",
+        "groups": [
+          {
+            "label": "Product",
+            "links": [
+              {
+                "label": "Sign up",
+                "href": "/sign-up"
+              },
+              {
+                "label": "Login",
+                "href": "/sign-in"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "API docs",
+                "href": "/docs"
+              }
+            ]
+          },
+          {
+            "label": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Contact",
+                "href": "mailto:hello@clausewell.example"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms of Service",
+                "href": "/terms"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

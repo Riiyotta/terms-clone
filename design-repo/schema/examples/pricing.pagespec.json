@@ -1,0 +1,244 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.pricing",
+  "route": "/pricing",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "Pricing — Clausewell",
+    "description": "Writing, sending and signing agreements on Clausewell is free. Paid plans only raise how much AI drafting help you can use each month.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "nav",
+      "section": "shell.nav",
+      "variant": "on-hero-current",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Login",
+            "href": "/sign-in",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Sign up",
+            "href": "/sign-up",
+            "emphasis": "bright"
+          }
+        ],
+        "currentHref": "/pricing"
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLink",
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      }
+    },
+    {
+      "id": "hero",
+      "section": "hero.typewriter-intro",
+      "variant": "pricing",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "headline": [
+          {
+            "text": "Pricing:",
+            "tone": "brand-muted"
+          },
+          {
+            "text": "Write for free.",
+            "tone": "bright"
+          },
+          {
+            "text": "Pay for drafting.",
+            "tone": "bright"
+          }
+        ],
+        "intro": {
+          "lead": [
+            {
+              "text": "Writing, sending and signing contracts is always free.",
+              "href": null,
+              "mark": "none"
+            }
+          ],
+          "rest": [
+            {
+              "text": "A paid plan only raises your monthly allowance for AI drafting and questions. Every plan has the same features, so choose the one that matches how often you ask the assistant for help.",
+              "href": null,
+              "mark": "none"
+            }
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriterSubpage",
+        "lineCount": 3,
+        "doneAtMs": 4220,
+        "loops": false,
+        "chips": false,
+        "poetry": false,
+        "reducedMotionFallback": "headline-complete-at-once"
+      }
+    },
+    {
+      "id": "plans",
+      "section": "pricing.plan-cards",
+      "variant": "four-plans",
+      "tone": "surface",
+      "anchorId": null,
+      "content": {
+        "plans": [
+          {
+            "name": "Free",
+            "price": "$0",
+            "periodLabel": " / month",
+            "tokens": "100,000 drafting tokens a month",
+            "cta": {
+              "label": "Try it out",
+              "href": "/sign-up"
+            }
+          },
+          {
+            "name": "Solo",
+            "price": "$8",
+            "periodLabel": " / month",
+            "tokens": "400,000 drafting tokens a month",
+            "cta": {
+              "label": "Try it out",
+              "href": "/sign-up"
+            }
+          },
+          {
+            "name": "Team",
+            "price": "$16",
+            "periodLabel": " / month",
+            "tokens": "1,000,000 drafting tokens a month",
+            "cta": {
+              "label": "Try it out",
+              "href": "/sign-up"
+            }
+          },
+          {
+            "name": "Firm",
+            "price": "$40",
+            "periodLabel": " / month",
+            "tokens": "2,500,000 drafting tokens a month",
+            "cta": {
+              "label": "Try it out",
+              "href": "/sign-up"
+            }
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "cardHover": false,
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "footer",
+      "section": "shell.footer",
+      "variant": "brand-two-groups-subpage",
+      "tone": "surface",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "description": "Clausewell is a contract workspace for small teams. Draft agreements with AI, discuss clauses with the other side, and collect signatures without leaving the document.",
+        "groups": [
+          {
+            "label": "Product",
+            "links": [
+              {
+                "label": "Sign up",
+                "href": "/sign-up"
+              },
+              {
+                "label": "Login",
+                "href": "/sign-in"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "API docs",
+                "href": "/docs"
+              }
+            ]
+          },
+          {
+            "label": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Contact",
+                "href": "mailto:hello@clausewell.example"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms of Service",
+                "href": "/terms"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

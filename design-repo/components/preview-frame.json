@@ -1,0 +1,15 @@
+{
+  "id": "component.preview-frame",
+  "kind": "component",
+  "description": "Demo card frame: header grid (h3 + subtitle + 36px secondary compact playback button), sr-only description, and the aria-hidden loop stage.",
+  "composes": [
+    "component.squircle-card",
+    "primitive.action-button",
+    "primitive.icon"
+  ],
+  "evidence": [
+    "spec.3a.frame",
+    "src.frame"
+  ],
+  "instantiableInPageSpec": false
+}

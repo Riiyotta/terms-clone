@@ -1,0 +1,13 @@
+{
+  "id": "component.headline-typewriter",
+  "kind": "component",
+  "description": "Four-line h1 typed once from mount by rAF (per-line delay/duration), untyped tail visibility:hidden, aria-label holds the full text; fires onDone at 5680ms to reveal the chips.",
+  "composes": [
+    "primitive.typed-text"
+  ],
+  "evidence": [
+    "spec.2.typewriter",
+    "src.headline.timing"
+  ],
+  "instantiableInPageSpec": false
+}

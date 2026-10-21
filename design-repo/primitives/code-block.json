@@ -1,0 +1,11 @@
+{
+  "id": "primitive.code-block",
+  "kind": "primitive",
+  "description": "Generic monospace 16/24 pre: #f7f7f7, radius 20, padding 24, pre-wrap, wraps anywhere; inline code unstyled. No copy button, no highlighting.",
+  "evidence": [
+    "pages.docs-typo",
+    "pages.docs-code",
+    "src.css.docs"
+  ],
+  "instantiableInPageSpec": false
+}

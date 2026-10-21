@@ -1,0 +1,10 @@
+{
+  "id": "primitive.reveal",
+  "kind": "primitive",
+  "description": "data-show toggle: opacity 0 -> 1 and translateY(8px) -> none over .24s cubic-bezier(.23,1,.32,1); pointer-events none while hidden.",
+  "evidence": [
+    "spec.3c.reveals",
+    "src.css.reveals"
+  ],
+  "instantiableInPageSpec": false
+}

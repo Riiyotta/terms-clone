@@ -1,0 +1,13 @@
+{
+  "id": "component.recent-agreements",
+  "kind": "component",
+  "description": "'Recent contracts' list of exactly three rows (title, date, status pill signed/awaiting/draft) revealed with a 0/50/100ms stagger.",
+  "composes": [
+    "primitive.reveal"
+  ],
+  "evidence": [
+    "spec.4.draft-layout",
+    "src.parts.agreements"
+  ],
+  "instantiableInPageSpec": false
+}

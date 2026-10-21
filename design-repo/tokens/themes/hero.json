@@ -1,0 +1,22 @@
+{
+  "theme": "hero",
+  "usedBy": "shell.nav, hero.typewriter-home (on the gradient band)",
+  "resolve": {
+    "text.primary": "{color.hero.text}",
+    "text.muted": "{color.hero.textMuted}",
+    "text.link": "{color.hero.link}",
+    "text.linkMuted": "{color.hero.linkMuted}",
+    "surface.page": "{gradient.hero.band}",
+    "surface.control": "{color.hero.chip}",
+    "surface.controlHover": "{color.hero.chipHover}",
+    "text.onControl": "{color.hero.chipText}",
+    "logo.fill": "{color.neutral.pageTint}",
+    "accent.brand": "{color.brand.accent}"
+  },
+  "evidence": [
+    "spec.1.nav-layout",
+    "spec.2.headline",
+    "spec.2.chips",
+    "src.css.tokens"
+  ]
+}

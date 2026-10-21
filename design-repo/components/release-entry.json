@@ -1,0 +1,13 @@
+{
+  "id": "component.release-entry",
+  "kind": "component",
+  "description": "Changelog entry paragraph (bold title + body) with a wrap row of commit links.",
+  "composes": [
+    "primitive.commit-link"
+  ],
+  "evidence": [
+    "pages.changelog",
+    "src.changelog.composition"
+  ],
+  "instantiableInPageSpec": false
+}

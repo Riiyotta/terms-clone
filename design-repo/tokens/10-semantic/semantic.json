@@ -1,0 +1,135 @@
+{
+  "$description": "Semantic tone roles. A node's tone selects a theme that resolves every role to a foundation token: hero (gradient band), surface (page tint below the band), light (flat white landing shells B/C and the auth shell E), app (legal app shell D: #000 text).",
+  "tone": {
+    "text.primary": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "text.muted": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "text.link": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "text.linkMuted": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "surface.page": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "surface.control": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "surface.controlHover": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "text.onControl": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "logo.fill": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    },
+    "accent.brand": {
+      "$type": "role",
+      "$value": "{theme}",
+      "resolvesIn": [
+        "themes/hero.json",
+        "themes/surface.json"
+      ],
+      "evidence": [
+        "spec.0.css-vars",
+        "spec.1.nav-layout",
+        "spec.7.footer"
+      ]
+    }
+  }
+}

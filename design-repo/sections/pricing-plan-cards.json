@@ -1,0 +1,137 @@
+{
+  "id": "pricing.plan-cards",
+  "kind": "section",
+  "category": "PRICING",
+  "purpose": "Four equal plan cards in one row (column at <=600): name, price with ' / month', token allowance line and a brand 'Try it out' button to sign-up. No billing toggle, no feature list, no 'popular' badge, no card hover.",
+  "implementedBy": "src/pages/Pricing.jsx",
+  "region": "main",
+  "tone": "surface",
+  "constraints": {
+    "onePerPage": true,
+    "billingToggle": false,
+    "featureList": false,
+    "badge": false,
+    "cardHover": false
+  },
+  "variants": {
+    "four-plans": {
+      "anchorId": null,
+      "content": {
+        "plans": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "name": {
+                "type": "text",
+                "maxWords": 1,
+                "maxChars": 4,
+                "evidence": [
+                  "pages.pricing-card"
+                ]
+              },
+              "price": {
+                "type": "text",
+                "maxWords": 1,
+                "maxChars": 4,
+                "evidence": [
+                  "pages.pricing-card"
+                ],
+                "pattern": "^\\S+$",
+                "note": "e.g. a currency amount; 40px/.96, -.04em"
+              },
+              "periodLabel": {
+                "type": "text",
+                "maxWords": 2,
+                "maxChars": 8,
+                "evidence": [
+                  "pages.pricing-card",
+                  "src.pricing.period"
+                ],
+                "pattern": "^ / \\S",
+                "note": "the muted span carries the LEADING space: ' / month'"
+              },
+              "tokens": {
+                "type": "text",
+                "maxWords": 9,
+                "maxChars": 54,
+                "evidence": [
+                  "pages.pricing-card"
+                ],
+                "note": "allowance line, 400 #989490, 3 lines at desktop"
+              },
+              "cta": {
+                "type": "object",
+                "fields": {
+                  "label": {
+                    "type": "text",
+                    "maxWords": 3,
+                    "maxChars": 10,
+                    "evidence": [
+                      "pages.pricing-card"
+                    ]
+                  },
+                  "href": {
+                    "type": "href",
+                    "kinds": [
+                      "route"
+                    ],
+                    "evidence": [
+                      "pages.pricing-card"
+                    ],
+                    "const": "/sign-up"
+                  }
+                }
+              }
+            }
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "evidence": [
+            "pages.pricing",
+            "pages.pricing-card",
+            "src.content.pricing"
+          ],
+          "note": "measured: exactly 4 plans (231px each at 1440, gap 12)"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "cardHover": false,
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.pricing-card",
+        "src.css.plan-card"
+      ],
+      "tones": [
+        "surface"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "flex row, align-items stretch, gap 12px, z-index 1; cards flex 1 1 0, padding 24, gap 24, radius 16, border 1px #eee, landingCardShadow; the row straddles the 840px band end"
+    ],
+    "bp600": [
+      "flex-direction column; cards flex 0 0 auto, 342 x 253.4, gap 12; radius stays 16"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.pricing",
+    "pages.pricing-card",
+    "src.css.plan-card",
+    "src.pricing.composition"
+  ],
+  "composes": [
+    "component.plan-card",
+    "primitive.action-button"
+  ],
+  "evidence": [
+    "pages.pricing",
+    "pages.pricing-card",
+    "src.pricing.composition",
+    "src.content.pricing"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "component.photo-stack",
+  "kind": "component",
+  "description": "Three absolutely positioned photo buttons with fixed slot vars; order state [0,1,2]; z-index/--depth from order; front card replays photo-toss.",
+  "composes": [],
+  "evidence": [
+    "pages.about-photos",
+    "pages.photo-stack-state",
+    "src.photostack",
+    "src.photostack.order"
+  ],
+  "instantiableInPageSpec": false
+}

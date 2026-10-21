@@ -1,0 +1,163 @@
+{
+  "id": "media.photo-stack",
+  "kind": "section",
+  "category": "MEDIA",
+  "purpose": "Three stacked, tilted photo cards; clicking the front card sends it to the back, clicking another brings it to the front. The photos MUST be the target project's own real, consented team/workplace photos (role photo.studio-people): never the source's, never AI-generated people.",
+  "implementedBy": "src/components/PhotoStack.jsx",
+  "region": "main",
+  "tone": "hero",
+  "constraints": {
+    "onePerPage": true
+  },
+  "slotGeometry": {
+    "note": "fixed per index; only z-order, --depth and data-front change on click",
+    "slots": [
+      {
+        "dx": -0.9,
+        "dy": 0.15,
+        "rot": "-8deg",
+        "w": 0.92,
+        "aspect": "3 / 4"
+      },
+      {
+        "dx": 0.05,
+        "dy": -0.1,
+        "rot": "2deg",
+        "w": 1,
+        "aspect": "4 / 5"
+      },
+      {
+        "dx": 0.95,
+        "dy": 0.2,
+        "rot": "7deg",
+        "w": 1.08,
+        "aspect": "5 / 4"
+      }
+    ],
+    "evidence": [
+      "pages.about-photos",
+      "src.photostack"
+    ]
+  },
+  "variants": {
+    "three-cards": {
+      "anchorId": null,
+      "content": {
+        "groupLabel": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 20,
+          "evidence": [
+            "pages.about-photos",
+            "src.photostack.markup"
+          ],
+          "note": "role=group aria-label"
+        },
+        "nextLabel": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 19,
+          "evidence": [
+            "pages.photo-stack-state",
+            "src.photostack.markup"
+          ],
+          "note": "aria-label of the front card"
+        },
+        "frontLabel": {
+          "type": "text",
+          "maxWords": 6,
+          "maxChars": 29,
+          "evidence": [
+            "pages.photo-stack-state",
+            "src.photostack.markup"
+          ],
+          "note": "aria-label of the other cards"
+        },
+        "photos": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "media",
+              "roles": [
+                "photo.studio-people"
+              ],
+              "evidence": [
+                "pages.about-photos",
+                "pages.assets"
+              ]
+            },
+            {
+              "type": "media",
+              "roles": [
+                "photo.studio-people"
+              ],
+              "evidence": [
+                "pages.about-photos",
+                "pages.assets"
+              ]
+            },
+            {
+              "type": "media",
+              "roles": [
+                "photo.studio-people"
+              ],
+              "evidence": [
+                "pages.about-photos",
+                "pages.assets"
+              ]
+            }
+          ],
+          "evidence": [
+            "pages.about-photos",
+            "src.photostack"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "photo-stack-toss",
+        "hoverToken": "hover.photoCard",
+        "tossToken": "photo.toss",
+        "reorder": "front-to-back-or-bring-to-front",
+        "reducedMotionFallback": "no-transition-no-animation"
+      },
+      "motionEvidence": [
+        "pages.photo-stack-motion",
+        "pages.photo-stack-state",
+        "pages.corrections",
+        "src.css.photo-stack",
+        "src.css.photo-toss",
+        "src.photostack.order"
+      ],
+      "tones": [
+        "hero"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "--card-w 300px, --spread 190px, stack height calc(card-w*1.4 + 48) = 468, margin 8px 0",
+      "card radius 16px"
+    ],
+    "bp600": [
+      "--card-w 180px, --spread 70px (stack 300 tall)",
+      "card radius 12px",
+      "cards overflow the viewport at 390 (leftmost x=-73), clipped by .landing overflow-x:clip"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.about-photos",
+    "pages.photo-stack-motion",
+    "src.css.photo-stack"
+  ],
+  "focus": "focus-visible outline 1px solid #777, offset 4px",
+  "composes": [
+    "component.photo-stack"
+  ],
+  "evidence": [
+    "pages.about-photos",
+    "pages.photo-stack-motion",
+    "src.photostack",
+    "src.about.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

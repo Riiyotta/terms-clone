@@ -1,0 +1,15 @@
+{
+  "id": "component.auth-mock",
+  "kind": "component",
+  "description": "Static email-first auth form mock: logo, title, subtitle, email field, Continue, optional provider button, switch link, legal links; preventDefault, no network, sr-only demo note.",
+  "composes": [
+    "primitive.text-input",
+    "primitive.action-button"
+  ],
+  "evidence": [
+    "pages.auth-layout",
+    "src.auth.mock",
+    "src.auth.no-network"
+  ],
+  "instantiableInPageSpec": false
+}

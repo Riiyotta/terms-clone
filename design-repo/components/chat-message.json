@@ -1,0 +1,14 @@
+{
+  "id": "component.chat-message",
+  "kind": "component",
+  "description": "User bubble (white, 20px radius, rises 64px/.97 from bottom-right) and assistant answer streaming at 22ms/char over a hidden full-height copy; strong runs render #000 500.",
+  "composes": [
+    "primitive.typed-text",
+    "primitive.reveal"
+  ],
+  "evidence": [
+    "spec.3d.parts",
+    "src.parts.messages"
+  ],
+  "instantiableInPageSpec": false
+}

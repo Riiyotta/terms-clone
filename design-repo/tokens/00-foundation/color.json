@@ -1,0 +1,438 @@
+{
+  "$description": "Foundation colours: exactly the custom properties in src/index.css :root (the token source of truth), cross-checked against CLONE_SPEC.md section 0 and CLONE_SPEC_PAGES.md section 0. No colour outside this file may be emitted. v1.1.0 adds the sub-page variables (--hero-prose-muted, --photo-card-bg, --changelog-muted, --code-bg, --auth-ring, --auth-social-text, --auth-footer-border).",
+  "color": {
+    "brand": {
+      "accent": {
+        "$type": "color",
+        "$value": "#e53d00",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "accentHover": {
+        "$type": "color",
+        "$value": "#cc3600",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      }
+    },
+    "base": {
+      "ink": {
+        "$type": "color",
+        "$value": "#161512",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "black": {
+        "$type": "color",
+        "$value": "#000",
+        "evidence": [
+          "spec.0.body",
+          "spec.0.buttons"
+        ]
+      },
+      "white": {
+        "$type": "color",
+        "$value": "#fff",
+        "evidence": [
+          "spec.0.body",
+          "spec.0.buttons"
+        ]
+      }
+    },
+    "neutral": {
+      "nav": {
+        "$type": "color",
+        "$value": "#655c53",
+        "evidence": [
+          "src.css.shell-vars",
+          "pages.nav-shared",
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ],
+        "note": "--nav: muted nav link colour on the light shells (B, C) and the auth subtitle/footer text"
+      },
+      "brandMuted": {
+        "$type": "color",
+        "$value": "#c9cdc1",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ],
+        "note": "defined in :root; no home-page usage found"
+      },
+      "proseMuted": {
+        "$type": "color",
+        "$value": "#989490",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "hairline": {
+        "$type": "color",
+        "$value": "#eee",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "rule": {
+        "$type": "color",
+        "$value": "#eaeaea",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "surfaceBorder": {
+        "$type": "color",
+        "$value": "#e5e5e5",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "homeCardBorder": {
+        "$type": "color",
+        "$value": "#e5e5e5",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "pageTint": {
+        "$type": "color",
+        "$value": "#fefcfb",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "focusOutline": {
+        "$type": "color",
+        "$value": "#777",
+        "evidence": [
+          "src.css.tokens",
+          "spec.1.nav-color-hover"
+        ]
+      },
+      "changelogMuted": {
+        "$type": "color",
+        "$value": "#73706d",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.changelog-typo"
+        ]
+      },
+      "codeBg": {
+        "$type": "color",
+        "$value": "#f7f7f7",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.docs-typo"
+        ]
+      },
+      "photoCardBg": {
+        "$type": "color",
+        "$value": "#f4f2ee",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.photo-stack-motion"
+        ]
+      }
+    },
+    "hero": {
+      "text": {
+        "$type": "color",
+        "$value": "#ffffffe6",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "textMuted": {
+        "$type": "color",
+        "$value": "#ffffff42",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "link": {
+        "$type": "color",
+        "$value": "#ffffffd9",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "linkMuted": {
+        "$type": "color",
+        "$value": "#ffffff80",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "chip": {
+        "$type": "color",
+        "$value": "#ffffff1a",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "chipHover": {
+        "$type": "color",
+        "$value": "#ffffff2e",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "chipText": {
+        "$type": "color",
+        "$value": "#ffffffeb",
+        "evidence": [
+          "src.css.tokens",
+          "spec.0.css-vars"
+        ]
+      },
+      "proseMuted": {
+        "$type": "color",
+        "$value": "rgba(255, 255, 255, .62)",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.about-typo"
+        ]
+      }
+    },
+    "feedback": {
+      "success": {
+        "$type": "color",
+        "$value": "#3b7050",
+        "evidence": [
+          "src.css.tokens",
+          "spec.3d.parts"
+        ]
+      },
+      "selectionBg": {
+        "$type": "color",
+        "$value": "#f0f5ff",
+        "evidence": [
+          "src.css.tokens",
+          "spec.3d.parts"
+        ]
+      },
+      "selectionRule": {
+        "$type": "color",
+        "$value": "#ccd6ff",
+        "evidence": [
+          "src.css.tokens",
+          "spec.3d.parts"
+        ]
+      },
+      "selectionMarker": {
+        "$type": "color",
+        "$value": "#2b45ab",
+        "evidence": [
+          "src.css.tokens",
+          "spec.3d.parts"
+        ]
+      },
+      "updatedBg": {
+        "$type": "color",
+        "$value": "#edf6ed",
+        "evidence": [
+          "src.css.tokens",
+          "spec.3d.parts"
+        ]
+      }
+    },
+    "grey": {
+      "222": {
+        "$type": "color",
+        "$value": "#222",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "444": {
+        "$type": "color",
+        "$value": "#444",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "555": {
+        "$type": "color",
+        "$value": "#555",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "666": {
+        "$type": "color",
+        "$value": "#666",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "777": {
+        "$type": "color",
+        "$value": "#777",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "888": {
+        "$type": "color",
+        "$value": "#888",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "999": {
+        "$type": "color",
+        "$value": "#999",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "aaa": {
+        "$type": "color",
+        "$value": "#aaa",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "e7": {
+        "$type": "color",
+        "$value": "#e7e7e7",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "f0": {
+        "$type": "color",
+        "$value": "#f0f0f0",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "f2": {
+        "$type": "color",
+        "$value": "#f2f2f2",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      },
+      "fa": {
+        "$type": "color",
+        "$value": "#fafafa",
+        "evidence": [
+          "src.css.tokens"
+        ]
+      }
+    },
+    "alpha": {
+      "black60": {
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, .6)",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "black30": {
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, .3)",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      }
+    },
+    "status": {
+      "signedBg": {
+        "$type": "color",
+        "$value": "#d6f1ff",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "signed": {
+        "$type": "color",
+        "$value": "#005eeb",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "waitingBg": {
+        "$type": "color",
+        "$value": "#fff1d6",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "waiting": {
+        "$type": "color",
+        "$value": "#ff6200",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "draftBg": {
+        "$type": "color",
+        "$value": "#ddffd6",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      },
+      "draft": {
+        "$type": "color",
+        "$value": "#116600",
+        "evidence": [
+          "src.css.tokens",
+          "spec.4.draft-layout"
+        ]
+      }
+    },
+    "auth": {
+      "ring": {
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, .2)",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.auth-layout"
+        ]
+      },
+      "socialText": {
+        "$type": "color",
+        "$value": "rgba(0, 0, 0, .62)",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.auth-layout"
+        ]
+      },
+      "footerBorder": {
+        "$type": "color",
+        "$value": "rgba(238, 238, 238, .07)",
+        "evidence": [
+          "src.css.subpage-vars",
+          "pages.auth-layout"
+        ]
+      }
+    }
+  }
+}

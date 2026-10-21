@@ -1,0 +1,13 @@
+{
+  "id": "component.landing-table",
+  "kind": "component",
+  "description": "Two-column fixed-layout table on #fff with .75px #e5e5e5 cell borders and the surface shadow; row headers ink, cells muted.",
+  "composes": [
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.about-table",
+    "src.css.table"
+  ],
+  "instantiableInPageSpec": false
+}

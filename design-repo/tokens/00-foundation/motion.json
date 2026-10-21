@@ -1,0 +1,825 @@
+{
+  "$description": "Motion facts. CLONE_SPEC.md (live-measured) wins over MOTION_TIMINGS.md where they differ; both were re-verified by two later Playwright audits to within one 40ms tick.",
+  "easing": {
+    "out": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.23,1,.32,1)",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "inOut": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.77,0,.175,1)",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "ease": {
+      "$type": "cubicBezier",
+      "$value": "ease",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "easeInOutKeyword": {
+      "$type": "cubicBezier",
+      "$value": "ease-in-out",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "photo": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(.2,.8,.2,1)",
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "duration": {
+    "instant": {
+      "$type": "duration",
+      "$value": "0ms",
+      "evidence": [
+        "spec.7.footer-hover"
+      ]
+    },
+    "press": {
+      "$type": "duration",
+      "$value": "160ms",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "button": {
+      "$type": "duration",
+      "$value": "150ms",
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "swap": {
+      "$type": "duration",
+      "$value": "200ms",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "reveal": {
+      "$type": "duration",
+      "$value": "240ms",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "navColor": {
+      "$type": "duration",
+      "$value": "250ms",
+      "evidence": [
+        "spec.1.nav-color-hover"
+      ]
+    },
+    "section": {
+      "$type": "duration",
+      "$value": "300ms",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "fadeIn": {
+      "$type": "duration",
+      "$value": "320ms",
+      "evidence": [
+        "spec.3b.engine",
+        "mt.engine",
+        "src.timeline.consts",
+        "src.timeline.loopstate",
+        "src.css.loop",
+        "qa.demo-loop"
+      ]
+    },
+    "workspace": {
+      "$type": "duration",
+      "$value": "400ms",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "chips": {
+      "$type": "duration",
+      "$value": "480ms",
+      "evidence": [
+        "spec.2.typewriter"
+      ]
+    },
+    "cursor": {
+      "$type": "duration",
+      "$value": "500ms",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "dots": {
+      "$type": "duration",
+      "$value": "720ms",
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "authButton": {
+      "$type": "duration",
+      "$value": "100ms",
+      "evidence": [
+        "pages.auth-strings",
+        "src.css.auth"
+      ]
+    },
+    "photo": {
+      "$type": "duration",
+      "$value": "350ms",
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    },
+    "toss": {
+      "$type": "duration",
+      "$value": "450ms",
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "hover": {
+    "navLink": {
+      "$type": "transition",
+      "$value": {
+        "property": "color",
+        "from": "{color.hero.linkMuted}",
+        "to": "{color.hero.link}",
+        "duration": "{duration.navColor}",
+        "easing": "{easing.inOut}"
+      },
+      "evidence": [
+        "spec.1.nav-color-hover",
+        "src.css.nav-link",
+        "qa.hover-real-mouse"
+      ]
+    },
+    "signUpChip": {
+      "$type": "transition",
+      "$value": {
+        "property": "background",
+        "from": "{color.base.white}",
+        "to": "{color.grey.f2}",
+        "duration": "{duration.button}"
+      },
+      "evidence": [
+        "spec.2.chips",
+        "qa.hover-real-mouse"
+      ]
+    },
+    "watchChip": {
+      "$type": "transition",
+      "$value": {
+        "property": "background",
+        "from": "{color.hero.chip}",
+        "to": "{color.hero.chipHover}",
+        "duration": "{duration.button}"
+      },
+      "evidence": [
+        "spec.2.chips",
+        "qa.hover-real-mouse"
+      ]
+    },
+    "pauseButton": {
+      "$type": "transition",
+      "$value": {
+        "property": "background",
+        "from": "{color.grey.f2}",
+        "to": "{color.grey.e7}",
+        "duration": "{duration.button}"
+      },
+      "evidence": [
+        "spec.0.buttons",
+        "spec.3a.frame",
+        "qa.hover-real-mouse"
+      ]
+    },
+    "footerLink": {
+      "$type": "transition",
+      "$value": {
+        "property": "color",
+        "from": "{color.base.ink}",
+        "to": "{color.neutral.proseMuted}",
+        "duration": "{duration.instant}"
+      },
+      "evidence": [
+        "spec.7.footer-hover",
+        "src.css.footer-link",
+        "qa.hover-real-mouse"
+      ]
+    },
+    "navLinkLight": {
+      "$type": "transition",
+      "$value": {
+        "property": "color",
+        "from": "{color.neutral.nav}",
+        "to": "{color.base.ink}",
+        "duration": "{duration.navColor}",
+        "easing": "{easing.inOut}",
+        "pillHighlight": "transparent background, no shadow (invisible)"
+      },
+      "evidence": [
+        "pages.nav-shared",
+        "src.css.nav-link",
+        "src.css.shell-vars"
+      ]
+    },
+    "navKeyboardFocus": {
+      "$type": "transition",
+      "$value": {
+        "trigger": "keyboard focus on a rail link sets [data-instant] on the rail; pointer entry clears it",
+        "property": "background",
+        "duration": "{duration.button}",
+        "colorAndRing": "switch instantly",
+        "focusedOutlineOffset": "0"
+      },
+      "evidence": [
+        "pages.corr-nav-focus",
+        "src.css.nav-instant",
+        "src.navbar.instant"
+      ]
+    },
+    "commitLink": {
+      "$type": "transition",
+      "$value": {
+        "property": "color + text-decoration",
+        "from": "{color.neutral.changelogMuted}",
+        "to": "{color.base.black}",
+        "underlineOffsetPx": 3,
+        "duration": "{duration.instant}"
+      },
+      "evidence": [
+        "pages.changelog-typo",
+        "src.css.commit-link"
+      ]
+    },
+    "photoCard": {
+      "$type": "transition",
+      "$value": {
+        "properties": [
+          "transform",
+          "box-shadow"
+        ],
+        "liftPx": -6,
+        "grow": 1.015,
+        "tiltFactor": 0.6,
+        "shadowTo": "{elevation.photoShadowHover}",
+        "duration": "{duration.photo}",
+        "easing": "{easing.photo}",
+        "when": "(hover: hover) and (pointer: fine), and :active"
+      },
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "headline": {
+    "typewriter": {
+      "$type": "timeline",
+      "$value": {
+        "clock": "requestAnimationFrame from mount",
+        "runs": "once",
+        "loops": false,
+        "caret": false,
+        "lines": [
+          {
+            "delayMs": 240,
+            "durationMs": 700
+          },
+          {
+            "delayMs": 220,
+            "durationMs": 760
+          },
+          {
+            "delayMs": 220,
+            "durationMs": 880
+          },
+          {
+            "delayMs": 460,
+            "durationMs": 1000
+          }
+        ],
+        "lineStartsMs": [
+          240,
+          1160,
+          2140,
+          3480
+        ],
+        "linesDoneMs": 4480,
+        "completionDelayMs": 1200,
+        "doneAtMs": 5680,
+        "approxMsPerChar": 31.7,
+        "revealCount": "min(n, floor((t - start)/duration*n) + 1)",
+        "layout": "untyped tail rendered visibility:hidden, no shift"
+      },
+      "evidence": [
+        "spec.2.typewriter",
+        "mt.headline",
+        "src.headline.timing",
+        "qa.typewriter-once"
+      ]
+    },
+    "chipsReveal": {
+      "$type": "transition",
+      "$value": {
+        "atMs": 5680,
+        "properties": [
+          "opacity",
+          "transform"
+        ],
+        "fromTranslateYPx": 8,
+        "duration": "{duration.chips}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.2.typewriter",
+        "src.css.chips",
+        "qa.typewriter-once"
+      ]
+    },
+    "typewriterSubpage": {
+      "$type": "timeline",
+      "$value": {
+        "component": "same HeroHeadline as home",
+        "timing": "first N entries of {headline.typewriter}.lines",
+        "completionDelayMs": 1200,
+        "doneAtMsByLineCount": {
+          "2": 3120,
+          "3": 4220
+        },
+        "lineStartsMs": [
+          240,
+          1160,
+          2140
+        ],
+        "chips": false,
+        "poetry": false,
+        "measuredOnAbout": "first char ~350ms after load, line 1 done ~1078ms, all done ~2050ms"
+      },
+      "evidence": [
+        "pages.headline-typewriter",
+        "src.headline.schedule",
+        "src.headline.timing"
+      ]
+    }
+  },
+  "poetry": {
+    "typing": {
+      "$type": "timeline",
+      "$value": {
+        "fontPx": 11,
+        "opacity": 0.5,
+        "msPerChar": 35,
+        "maxPhrases": 12,
+        "prefillPhrases": 6,
+        "holdMs": 15000,
+        "jogPx": 32,
+        "gutterPx": 48,
+        "bleedPx": 80,
+        "topPx": -72,
+        "areaHeightPx": 800,
+        "minZonePx": 120,
+        "minViewportPx": 1040,
+        "caret": "U+258C, poetry only",
+        "prng": "mulberry32, seed 0xec4ba7*run+1",
+        "reducedMotion": "12 phrases placed statically, no caret, no interval"
+      },
+      "evidence": [
+        "spec.2.poetry",
+        "mt.poetry",
+        "src.poetry.params",
+        "src.poetry.zone",
+        "src.poetry.reduced",
+        "qa.poetry-wide-only"
+      ]
+    }
+  },
+  "demoLoop": {
+    "engine": {
+      "$type": "timeline",
+      "$value": {
+        "tickMs": 40,
+        "clock": "fixed 40ms increments, not wall clock",
+        "startThreshold": 0.12,
+        "pauseWhenHidden": true,
+        "resumeFromSameTime": true,
+        "fadeOutFromEndMs": 680,
+        "fadeOutDuration": "{duration.reveal}",
+        "fadeOutEasing": "{easing.inOut}",
+        "rewindFromEndMs": 440,
+        "fadeInFromEndMs": 320,
+        "fadeInDuration": "{duration.fadeIn}",
+        "fadeInEasing": "{easing.out}",
+        "streamMsPerChar": 22,
+        "pauseControl": "toggles clock and pauses in-flight CSS transitions"
+      },
+      "evidence": [
+        "spec.3b.engine",
+        "mt.engine",
+        "src.timeline.consts",
+        "src.timeline.loopstate",
+        "src.css.loop",
+        "qa.demo-loop"
+      ]
+    }
+  },
+  "demo": {
+    "draft": {
+      "$type": "timeline",
+      "$value": {
+        "loopMs": 20000,
+        "stillFrameMs": 16000,
+        "keyframesMs": {
+          "recents": 160,
+          "typeStart": 600,
+          "typeMsPerChar": 32,
+          "sending": 3400,
+          "opening": 3560,
+          "userBubble": 3800,
+          "thinking": [
+            4100,
+            5200
+          ],
+          "paperTitle": 5000,
+          "drafting": 5200,
+          "sections": [
+            5600,
+            6600,
+            7800,
+            9200,
+            10400
+          ],
+          "ready": 11600,
+          "fadingOut": 19320,
+          "rewinding": 19560,
+          "fadingIn": 19680
+        }
+      },
+      "evidence": [
+        "spec.4.draft-timeline",
+        "mt.draft",
+        "src.draft.timeline"
+      ]
+    },
+    "questions": {
+      "$type": "timeline",
+      "$value": {
+        "loopMs": 16000,
+        "stillFrameMs": 12000,
+        "keyframesMs": {
+          "typeStart": 600,
+          "typeMsPerChar": 35,
+          "sending": 3000,
+          "thinking": 3160,
+          "answering": 4560,
+          "complete": 7800,
+          "fadingOut": 15320,
+          "rewinding": 15560,
+          "fadingIn": 15680
+        }
+      },
+      "evidence": [
+        "spec.5.questions-timeline",
+        "mt.questions",
+        "src.questions.timeline"
+      ]
+    },
+    "comments": {
+      "$type": "timeline",
+      "$value": {
+        "loopMs": 21000,
+        "stillFrameMs": 17000,
+        "keyframesMs": {
+          "cursorShow": 800,
+          "cursorArrive": 1600,
+          "selected": 2000,
+          "composing": 2600,
+          "typeStart": 3000,
+          "typeMsPerChar": 27,
+          "commentPress": [
+            5040,
+            5200
+          ],
+          "commented": 5200,
+          "replyThinking": [
+            6400,
+            7600
+          ],
+          "replying": 7600,
+          "replyMsPerChar": 24,
+          "updated": 10400,
+          "resolvePress": [
+            13000,
+            13160
+          ],
+          "resolved": 13160,
+          "fadingOut": 20320,
+          "rewinding": 20560,
+          "fadingIn": 20680
+        }
+      },
+      "evidence": [
+        "spec.6.comments-timeline",
+        "mt.comments",
+        "src.comments.timeline"
+      ]
+    }
+  },
+  "reveal": {
+    "fadeUp": {
+      "$type": "transition",
+      "$value": {
+        "properties": [
+          "opacity",
+          "transform"
+        ],
+        "fromTranslateYPx": 8,
+        "duration": "{duration.reveal}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals",
+        "src.css.reveals"
+      ]
+    },
+    "question": {
+      "$type": "transition",
+      "$value": {
+        "fromTranslateYPx": 64,
+        "fromScale": 0.97,
+        "origin": "100% 100%",
+        "duration": "{duration.reveal}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals",
+        "src.css.reveals"
+      ]
+    },
+    "launchOut": {
+      "$type": "transition",
+      "$value": {
+        "toTranslateYPx": -12,
+        "toScale": 0.98,
+        "duration": "{duration.reveal}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "workspaceIn": {
+      "$type": "transition",
+      "$value": {
+        "fromTranslateYPx": 16,
+        "fromScale": 0.98,
+        "duration": "{duration.workspace}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "documentSection": {
+      "$type": "transition",
+      "$value": {
+        "fromTranslateYPx": 8,
+        "duration": "{duration.section}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "press": {
+      "$type": "transition",
+      "$value": {
+        "scale": 0.97,
+        "duration": "{duration.press}",
+        "easing": "{easing.out}"
+      },
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "clauseWipe": {
+      "$type": "transition",
+      "$value": {
+        "property": "clip-path",
+        "from": "inset(0 100% 0 0)",
+        "to": "inset(0)",
+        "duration": "{duration.section}",
+        "easing": "{easing.inOut}"
+      },
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "cursorGlide": {
+      "$type": "transition",
+      "$value": {
+        "fromTranslatePx": [
+          72,
+          64
+        ],
+        "duration": "{duration.cursor}",
+        "easing": "{easing.inOut}"
+      },
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "questionComposerSlide": {
+      "$type": "transition",
+      "$value": {
+        "fromTranslateYPx": -144,
+        "duration": "{duration.workspace}",
+        "easing": "{easing.inOut}"
+      },
+      "evidence": [
+        "spec.5.questions-layout"
+      ]
+    },
+    "thinkingDots": {
+      "$type": "keyframes",
+      "$value": {
+        "duration": "{duration.dots}",
+        "easing": "{easing.easeInOutKeyword}",
+        "opacity": [
+          0.2,
+          1,
+          0.2
+        ],
+        "staggerMs": 90,
+        "grid": "3x3, delay (row+col)*90ms"
+      },
+      "evidence": [
+        "spec.3c.reveals",
+        "src.css.dots-keyframes"
+      ]
+    }
+  },
+  "smoothScroll": {
+    "anchor": {
+      "$type": "behavior",
+      "$value": {
+        "scrollBehavior": "smooth",
+        "when": "prefers-reduced-motion: no-preference",
+        "scrollMarginTop": "0"
+      },
+      "evidence": [
+        "spec.2.chips",
+        "spec.9.scroll",
+        "qa.watch-demo-anchor"
+      ]
+    }
+  },
+  "reducedMotion": {
+    "hero": {
+      "$type": "behavior",
+      "$value": {
+        "headline": "all lines shown at once",
+        "chips": "opacity .2s, no transform",
+        "poetry": "static, no caret"
+      },
+      "evidence": [
+        "spec.2.typewriter",
+        "src.css.reduced-motion",
+        "src.poetry.reduced"
+      ]
+    },
+    "demos": {
+      "$type": "behavior",
+      "$value": {
+        "clock": "paused by default",
+        "frame": "finished still frame (stillFrameMs)",
+        "transitions": "opacity/color/background-color .2s only",
+        "transforms": "none",
+        "cursor": "hidden",
+        "deviation": "the live original freezes on a near-empty first frame; this clone deliberately shows the finished still frame"
+      },
+      "evidence": [
+        "spec.3b.reduced-motion",
+        "mt.reduced",
+        "src.timeline.reduced",
+        "src.css.reduced-motion",
+        "qa.reduced-motion-deviation"
+      ]
+    },
+    "subpageHeadline": {
+      "$type": "behavior",
+      "$value": {
+        "headline": "all lines shown at once (HeroHeadline reduced path)"
+      },
+      "evidence": [
+        "src.headline.timing",
+        "pages.headline-typewriter"
+      ]
+    },
+    "photoStack": {
+      "$type": "behavior",
+      "$value": {
+        "transition": "none",
+        "animation": "none"
+      },
+      "evidence": [
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "photo": {
+    "toss": {
+      "$type": "keyframes",
+      "$value": {
+        "duration": "{duration.toss}",
+        "easing": "{easing.photo}",
+        "from": {
+          "grow": 1.06,
+          "liftPx": -14
+        },
+        "to": {
+          "grow": 1,
+          "liftPx": 0
+        },
+        "trigger": "replays whenever a card becomes front (data-front)",
+        "registeredProperties": [
+          "--grow",
+          "--lift",
+          "--tilt"
+        ]
+      },
+      "evidence": [
+        "pages.photo-stack-motion",
+        "src.css.photo-toss",
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "auth": {
+    "field": {
+      "$type": "transition",
+      "$value": {
+        "properties": "background-color, background, border-color, color, fill, stroke, opacity, box-shadow, transform",
+        "duration": "{duration.swap}",
+        "easing": "{easing.ease}",
+        "focusRing": "{color.auth.ring}"
+      },
+      "evidence": [
+        "pages.auth-strings",
+        "pages.corrections",
+        "src.css.auth"
+      ]
+    },
+    "button": {
+      "$type": "transition",
+      "$value": {
+        "properties": "background-color, background, border-color, color, fill, stroke, opacity, box-shadow, transform",
+        "duration": "{duration.authButton}",
+        "easing": "{easing.ease}",
+        "focusedDuration": "{duration.swap}"
+      },
+      "evidence": [
+        "pages.auth-strings",
+        "src.css.auth"
+      ]
+    }
+  },
+  "static": {
+    "subpages": {
+      "$type": "behavior",
+      "$value": {
+        "routes": [
+          "/changelog",
+          "/docs",
+          "/privacy",
+          "/terms"
+        ],
+        "motion": "none (no typing, scroll spy, sticky elements or smooth scroll)",
+        "exceptions": "changelog commit links hover instantly; nav link colour .25s"
+      },
+      "evidence": [
+        "pages.changelog-content",
+        "pages.docs",
+        "pages.legal-layout"
+      ]
+    }
+  }
+}

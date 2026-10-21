@@ -1,0 +1,192 @@
+{
+  "version": "1.1.0",
+  "$description": "Closed assetRole enum for PageSpec media slots (schema definitions.assetRole == these keys == allowlist assetRoles). The source, terms.so, is a REAL company: its logo and brand marks must not be reproduced in generated output; ABC Diatype needs a commercial licence for any public use; the About-page studio photos show real people and are never reproduced or fabricated; the auth page's Google icon is a third-party trademark (vendor-supplied only); generated pages must not reuse terms.so's proprietary long-form text (schema/protected-content.json).",
+  "generationPolicies": {
+    "project-supplied-only": "Must come from the target project's own brand kit. A generator must not draw, trace, recolour or approximate the source mark.",
+    "generate-original": "May be generated new as an original asset; the source file must not be reused or imitated.",
+    "licensed-font-required": "A commercial licence held by the deploying party is required for ANY public use; without one, substitute an openly licensed typeface.",
+    "verify-licence-before-use": "Licence not recorded in the project's evidence; confirm it before shipping or substitute.",
+    "never-reproduce-or-fabricate": "Real people / real workplace imagery. Never reproduce it and never generate look-alikes or fabricated equivalents.",
+    "vendor-supplied-only": "Third-party trademark. Only the vendor's own official asset, obtained from the vendor under its brand guidelines, and only when the target project really integrates that vendor. Never drawn, traced, recoloured, generated or copied from the source site."
+  },
+  "pinnedPolicies": {
+    "brand.mark": "project-supplied-only",
+    "social.og-image": "project-supplied-only",
+    "demo.cursor": "generate-original",
+    "font.ui-diatype": "licensed-font-required",
+    "photo.studio-people": "never-reproduce-or-fabricate",
+    "vendor.google-icon": "vendor-supplied-only"
+  },
+  "pinnedNote": "Compliance-critical roles are pinned to one policy value. verify_all.py holds an independent copy and fails if a role is switched to a different-but-valid policy (MASTER-GUIDE 3.23); semantic_validate.py rejects a PageSpec media object whose generationPolicy differs from its role's policy.",
+  "roles": {
+    "brand.mark": {
+      "generationPolicy": "project-supplied-only",
+      "usableInPageSpec": true,
+      "guidance": "The terms.so logo and brand marks must not be reproduced in generated output. Use only the target project's own mark (nav, footer, favicon).",
+      "sourceFiles": [
+        "public/icons/logo-mark.svg",
+        "reference/svgs/logo-mark.svg",
+        "public/favicon.ico",
+        "public/icon.svg",
+        "public/apple-icon.png"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "shell.nav:brandMark",
+        "shell.footer:brandMark",
+        "shell.app-header:brandMark",
+        "auth.form-mock:logo",
+        "meta:favicon"
+      ],
+      "evidence": [
+        "assets.inline-svgs",
+        "assets.manifest",
+        "spec.8.head"
+      ]
+    },
+    "social.og-image": {
+      "generationPolicy": "project-supplied-only",
+      "usableInPageSpec": true,
+      "guidance": "Project-supplied share image. Never reuse or imitate the source's share image.",
+      "sourceFiles": [
+        "public/opengraph-image.png"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "meta:socialImage"
+      ],
+      "evidence": [
+        "file.og-image"
+      ]
+    },
+    "ui.icon": {
+      "generationPolicy": "generate-original",
+      "usableInPageSpec": true,
+      "guidance": "Generic UI glyphs (play, pause, attach, send, check, agreement, comment, arrow-up). Draw or pick original equivalents; do not copy the source SVG paths.",
+      "sourceFiles": [
+        "public/icons/icon-agreement.svg",
+        "public/icons/icon-arrow-up.svg",
+        "public/icons/icon-attach.svg",
+        "public/icons/icon-check.svg",
+        "public/icons/icon-comment-bubble.svg",
+        "public/icons/icon-pause.svg",
+        "public/icons/icon-play-resume.svg",
+        "public/icons/icon-send-arrow.svg",
+        "public/icons/landing-play-chip.svg",
+        "public/assets/play.svg"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "hero.typewriter-home:demoCta.icon"
+      ],
+      "evidence": [
+        "assets.inline-svgs",
+        "assets.manifest"
+      ]
+    },
+    "demo.cursor": {
+      "generationPolicy": "generate-original",
+      "usableInPageSpec": true,
+      "guidance": "The source shows a macOS arrow-cursor bitmap (third-party OS artwork). Use an original pointer graphic; never the bitmap or a trace of it.",
+      "sourceFiles": [
+        "public/cursors/macos-arrow@2x.png",
+        "reference/assets/macos-arrow@2x.png"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "feature.demo-card[comments]:cursor"
+      ],
+      "evidence": [
+        "assets.manifest",
+        "file.cursor",
+        "spec.6.comments-layout"
+      ]
+    },
+    "font.ui-diatype": {
+      "generationPolicy": "licensed-font-required",
+      "usableInPageSpec": false,
+      "guidance": "ABC Diatype (Regular 400 / Medium 500) is a commercial typeface. It requires a commercial licence for any public use. Without a licence, substitute an openly licensed sans and keep the token metrics.",
+      "sourceFiles": [
+        "public/fonts/ABCDiatype-Regular.otf",
+        "public/fonts/ABCDiatype-Medium.otf"
+      ],
+      "reuseOfSourceFiles": "forbidden-without-licence",
+      "slots": [],
+      "tokens": [
+        "fontFamily.sans"
+      ],
+      "evidence": [
+        "spec.0.fonts",
+        "assets.manifest",
+        "file.font-diatype-regular",
+        "file.font-diatype-medium"
+      ]
+    },
+    "font.mono-geist": {
+      "generationPolicy": "verify-licence-before-use",
+      "usableInPageSpec": false,
+      "guidance": "Geist Mono (poetry layer only). Its licence is not recorded in this project's evidence; confirm it before redistribution.",
+      "sourceFiles": [
+        "public/fonts/GeistMono.woff2",
+        "public/fonts/GeistMono-box.woff2"
+      ],
+      "reuseOfSourceFiles": "verify-licence",
+      "slots": [],
+      "tokens": [
+        "fontFamily.mono"
+      ],
+      "evidence": [
+        "spec.0.fonts",
+        "assets.manifest",
+        "file.font-geist"
+      ]
+    },
+    "photo.studio-people": {
+      "generationPolicy": "never-reproduce-or-fabricate",
+      "usableInPageSpec": true,
+      "guidance": "The About-page studio photos are real people's workplace photos. Never reproduce them and never generate or fabricate look-alike team, office or studio photos (no AI-generated people). The about template's photo-stack slots accept ONLY the target project's own real, consented photos, referenced by a project-supplied assetRef.",
+      "sourceFiles": [
+        "public/about/studio-desk.jpg",
+        "public/about/studio-review.jpg",
+        "public/about/studio-table.jpg",
+        "reference/assets-pages/studio-desk.1coqjkr1znwat.jpg",
+        "reference/assets-pages/studio-review.0x-qr3l0valhi.jpg",
+        "reference/assets-pages/studio-table.2_irzbleh7or0.jpg"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "media.photo-stack[three-cards]:photos[0]",
+        "media.photo-stack[three-cards]:photos[1]",
+        "media.photo-stack[three-cards]:photos[2]"
+      ],
+      "sourceNote": "the live desk photo carries GPS EXIF metadata; another reason never to ship source files",
+      "evidence": [
+        "pages.about-photos",
+        "pages.assets",
+        "file.about-photo-desk",
+        "file.about-photo-review",
+        "file.about-photo-table",
+        "file.about-photo-review-ref"
+      ]
+    },
+    "vendor.google-icon": {
+      "generationPolicy": "vendor-supplied-only",
+      "usableInPageSpec": true,
+      "guidance": "The Google 'G' on the auth provider button is a third-party trademark. Use only Google's own official asset under its branding guidelines, and only when the target project really offers Google sign-in (otherwise omit the provider button). Never draw, trace, recolour or generate it, and never copy the file from the source site.",
+      "sourceFiles": [
+        "public/auth/google.svg",
+        "reference/assets-pages/clerk-google.svg"
+      ],
+      "reuseOfSourceFiles": "forbidden",
+      "slots": [
+        "auth.form-mock[email-first]:social[].icon"
+      ],
+      "evidence": [
+        "pages.auth-layout",
+        "pages.assets",
+        "file.google-icon",
+        "file.google-icon-ref"
+      ]
+    }
+  }
+}

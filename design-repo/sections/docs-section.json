@@ -1,0 +1,332 @@
+{
+  "id": "docs.section",
+  "kind": "section",
+  "category": "CONTENT",
+  "purpose": "One reference section (#id, h2) made of closed block kinds: paragraph, code block, ordered/unordered list, h3 sub-heading, endpoint cards, rendered-contract demo. Single column: no sidebar, TOC, sticky elements, tabs, copy buttons or syntax highlighting.",
+  "implementedBy": "src/pages/Docs.jsx (Block)",
+  "region": "main",
+  "tone": "light",
+  "constraints": {
+    "repeatable": true,
+    "maxPerPage": 6,
+    "anchorIdPerInstance": true
+  },
+  "variants": {
+    "prose-blocks": {
+      "anchorId": "{slug}",
+      "content": {
+        "title": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 27,
+          "evidence": [
+            "pages.docs-content"
+          ]
+        },
+        "blocks": {
+          "type": "list",
+          "item": {
+            "type": "union",
+            "discriminator": "kind",
+            "options": {
+              "p": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "p",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "text": {
+                    "type": "prose",
+                    "maxWords": 102,
+                    "maxChars": 765,
+                    "maxLinks": 1,
+                    "marks": [
+                      "none",
+                      "strong",
+                      "code"
+                    ],
+                    "longForm": true,
+                    "evidence": [
+                      "pages.docs-content"
+                    ],
+                    "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+                  }
+                }
+              },
+              "pre": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "pre",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "code": {
+                    "type": "text",
+                    "maxWords": 60,
+                    "maxChars": 320,
+                    "evidence": [
+                      "pages.docs-content",
+                      "pages.docs-code",
+                      "src.docs.blocks"
+                    ],
+                    "note": "generic monospace 16/24, bg #f7f7f7, radius 20, padding 24, pre-wrap; up to 13 lines measured (the clone's longest original sample is 309 chars)"
+                  }
+                }
+              },
+              "ol": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "ol",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "items": {
+                    "type": "list",
+                    "item": {
+                      "type": "prose",
+                      "maxWords": 28,
+                      "maxChars": 210,
+                      "maxLinks": 1,
+                      "marks": [
+                        "none",
+                        "strong",
+                        "code"
+                      ],
+                      "longForm": true,
+                      "evidence": [
+                        "pages.docs-content"
+                      ],
+                      "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+                    },
+                    "minItems": 1,
+                    "maxItems": 3,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  }
+                }
+              },
+              "ul": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "ul",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "items": {
+                    "type": "list",
+                    "item": {
+                      "type": "prose",
+                      "maxWords": 20,
+                      "maxChars": 150,
+                      "maxLinks": 0,
+                      "marks": [
+                        "none",
+                        "strong",
+                        "code"
+                      ],
+                      "longForm": true,
+                      "evidence": [
+                        "pages.docs-content"
+                      ],
+                      "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+                    },
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  }
+                }
+              },
+              "h3": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "h3",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "id": {
+                    "type": "text",
+                    "maxWords": 1,
+                    "maxChars": 24,
+                    "evidence": [
+                      "pages.docs-content"
+                    ],
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  },
+                  "text": {
+                    "type": "text",
+                    "maxWords": 6,
+                    "maxChars": 41,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  }
+                }
+              },
+              "cards": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "cards",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "items": {
+                    "type": "list",
+                    "item": {
+                      "type": "object",
+                      "fields": {
+                        "title": {
+                          "type": "text",
+                          "maxWords": 13,
+                          "maxChars": 66,
+                          "evidence": [
+                            "pages.docs-content"
+                          ]
+                        },
+                        "route": {
+                          "type": "text",
+                          "maxWords": 2,
+                          "maxChars": 40,
+                          "evidence": [
+                            "pages.docs-content"
+                          ],
+                          "pattern": "^(GET|POST|PUT|PATCH|DELETE) /[A-Za-z0-9/{}._-]*$",
+                          "note": "METHOD path, same monospace, no pill"
+                        },
+                        "text": {
+                          "type": "prose",
+                          "maxWords": 95,
+                          "maxChars": 713,
+                          "maxLinks": 0,
+                          "marks": [
+                            "none",
+                            "strong",
+                            "code"
+                          ],
+                          "longForm": true,
+                          "evidence": [
+                            "pages.docs-content"
+                          ],
+                          "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+                        }
+                      }
+                    },
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  }
+                }
+              },
+              "contract-demo": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "contract-demo",
+                    "evidence": [
+                      "src.docs.blocks"
+                    ]
+                  },
+                  "firstLine": {
+                    "type": "text",
+                    "maxWords": 3,
+                    "maxChars": 20,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  },
+                  "secondLine": {
+                    "type": "text",
+                    "maxWords": 3,
+                    "maxChars": 20,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  },
+                  "paragraph": {
+                    "type": "text",
+                    "maxWords": 3,
+                    "maxChars": 20,
+                    "evidence": [
+                      "pages.docs-content"
+                    ]
+                  }
+                }
+              }
+            },
+            "evidence": [
+              "pages.docs-content",
+              "src.docs.blocks"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "evidence": [
+            "pages.docs-content"
+          ],
+          "note": "measured 2-12 blocks per section"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.docs-content"
+      ],
+      "tones": [
+        "light"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "section stack gap 16; h2 500 24/28.8 -.02em; p/li 400 16/24; lists padding-left 40, gap 12; links underline offset 3, no hover change",
+      "endpoint card border 1px #e5e5e5, radius 20, padding 24, gap 12; contract demo #555, line-height 1.65, max-width 68ch"
+    ],
+    "bp600": [
+      "pre and cards fill the 342px column; text wraps anywhere"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.docs",
+    "pages.docs-typo",
+    "src.css.docs"
+  ],
+  "composes": [
+    "component.endpoint-card",
+    "component.rich-text",
+    "primitive.code-block",
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.docs",
+    "pages.docs-content",
+    "src.docs.composition",
+    "src.docs.blocks"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

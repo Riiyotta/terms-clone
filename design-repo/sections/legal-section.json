@@ -1,0 +1,150 @@
+{
+  "id": "legal.section",
+  "kind": "section",
+  "category": "LEGAL",
+  "purpose": "One numbered legal section ('N. Title', N = position) of paragraphs and bulleted lists. Body text is long-form: structure and budgets only; real text must come from the operator's counsel.",
+  "implementedBy": "src/components/LegalDocument.jsx",
+  "region": "main",
+  "tone": "app",
+  "constraints": {
+    "repeatable": true,
+    "maxPerPage": 21,
+    "anchorIdPerInstance": true
+  },
+  "variants": {
+    "numbered": {
+      "anchorId": "{slug}",
+      "content": {
+        "title": {
+          "type": "text",
+          "maxWords": 8,
+          "maxChars": 49,
+          "evidence": [
+            "pages.legal-privacy",
+            "pages.legal-terms"
+          ],
+          "note": "rendered as '{n}. {title}'"
+        },
+        "blocks": {
+          "type": "list",
+          "item": {
+            "type": "union",
+            "discriminator": "kind",
+            "options": {
+              "p": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "p",
+                    "evidence": [
+                      "src.legal.composition"
+                    ]
+                  },
+                  "text": {
+                    "type": "prose",
+                    "maxWords": 127,
+                    "maxChars": 953,
+                    "maxLinks": 2,
+                    "marks": [
+                      "none",
+                      "strong"
+                    ],
+                    "longForm": true,
+                    "evidence": [
+                      "pages.legal-privacy",
+                      "pages.legal-terms"
+                    ],
+                    "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+                  }
+                }
+              },
+              "ul": {
+                "type": "object",
+                "fields": {
+                  "kind": {
+                    "type": "const",
+                    "value": "ul",
+                    "evidence": [
+                      "src.legal.composition"
+                    ]
+                  },
+                  "items": {
+                    "type": "list",
+                    "item": {
+                      "type": "prose",
+                      "maxWords": 50,
+                      "maxChars": 375,
+                      "maxLinks": 1,
+                      "marks": [
+                        "none",
+                        "strong"
+                      ],
+                      "longForm": true,
+                      "evidence": [
+                        "pages.legal-privacy",
+                        "pages.legal-terms"
+                      ],
+                      "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+                      "note": "may start with a bold lead-in (mark strong)"
+                    },
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "evidence": [
+                      "pages.legal-privacy",
+                      "pages.legal-terms"
+                    ]
+                  }
+                }
+              }
+            },
+            "evidence": [
+              "pages.legal-privacy",
+              "pages.legal-terms"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 6,
+          "evidence": [
+            "pages.legal-privacy",
+            "pages.legal-terms"
+          ],
+          "note": "measured 1-6 blocks per section"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.legal-layout"
+      ],
+      "tones": [
+        "app"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "flex column gap 16, scroll-margin-top 32; h2 500 24/28.8 -.02em; ul padding-left 24, li + li margin-top 8"
+    ],
+    "bp600": [
+      "h2 may wrap to two lines (57.6)"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.legal-layout",
+    "src.css.legal"
+  ],
+  "composes": [
+    "component.legal-document",
+    "component.rich-text"
+  ],
+  "evidence": [
+    "pages.legal-layout",
+    "pages.legal-privacy",
+    "pages.legal-terms",
+    "src.legal.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

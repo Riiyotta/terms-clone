@@ -1,0 +1,65 @@
+{
+  "id": "legal.contents",
+  "kind": "section",
+  "category": "LEGAL",
+  "purpose": "'On this page' contents card listing every legal.section title as an in-page link (derived from the sections; not authored separately). NOT sticky, no scroll spy.",
+  "implementedBy": "src/components/LegalDocument.jsx",
+  "region": "main",
+  "tone": "app",
+  "constraints": {
+    "onePerPage": true,
+    "sticky": false,
+    "entriesDerivedFrom": "legal.section titles and anchorIds, in order"
+  },
+  "variants": {
+    "two-column-toc": {
+      "anchorId": null,
+      "content": {
+        "heading": {
+          "type": "text",
+          "maxWords": 3,
+          "maxChars": 12,
+          "evidence": [
+            "pages.legal-layout"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "sticky": false,
+        "scrollSpy": false,
+        "smoothScroll": false,
+        "anchorScrollMarginTopPx": 32,
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.legal-layout",
+        "src.css.legal",
+        "pages.corr-legal-anchors"
+      ],
+      "tones": [
+        "app"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "card bg #fff, radius 16, padding 24, shadowCard, gap 16; ol columns 2, column-gap 32, padding-left 24, decimal"
+    ],
+    "bp600": [
+      "ol columns 1"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.legal-layout",
+    "src.css.legal"
+  ],
+  "composes": [
+    "component.legal-document"
+  ],
+  "evidence": [
+    "pages.legal-layout",
+    "src.css.legal"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

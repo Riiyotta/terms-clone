@@ -1,0 +1,170 @@
+{
+  "id": "about.safety-table",
+  "kind": "section",
+  "category": "CONTENT",
+  "purpose": "A centred two-part safety paragraph (#safety) followed by a two-column 'Area | What we do' table of the services the product depends on.",
+  "implementedBy": "src/pages/About.jsx (+ RichText)",
+  "region": "main",
+  "tone": "surface",
+  "constraints": {
+    "onePerPage": true
+  },
+  "variants": {
+    "prose-table": {
+      "anchorId": "safety",
+      "content": {
+        "safety": {
+          "type": "object",
+          "fields": {
+            "lead": {
+              "type": "prose",
+              "maxWords": 15,
+              "maxChars": 113,
+              "maxLinks": 0,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.about-content"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+            },
+            "rest": {
+              "type": "prose",
+              "maxWords": 41,
+              "maxChars": 308,
+              "maxLinks": 1,
+              "marks": [
+                "none",
+                "strong"
+              ],
+              "longForm": true,
+              "evidence": [
+                "pages.about-content"
+              ],
+              "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed"
+            }
+          },
+          "evidence": [
+            "pages.about-content",
+            "pages.about-typo"
+          ],
+          "note": "lead 500 #161512; rest 400 #989490 with its link 500 #161512 underlined"
+        },
+        "table": {
+          "type": "object",
+          "fields": {
+            "head": {
+              "type": "tuple",
+              "items": [
+                {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 4,
+                  "evidence": [
+                    "pages.about-content"
+                  ]
+                },
+                {
+                  "type": "text",
+                  "maxWords": 3,
+                  "maxChars": 10,
+                  "evidence": [
+                    "pages.about-content"
+                  ]
+                }
+              ],
+              "evidence": [
+                "pages.about-content"
+              ]
+            },
+            "rows": {
+              "type": "list",
+              "item": {
+                "type": "object",
+                "fields": {
+                  "label": {
+                    "type": "text",
+                    "maxWords": 2,
+                    "maxChars": 11,
+                    "evidence": [
+                      "pages.about-content"
+                    ],
+                    "note": "row header th, 500 #161512"
+                  },
+                  "body": {
+                    "type": "prose",
+                    "maxWords": 89,
+                    "maxChars": 668,
+                    "maxLinks": 3,
+                    "marks": [
+                      "none",
+                      "strong"
+                    ],
+                    "longForm": true,
+                    "evidence": [
+                      "pages.about-content"
+                    ],
+                    "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+                    "note": "measured per-row: 17/29/68/39/89/32/16 words; links 500 #161512 underline"
+                  }
+                }
+              },
+              "minItems": 1,
+              "maxItems": 7,
+              "evidence": [
+                "pages.about-content"
+              ],
+              "note": "measured 7 body rows"
+            }
+          },
+          "evidence": [
+            "pages.about-table",
+            "src.css.table"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.about-structure",
+        "src.css.table"
+      ],
+      "tones": [
+        "surface"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "section flex column, align-items flex-start, gap 48, padding-top 56; safety p max-width 560, centred",
+      "table fixed layout, col 1 = 33.333%, cells padding 24px, border .75px #e5e5e5 (computes 0.5px at DPR 1; keep .75px), box-shadow surfaceShadow"
+    ],
+    "bp600": [
+      "cells padding 16px",
+      "columns 113.8 / 227.7 at 390"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.about-structure",
+    "pages.about-table",
+    "pages.table-border",
+    "src.css.table"
+  ],
+  "composes": [
+    "component.landing-table",
+    "component.rich-text",
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.about-structure",
+    "pages.about-content",
+    "pages.about-table",
+    "src.about.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

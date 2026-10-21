@@ -1,0 +1,42 @@
+{
+  "version": "1.1.0",
+  "rawValueRestrictions": {
+    "breakpoint": "reference-only: never emit a raw value not present in this category",
+    "color": "reference-only: never emit a raw value not present in this category",
+    "elevation": "reference-only: never emit a raw value not present in this category",
+    "gradient": "reference-only: never emit a raw value not present in this category",
+    "easing": "reference-only: never emit a raw value not present in this category",
+    "duration": "reference-only: never emit a raw value not present in this category",
+    "hover": "reference-only: never emit a raw value not present in this category",
+    "headline": "reference-only: never emit a raw value not present in this category",
+    "poetry": "reference-only: never emit a raw value not present in this category",
+    "demoLoop": "reference-only: never emit a raw value not present in this category",
+    "demo": "reference-only: never emit a raw value not present in this category",
+    "reveal": "reference-only: never emit a raw value not present in this category",
+    "smoothScroll": "reference-only: never emit a raw value not present in this category",
+    "reducedMotion": "reference-only: never emit a raw value not present in this category",
+    "photo": "reference-only: never emit a raw value not present in this category",
+    "auth": "reference-only: never emit a raw value not present in this category",
+    "static": "reference-only: never emit a raw value not present in this category",
+    "radius": "reference-only: never emit a raw value not present in this category",
+    "spacing": "reference-only: never emit a raw value not present in this category",
+    "fontFamily": "reference-only: never emit a raw value not present in this category",
+    "fontWeight": "reference-only: never emit a raw value not present in this category",
+    "fontSize": "reference-only: never emit a raw value not present in this category",
+    "lineHeight": "reference-only: never emit a raw value not present in this category",
+    "letterSpacing": "reference-only: never emit a raw value not present in this category",
+    "typeStyle": "reference-only: never emit a raw value not present in this category"
+  },
+  "overrides": {
+    "pageSpecField": null,
+    "note": "PageSpecs carry NO per-instance style/token-override field (MASTER-GUIDE 3.21). Styling is owned by section/component contracts. Section motion blocks reference motion token ids (hover.*, headline.*, poetry.*, demoLoop.*, demo.*) and verify_all checks they resolve."
+  },
+  "resolutionOrder": [
+    "foundation",
+    "theme (hero | surface, selected by node tone)",
+    "semantic tone roles",
+    "component tokens",
+    "responsive overrides (breakpoint.*)"
+  ],
+  "licensing": "fontFamily.sans resolves to ABC Diatype, a commercially licensed typeface: see docs/sensitivity-and-licensing.md and assets/asset-roles.json font.ui-diatype."
+}

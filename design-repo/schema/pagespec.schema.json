@@ -1,0 +1,5451 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://design-repo.local/terms-home/pagespec.schema.json",
+  "title": "terms.so PageSpec (all nine routes)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pageSpecVersion",
+    "template",
+    "route",
+    "brand",
+    "meta",
+    "nodes"
+  ],
+  "properties": {
+    "pageSpecVersion": {
+      "const": "1.1.0"
+    },
+    "template": {
+      "enum": [
+        "template.home",
+        "template.about",
+        "template.pricing",
+        "template.changelog",
+        "template.docs",
+        "template.legal",
+        "template.auth"
+      ]
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/"
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "isFictional"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "isFictional": {
+          "type": "boolean"
+        }
+      }
+    },
+    "meta": {
+      "$ref": "#/definitions/meta"
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 26,
+      "items": {
+        "$ref": "#/definitions/node"
+      },
+      "description": "maxItems = the largest template's node count with every repeatable node at its maxRepeat (template.legal: 5 + 21)."
+    }
+  },
+  "definitions": {
+    "assetRole": {
+      "enum": [
+        "brand.mark",
+        "demo.cursor",
+        "font.mono-geist",
+        "font.ui-diatype",
+        "photo.studio-people",
+        "social.og-image",
+        "ui.icon",
+        "vendor.google-icon"
+      ],
+      "description": "Closed role vocabulary (assets/asset-roles.json). Slots narrow it further."
+    },
+    "generationPolicy": {
+      "enum": [
+        "generate-original",
+        "licensed-font-required",
+        "never-reproduce-or-fabricate",
+        "project-supplied-only",
+        "vendor-supplied-only",
+        "verify-licence-before-use"
+      ]
+    },
+    "assetRef": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/@-]*$",
+      "maxLength": 200,
+      "description": "Project-supplied asset path or id. Never a source-site file."
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "strong"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "strong": {
+          "type": "boolean"
+        }
+      }
+    },
+    "proseRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "href",
+        "mark"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1200
+        },
+        "href": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^(/[a-z0-9/-]*|#[a-z][a-z0-9-]*|mailto:[^\\s@]+@[^\\s@]+|https://[^\\s]+)$"
+            }
+          ]
+        },
+        "mark": {
+          "enum": [
+            "none",
+            "strong",
+            "code"
+          ]
+        }
+      },
+      "description": "Long-form inline run: plain, bold or code text, optionally a link. Budgets apply to the joined runs; link count to maxLinks (LINK_SLOTS)."
+    },
+    "content_shell_nav__on_hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "links"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href",
+              "emphasis"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "href": {
+                "type": "string",
+                "pattern": "^(/[a-z0-9/-]*)$"
+              },
+              "emphasis": {
+                "enum": [
+                  "muted",
+                  "bright"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_shell_nav__on_hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "keyboardFocus",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-color"
+        },
+        "hoverToken": {
+          "const": "hover.navLink"
+        },
+        "keyboardFocus": {
+          "const": "instant-background-150ms-only"
+        },
+        "reducedMotionFallback": {
+          "const": "color-change-only"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_nav__on_hero_current": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "links",
+        "currentHref"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href",
+              "emphasis"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "href": {
+                "type": "string",
+                "pattern": "^(/[a-z0-9/-]*)$"
+              },
+              "emphasis": {
+                "enum": [
+                  "muted",
+                  "bright"
+                ]
+              }
+            }
+          }
+        },
+        "currentHref": {
+          "type": "string",
+          "pattern": "^(/[a-z0-9/-]*)$"
+        }
+      }
+    },
+    "motion_shell_nav__on_hero_current": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "keyboardFocus",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-color"
+        },
+        "hoverToken": {
+          "const": "hover.navLink"
+        },
+        "keyboardFocus": {
+          "const": "instant-background-150ms-only"
+        },
+        "reducedMotionFallback": {
+          "const": "color-change-only"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_nav__light_wide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "links"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href",
+              "emphasis"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "href": {
+                "type": "string",
+                "pattern": "^(/[a-z0-9/-]*)$"
+              },
+              "emphasis": {
+                "enum": [
+                  "muted",
+                  "bright"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_shell_nav__light_wide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "pillHighlightVisible",
+        "keyboardFocus",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-color"
+        },
+        "hoverToken": {
+          "const": "hover.navLinkLight"
+        },
+        "pillHighlightVisible": {
+          "const": false
+        },
+        "keyboardFocus": {
+          "const": "instant-background-150ms-only"
+        },
+        "reducedMotionFallback": {
+          "const": "color-change-only"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_nav__light_narrow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "links"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href",
+              "emphasis"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "href": {
+                "type": "string",
+                "pattern": "^(/[a-z0-9/-]*)$"
+              },
+              "emphasis": {
+                "enum": [
+                  "muted",
+                  "bright"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_shell_nav__light_narrow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "pillHighlightVisible",
+        "keyboardFocus",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-color"
+        },
+        "hoverToken": {
+          "const": "hover.navLinkLight"
+        },
+        "pillHighlightVisible": {
+          "const": false
+        },
+        "keyboardFocus": {
+          "const": "instant-background-150ms-only"
+        },
+        "reducedMotionFallback": {
+          "const": "color-change-only"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_hero_typewriter_home__typewriter_chips_poetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "primaryCta",
+        "demoCta",
+        "poetryPhrases"
+      ],
+      "properties": {
+        "headline": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "brand-muted"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "brand-muted"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "brand-muted"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "bright"
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        },
+        "primaryCta": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "type": "string",
+              "pattern": "^(/[a-z0-9/-]*)$"
+            }
+          }
+        },
+        "demoCta": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href",
+            "behavior",
+            "icon"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "const": "#draft"
+            },
+            "behavior": {
+              "const": "smooth-scroll-anchor"
+            },
+            "icon": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assetRole",
+                "assetRef",
+                "generationPolicy",
+                "alt"
+              ],
+              "properties": {
+                "assetRole": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/assetRole"
+                    },
+                    {
+                      "enum": [
+                        "ui.icon"
+                      ]
+                    }
+                  ]
+                },
+                "assetRef": {
+                  "$ref": "#/definitions/assetRef"
+                },
+                "generationPolicy": {
+                  "$ref": "#/definitions/generationPolicy"
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 120
+                }
+              }
+            }
+          }
+        },
+        "poetryPhrases": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          }
+        }
+      }
+    },
+    "motion_hero_typewriter_home__typewriter_chips_poetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "headlineToken",
+        "chipsToken",
+        "poetryToken",
+        "poetryMinViewportPx",
+        "loops",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "typewriter-once"
+        },
+        "headlineToken": {
+          "const": "headline.typewriter"
+        },
+        "chipsToken": {
+          "const": "headline.chipsReveal"
+        },
+        "poetryToken": {
+          "const": "poetry.typing"
+        },
+        "poetryMinViewportPx": {
+          "const": 1040
+        },
+        "loops": {
+          "const": false
+        },
+        "reducedMotionFallback": {
+          "const": "headline-complete-chips-fade-200ms-poetry-static"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_feature_demo_card__draft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frame",
+        "intro",
+        "composer",
+        "recents",
+        "chat",
+        "document"
+      ],
+      "properties": {
+        "frame": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "subtitle",
+            "srDescription"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "subtitle": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "srDescription": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "intro": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "body"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "body": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "composer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "prompt",
+            "placeholder"
+          ],
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "placeholder": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "recents": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "items"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "date",
+                  "status",
+                  "statusLabel"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "status": {
+                    "enum": [
+                      "signed",
+                      "awaiting-counterparty",
+                      "draft"
+                    ]
+                  },
+                  "statusLabel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                }
+              }
+            }
+          }
+        },
+        "chat": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "thinkingLabel",
+            "answer",
+            "readyLabel",
+            "compactPlaceholder"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "thinkingLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "answer": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 12,
+              "items": {
+                "$ref": "#/definitions/run"
+              }
+            },
+            "readyLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "compactPlaceholder": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "toolbarLabel",
+            "statusDrafting",
+            "statusSaved",
+            "title",
+            "parties",
+            "sections",
+            "footerNote",
+            "reviewButton"
+          ],
+          "properties": {
+            "toolbarLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "statusDrafting": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "statusSaved": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "parties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "sections": {
+              "type": "array",
+              "minItems": 5,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "body"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "body": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 12,
+                    "items": {
+                      "$ref": "#/definitions/run"
+                    }
+                  }
+                }
+              }
+            },
+            "footerNote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "reviewButton": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        }
+      }
+    },
+    "motion_feature_demo_card__draft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "engineToken",
+        "timelineToken",
+        "loopMs",
+        "stillFrameMs",
+        "startThreshold",
+        "pauseControl",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "demo-loop"
+        },
+        "engineToken": {
+          "const": "demoLoop.engine"
+        },
+        "timelineToken": {
+          "const": "demo.draft"
+        },
+        "loopMs": {
+          "const": 20000
+        },
+        "stillFrameMs": {
+          "const": 16000
+        },
+        "startThreshold": {
+          "const": 0.12
+        },
+        "pauseControl": {
+          "const": true
+        },
+        "reducedMotionFallback": {
+          "const": "paused-on-finished-still-frame-16000"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_feature_demo_card__questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frame",
+        "intro",
+        "composer",
+        "thinkingLabel",
+        "answer",
+        "citation"
+      ],
+      "properties": {
+        "frame": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "subtitle",
+            "srDescription"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "subtitle": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "srDescription": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "intro": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "body"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "body": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "composer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "question",
+            "placeholder"
+          ],
+          "properties": {
+            "question": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "placeholder": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "thinkingLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "answer": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "items": {
+            "$ref": "#/definitions/run"
+          }
+        },
+        "citation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "source",
+            "quote"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "quote": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 12,
+              "items": {
+                "$ref": "#/definitions/run"
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_feature_demo_card__questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "engineToken",
+        "timelineToken",
+        "loopMs",
+        "stillFrameMs",
+        "startThreshold",
+        "pauseControl",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "demo-loop"
+        },
+        "engineToken": {
+          "const": "demoLoop.engine"
+        },
+        "timelineToken": {
+          "const": "demo.questions"
+        },
+        "loopMs": {
+          "const": 16000
+        },
+        "stillFrameMs": {
+          "const": 12000
+        },
+        "startThreshold": {
+          "const": 0.12
+        },
+        "pauseControl": {
+          "const": true
+        },
+        "reducedMotionFallback": {
+          "const": "paused-on-finished-still-frame-12000"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_feature_demo_card__comments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frame",
+        "document",
+        "sidebar",
+        "cursor"
+      ],
+      "properties": {
+        "frame": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "subtitle",
+            "srDescription"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "subtitle": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "srDescription": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "toolbarLabel",
+            "savedLabel",
+            "title",
+            "parties",
+            "sections",
+            "clause"
+          ],
+          "properties": {
+            "toolbarLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "savedLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "parties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "sections": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "body"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "body": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 12,
+                    "items": {
+                      "$ref": "#/definitions/run"
+                    }
+                  }
+                }
+              }
+            },
+            "clause": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "lead",
+                "termBefore",
+                "termAfter",
+                "tail"
+              ],
+              "properties": {
+                "lead": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "termBefore": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "termAfter": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tail": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              }
+            }
+          }
+        },
+        "sidebar": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "heading",
+            "openCountLabel",
+            "emptyState",
+            "railLabel",
+            "commentPlaceholder",
+            "composerAuthorLabel",
+            "commentButton",
+            "comment",
+            "replyThinkingLabel",
+            "reply",
+            "timestampLabel",
+            "changeNote",
+            "resolveButton",
+            "resolvedLabel"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "openCountLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "emptyState": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "line1",
+                "line2"
+              ],
+              "properties": {
+                "line1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "line2": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              }
+            },
+            "railLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "commentPlaceholder": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "composerAuthorLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "commentButton": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "comment": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "author",
+                "org",
+                "body"
+              ],
+              "properties": {
+                "author": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "org": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "body": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              }
+            },
+            "replyThinkingLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "reply": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "author",
+                "org",
+                "body"
+              ],
+              "properties": {
+                "author": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "org": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "body": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              }
+            },
+            "timestampLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "changeNote": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 12,
+              "items": {
+                "$ref": "#/definitions/run"
+              }
+            },
+            "resolveButton": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "resolvedLabel": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "cursor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "demo.cursor"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        }
+      }
+    },
+    "motion_feature_demo_card__comments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "engineToken",
+        "timelineToken",
+        "loopMs",
+        "stillFrameMs",
+        "startThreshold",
+        "pauseControl",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "demo-loop"
+        },
+        "engineToken": {
+          "const": "demoLoop.engine"
+        },
+        "timelineToken": {
+          "const": "demo.comments"
+        },
+        "loopMs": {
+          "const": 21000
+        },
+        "stillFrameMs": {
+          "const": 17000
+        },
+        "startThreshold": {
+          "const": 0.12
+        },
+        "pauseControl": {
+          "const": true
+        },
+        "reducedMotionFallback": {
+          "const": "paused-on-finished-still-frame-17000"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_footer__brand_two_groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "description",
+        "groups"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "links"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "links": {
+                  "type": "array",
+                  "minItems": 5,
+                  "maxItems": 5,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "href"
+                    ],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 400
+                      },
+                      "href": {
+                        "type": "string",
+                        "pattern": "^(/[a-z0-9/-]*|mailto:[^\\s@]+@[^\\s@]+)$"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "links"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "links": {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "href"
+                    ],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 400
+                      },
+                      "href": {
+                        "type": "string",
+                        "pattern": "^(/[a-z0-9/-]*|mailto:[^\\s@]+@[^\\s@]+)$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "motion_shell_footer__brand_two_groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-instant"
+        },
+        "hoverToken": {
+          "const": "hover.footerLink"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_footer__brand_two_groups_subpage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "description",
+        "groups"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "links"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "links": {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "href"
+                    ],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 400
+                      },
+                      "href": {
+                        "type": "string",
+                        "pattern": "^(/[a-z0-9/-]*|mailto:[^\\s@]+@[^\\s@]+)$"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "links"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "links": {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "href"
+                    ],
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 400
+                      },
+                      "href": {
+                        "type": "string",
+                        "pattern": "^(/[a-z0-9/-]*|mailto:[^\\s@]+@[^\\s@]+)$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "motion_shell_footer__brand_two_groups_subpage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-instant"
+        },
+        "hoverToken": {
+          "const": "hover.footerLink"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_hero_typewriter_intro__about": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "intro"
+      ],
+      "properties": {
+        "headline": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "bright"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "bright"
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        },
+        "intro": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lead",
+            "rest"
+          ],
+          "properties": {
+            "lead": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "rest": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_hero_typewriter_intro__about": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "headlineToken",
+        "lineCount",
+        "doneAtMs",
+        "loops",
+        "chips",
+        "poetry",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "typewriter-once"
+        },
+        "headlineToken": {
+          "const": "headline.typewriterSubpage"
+        },
+        "lineCount": {
+          "const": 2
+        },
+        "doneAtMs": {
+          "const": 3120
+        },
+        "loops": {
+          "const": false
+        },
+        "chips": {
+          "const": false
+        },
+        "poetry": {
+          "const": false
+        },
+        "reducedMotionFallback": {
+          "const": "headline-complete-at-once"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_hero_typewriter_intro__pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "intro"
+      ],
+      "properties": {
+        "headline": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "brand-muted"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "bright"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "tone"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "tone": {
+                  "const": "bright"
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        },
+        "intro": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lead",
+            "rest"
+          ],
+          "properties": {
+            "lead": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "rest": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_hero_typewriter_intro__pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "headlineToken",
+        "lineCount",
+        "doneAtMs",
+        "loops",
+        "chips",
+        "poetry",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "typewriter-once"
+        },
+        "headlineToken": {
+          "const": "headline.typewriterSubpage"
+        },
+        "lineCount": {
+          "const": 3
+        },
+        "doneAtMs": {
+          "const": 4220
+        },
+        "loops": {
+          "const": false
+        },
+        "chips": {
+          "const": false
+        },
+        "poetry": {
+          "const": false
+        },
+        "reducedMotionFallback": {
+          "const": "headline-complete-at-once"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_media_photo_stack__three_cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groupLabel",
+        "nextLabel",
+        "frontLabel",
+        "photos"
+      ],
+      "properties": {
+        "groupLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "nextLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "frontLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "photos": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assetRole",
+                "assetRef",
+                "generationPolicy",
+                "alt"
+              ],
+              "properties": {
+                "assetRole": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/assetRole"
+                    },
+                    {
+                      "enum": [
+                        "photo.studio-people"
+                      ]
+                    }
+                  ]
+                },
+                "assetRef": {
+                  "$ref": "#/definitions/assetRef"
+                },
+                "generationPolicy": {
+                  "$ref": "#/definitions/generationPolicy"
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 120
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assetRole",
+                "assetRef",
+                "generationPolicy",
+                "alt"
+              ],
+              "properties": {
+                "assetRole": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/assetRole"
+                    },
+                    {
+                      "enum": [
+                        "photo.studio-people"
+                      ]
+                    }
+                  ]
+                },
+                "assetRef": {
+                  "$ref": "#/definitions/assetRef"
+                },
+                "generationPolicy": {
+                  "$ref": "#/definitions/generationPolicy"
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 120
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assetRole",
+                "assetRef",
+                "generationPolicy",
+                "alt"
+              ],
+              "properties": {
+                "assetRole": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/assetRole"
+                    },
+                    {
+                      "enum": [
+                        "photo.studio-people"
+                      ]
+                    }
+                  ]
+                },
+                "assetRef": {
+                  "$ref": "#/definitions/assetRef"
+                },
+                "generationPolicy": {
+                  "$ref": "#/definitions/generationPolicy"
+                },
+                "alt": {
+                  "type": "string",
+                  "maxLength": 120
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "motion_media_photo_stack__three_cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "tossToken",
+        "reorder",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "photo-stack-toss"
+        },
+        "hoverToken": {
+          "const": "hover.photoCard"
+        },
+        "tossToken": {
+          "const": "photo.toss"
+        },
+        "reorder": {
+          "const": "front-to-back-or-bring-to-front"
+        },
+        "reducedMotionFallback": {
+          "const": "no-transition-no-animation"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_about_safety_table__prose_table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "safety",
+        "table"
+      ],
+      "properties": {
+        "safety": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lead",
+            "rest"
+          ],
+          "properties": {
+            "lead": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "rest": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 24,
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/proseRun"
+                  },
+                  {
+                    "properties": {
+                      "mark": {
+                        "enum": [
+                          "none",
+                          "strong"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "table": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "head",
+            "rows"
+          ],
+          "properties": {
+            "head": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                }
+              ],
+              "additionalItems": false
+            },
+            "rows": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 7,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "body"
+                ],
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "body": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 24,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/proseRun"
+                        },
+                        {
+                          "properties": {
+                            "mark": {
+                              "enum": [
+                                "none",
+                                "strong"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_about_safety_table__prose_table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_pricing_plan_cards__four_plans": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plans"
+      ],
+      "properties": {
+        "plans": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "price",
+              "periodLabel",
+              "tokens",
+              "cta"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "price": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400,
+                "pattern": "^\\S+$"
+              },
+              "periodLabel": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400,
+                "pattern": "^ / \\S"
+              },
+              "tokens": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "cta": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "href"
+                ],
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "href": {
+                    "const": "/sign-up"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_pricing_plan_cards__four_plans": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "cardHover",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "cardHover": {
+          "const": false
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_changelog_header__centered": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "intro"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "intro": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 24,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/proseRun"
+              },
+              {
+                "properties": {
+                  "mark": {
+                    "enum": [
+                      "none",
+                      "strong"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "motion_changelog_header__centered": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_changelog_releases__dated_list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releases",
+        "note"
+      ],
+      "properties": {
+        "releases": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 15,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "dateLabel",
+              "datetime",
+              "entries"
+            ],
+            "properties": {
+              "dateLabel": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "datetime": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400,
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "entries": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 8,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "title",
+                    "body",
+                    "commits"
+                  ],
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 400
+                    },
+                    "body": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 24,
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/proseRun"
+                          },
+                          {
+                            "properties": {
+                              "mark": {
+                                "enum": [
+                                  "none",
+                                  "strong"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "commits": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 3,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "sha",
+                          "href"
+                        ],
+                        "properties": {
+                          "sha": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 400,
+                            "pattern": "^[0-9a-f]{7}$"
+                          },
+                          "href": {
+                            "type": "string",
+                            "pattern": "^(https://[^\\s]+)$"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "note": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 24,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/proseRun"
+              },
+              {
+                "properties": {
+                  "mark": {
+                    "enum": [
+                      "none",
+                      "strong"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "motion_changelog_releases__dated_list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "hoverToken",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "link-hover-instant"
+        },
+        "hoverToken": {
+          "const": "hover.commitLink"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_docs_header__title_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "intro",
+        "links"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "intro": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 24,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/proseRun"
+              },
+              {
+                "properties": {
+                  "mark": {
+                    "enum": [
+                      "none",
+                      "strong"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "href": {
+                "type": "string",
+                "pattern": "^(/[a-z0-9/-]*|https://[^\\s]+)$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "motion_docs_header__title_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_docs_section__prose_blocks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "blocks"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "p"
+                  },
+                  "text": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 24,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/proseRun"
+                        },
+                        {
+                          "properties": {
+                            "mark": {
+                              "enum": [
+                                "none",
+                                "strong",
+                                "code"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "code"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "pre"
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "ol"
+                  },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 24,
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/proseRun"
+                          },
+                          {
+                            "properties": {
+                              "mark": {
+                                "enum": [
+                                  "none",
+                                  "strong",
+                                  "code"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "ul"
+                  },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 24,
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/proseRun"
+                          },
+                          {
+                            "properties": {
+                              "mark": {
+                                "enum": [
+                                  "none",
+                                  "strong",
+                                  "code"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "id",
+                  "text"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "h3"
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400,
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "cards"
+                  },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "title",
+                        "route",
+                        "text"
+                      ],
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 400
+                        },
+                        "route": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 400,
+                          "pattern": "^(GET|POST|PUT|PATCH|DELETE) /[A-Za-z0-9/{}._-]*$"
+                        },
+                        "text": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 24,
+                          "items": {
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/proseRun"
+                              },
+                              {
+                                "properties": {
+                                  "mark": {
+                                    "enum": [
+                                      "none",
+                                      "strong",
+                                      "code"
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "firstLine",
+                  "secondLine",
+                  "paragraph"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "contract-demo"
+                  },
+                  "firstLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "secondLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  },
+                  "paragraph": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "motion_docs_section__prose_blocks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_shell_app_header__centered_logo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brandMark",
+        "brandLabel",
+        "signIn"
+      ],
+      "properties": {
+        "brandMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "brandLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "signIn": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "const": "/sign-in"
+            }
+          }
+        }
+      }
+    },
+    "motion_shell_app_header__centered_logo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_legal_switcher__two_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "links"
+      ],
+      "properties": {
+        "links": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "href"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "href": {
+                  "type": "string",
+                  "pattern": "^(/[a-z0-9/-]*)$"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "href"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "href": {
+                  "type": "string",
+                  "pattern": "^(/[a-z0-9/-]*)$"
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        }
+      }
+    },
+    "motion_legal_switcher__two_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_legal_intro__title_updated_intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "updatedPrefix",
+        "updated",
+        "intro",
+        "operator",
+        "counselReview"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "updatedPrefix": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "updated": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "iso"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "iso": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400,
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            }
+          }
+        },
+        "intro": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 24,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/proseRun"
+              },
+              {
+                "properties": {
+                  "mark": {
+                    "enum": [
+                      "none",
+                      "strong"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "operator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "legalName",
+            "postalAddress",
+            "country",
+            "governingJurisdiction"
+          ],
+          "properties": {
+            "legalName": {
+              "const": "{{operator.legalName}}"
+            },
+            "postalAddress": {
+              "const": "{{operator.postalAddress}}"
+            },
+            "country": {
+              "const": "{{operator.country}}"
+            },
+            "governingJurisdiction": {
+              "const": "{{operator.governingJurisdiction}}"
+            }
+          }
+        },
+        "counselReview": {
+          "const": "required-before-publication"
+        }
+      }
+    },
+    "motion_legal_intro__title_updated_intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_legal_contents__two_column_toc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "heading"
+      ],
+      "properties": {
+        "heading": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        }
+      }
+    },
+    "motion_legal_contents__two_column_toc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "sticky",
+        "scrollSpy",
+        "smoothScroll",
+        "anchorScrollMarginTopPx",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "sticky": {
+          "const": false
+        },
+        "scrollSpy": {
+          "const": false
+        },
+        "smoothScroll": {
+          "const": false
+        },
+        "anchorScrollMarginTopPx": {
+          "const": 32
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_legal_section__numbered": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "blocks"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "p"
+                  },
+                  "text": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 24,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/proseRun"
+                        },
+                        {
+                          "properties": {
+                            "mark": {
+                              "enum": [
+                                "none",
+                                "strong"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "items"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "ul"
+                  },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "items": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 24,
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/proseRun"
+                          },
+                          {
+                            "properties": {
+                              "mark": {
+                                "enum": [
+                                  "none",
+                                  "strong"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "motion_legal_section__numbered": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_legal_footer__contact_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "questionsLabel",
+        "contactHref",
+        "backToTop",
+        "home"
+      ],
+      "properties": {
+        "questionsLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "contactHref": {
+          "type": "string",
+          "pattern": "^(mailto:[^\\s@]+@[^\\s@]+)$"
+        },
+        "backToTop": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "const": "#top"
+            }
+          }
+        },
+        "home": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "const": "/"
+            }
+          }
+        }
+      }
+    },
+    "motion_legal_footer__contact_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "none"
+        },
+        "reducedMotionFallback": {
+          "const": "no-motion"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "content_auth_form_mock__email_first": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logo",
+        "logoLabel",
+        "title",
+        "subtitle",
+        "fieldLabel",
+        "placeholder",
+        "submitLabel",
+        "social",
+        "switchPrompt",
+        "switchLink",
+        "legalLinks",
+        "demoOnlyNote",
+        "behavior"
+      ],
+      "properties": {
+        "logo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "logoLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "fieldLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "placeholder": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "submitLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "social": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "icon"
+            ],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "icon": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "assetRole",
+                  "assetRef",
+                  "generationPolicy",
+                  "alt"
+                ],
+                "properties": {
+                  "assetRole": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/assetRole"
+                      },
+                      {
+                        "enum": [
+                          "vendor.google-icon"
+                        ]
+                      }
+                    ]
+                  },
+                  "assetRef": {
+                    "$ref": "#/definitions/assetRef"
+                  },
+                  "generationPolicy": {
+                    "$ref": "#/definitions/generationPolicy"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "maxLength": 120
+                  }
+                }
+              }
+            }
+          }
+        },
+        "switchPrompt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "switchLink": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            },
+            "href": {
+              "type": "string",
+              "pattern": "^(/[a-z0-9/-]*)$"
+            }
+          }
+        },
+        "legalLinks": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "href"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "href": {
+                  "const": "/privacy"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "href"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 400
+                },
+                "href": {
+                  "const": "/terms"
+                }
+              }
+            }
+          ],
+          "additionalItems": false
+        },
+        "demoOnlyNote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "behavior": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "submit",
+            "network",
+            "credentialHandling",
+            "realIntegration"
+          ],
+          "properties": {
+            "submit": {
+              "const": "prevent-default"
+            },
+            "network": {
+              "const": "none"
+            },
+            "credentialHandling": {
+              "const": "none"
+            },
+            "realIntegration": {
+              "const": "project-supplied-only"
+            }
+          }
+        }
+      }
+    },
+    "motion_auth_form_mock__email_first": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "fieldToken",
+        "buttonToken",
+        "pageMotion",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "const": "field-transitions"
+        },
+        "fieldToken": {
+          "const": "auth.field"
+        },
+        "buttonToken": {
+          "const": "auth.button"
+        },
+        "pageMotion": {
+          "const": false
+        },
+        "reducedMotionFallback": {
+          "const": "color-and-shadow-transitions-only"
+        }
+      },
+      "description": "Closed to the real, evidence-grounded motion fields of this (section, variant); every value const-locked."
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "section",
+        "variant",
+        "tone",
+        "anchorId",
+        "content",
+        "motion"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "section": {
+          "enum": [
+            "shell.nav",
+            "hero.typewriter-home",
+            "feature.demo-card",
+            "shell.footer",
+            "hero.typewriter-intro",
+            "media.photo-stack",
+            "about.safety-table",
+            "pricing.plan-cards",
+            "changelog.header",
+            "changelog.releases",
+            "docs.header",
+            "docs.section",
+            "shell.app-header",
+            "legal.switcher",
+            "legal.intro",
+            "legal.contents",
+            "legal.section",
+            "legal.footer",
+            "auth.form-mock"
+          ]
+        },
+        "variant": {
+          "enum": [
+            "on-hero",
+            "on-hero-current",
+            "light-wide",
+            "light-narrow",
+            "typewriter-chips-poetry",
+            "draft",
+            "questions",
+            "comments",
+            "brand-two-groups",
+            "brand-two-groups-subpage",
+            "about",
+            "pricing",
+            "three-cards",
+            "prose-table",
+            "four-plans",
+            "centered",
+            "dated-list",
+            "title-links",
+            "prose-blocks",
+            "centered-logo",
+            "two-links",
+            "title-updated-intro",
+            "two-column-toc",
+            "numbered",
+            "contact-row",
+            "email-first"
+          ]
+        },
+        "tone": {
+          "enum": [
+            "hero",
+            "surface",
+            "light",
+            "app"
+          ]
+        },
+        "anchorId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "content": {
+          "type": "object"
+        },
+        "motion": {
+          "type": "object",
+          "required": [
+            "reducedMotionFallback"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.nav"
+              },
+              "variant": {
+                "const": "on-hero"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_nav__on_hero"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_nav__on_hero"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.nav"
+              },
+              "variant": {
+                "const": "on-hero-current"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_nav__on_hero_current"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_nav__on_hero_current"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.nav"
+              },
+              "variant": {
+                "const": "light-wide"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_nav__light_wide"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_nav__light_wide"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.nav"
+              },
+              "variant": {
+                "const": "light-narrow"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_nav__light_narrow"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_nav__light_narrow"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.nav"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "on-hero",
+                  "on-hero-current",
+                  "light-wide",
+                  "light-narrow"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.typewriter-home"
+              },
+              "variant": {
+                "const": "typewriter-chips-poetry"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_hero_typewriter_home__typewriter_chips_poetry"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_hero_typewriter_home__typewriter_chips_poetry"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.typewriter-home"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "typewriter-chips-poetry"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "feature.demo-card"
+              },
+              "variant": {
+                "const": "draft"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": "draft"
+              },
+              "content": {
+                "$ref": "#/definitions/content_feature_demo_card__draft"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_feature_demo_card__draft"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "feature.demo-card"
+              },
+              "variant": {
+                "const": "questions"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": "questions"
+              },
+              "content": {
+                "$ref": "#/definitions/content_feature_demo_card__questions"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_feature_demo_card__questions"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "feature.demo-card"
+              },
+              "variant": {
+                "const": "comments"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": "comments"
+              },
+              "content": {
+                "$ref": "#/definitions/content_feature_demo_card__comments"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_feature_demo_card__comments"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "feature.demo-card"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "draft",
+                  "questions",
+                  "comments"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.footer"
+              },
+              "variant": {
+                "const": "brand-two-groups"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_footer__brand_two_groups"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_footer__brand_two_groups"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.footer"
+              },
+              "variant": {
+                "const": "brand-two-groups-subpage"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "enum": [
+                  "surface",
+                  "light"
+                ]
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_footer__brand_two_groups_subpage"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_footer__brand_two_groups_subpage"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.footer"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "brand-two-groups",
+                  "brand-two-groups-subpage"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.typewriter-intro"
+              },
+              "variant": {
+                "const": "about"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_hero_typewriter_intro__about"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_hero_typewriter_intro__about"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.typewriter-intro"
+              },
+              "variant": {
+                "const": "pricing"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_hero_typewriter_intro__pricing"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_hero_typewriter_intro__pricing"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.typewriter-intro"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "about",
+                  "pricing"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "media.photo-stack"
+              },
+              "variant": {
+                "const": "three-cards"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "hero"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_media_photo_stack__three_cards"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_media_photo_stack__three_cards"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "media.photo-stack"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "three-cards"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "about.safety-table"
+              },
+              "variant": {
+                "const": "prose-table"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": "safety"
+              },
+              "content": {
+                "$ref": "#/definitions/content_about_safety_table__prose_table"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_about_safety_table__prose_table"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "about.safety-table"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "prose-table"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "pricing.plan-cards"
+              },
+              "variant": {
+                "const": "four-plans"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "surface"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_pricing_plan_cards__four_plans"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_pricing_plan_cards__four_plans"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "pricing.plan-cards"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "four-plans"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "changelog.header"
+              },
+              "variant": {
+                "const": "centered"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_changelog_header__centered"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_changelog_header__centered"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "changelog.header"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "centered"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "changelog.releases"
+              },
+              "variant": {
+                "const": "dated-list"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_changelog_releases__dated_list"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_changelog_releases__dated_list"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "changelog.releases"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "dated-list"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "docs.header"
+              },
+              "variant": {
+                "const": "title-links"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_docs_header__title_links"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_docs_header__title_links"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "docs.header"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "title-links"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "docs.section"
+              },
+              "variant": {
+                "const": "prose-blocks"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "content": {
+                "$ref": "#/definitions/content_docs_section__prose_blocks"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_docs_section__prose_blocks"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "docs.section"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "prose-blocks"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.app-header"
+              },
+              "variant": {
+                "const": "centered-logo"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_shell_app_header__centered_logo"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_shell_app_header__centered_logo"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "shell.app-header"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "centered-logo"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.switcher"
+              },
+              "variant": {
+                "const": "two-links"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_legal_switcher__two_links"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_legal_switcher__two_links"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.switcher"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "two-links"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.intro"
+              },
+              "variant": {
+                "const": "title-updated-intro"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_legal_intro__title_updated_intro"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_legal_intro__title_updated_intro"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.intro"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "title-updated-intro"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.contents"
+              },
+              "variant": {
+                "const": "two-column-toc"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_legal_contents__two_column_toc"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_legal_contents__two_column_toc"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.contents"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "two-column-toc"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.section"
+              },
+              "variant": {
+                "const": "numbered"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "content": {
+                "$ref": "#/definitions/content_legal_section__numbered"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_legal_section__numbered"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.section"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "numbered"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.footer"
+              },
+              "variant": {
+                "const": "contact-row"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "app"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_legal_footer__contact_row"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_legal_footer__contact_row"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "legal.footer"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "contact-row"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "auth.form-mock"
+              },
+              "variant": {
+                "const": "email-first"
+              }
+            },
+            "required": [
+              "section",
+              "variant"
+            ]
+          },
+          "then": {
+            "properties": {
+              "tone": {
+                "const": "light"
+              },
+              "anchorId": {
+                "const": null
+              },
+              "content": {
+                "$ref": "#/definitions/content_auth_form_mock__email_first"
+              },
+              "motion": {
+                "$ref": "#/definitions/motion_auth_form_mock__email_first"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "auth.form-mock"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "email-first"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description",
+        "themeColor",
+        "favicon",
+        "socialImage"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "themeColor": {
+          "const": "#ffffff"
+        },
+        "favicon": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "brand.mark"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "socialImage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRole",
+            "assetRef",
+            "generationPolicy",
+            "alt"
+          ],
+          "properties": {
+            "assetRole": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/assetRole"
+                },
+                {
+                  "enum": [
+                    "social.og-image"
+                  ]
+                }
+              ]
+            },
+            "assetRef": {
+              "$ref": "#/definitions/assetRef"
+            },
+            "generationPolicy": {
+              "$ref": "#/definitions/generationPolicy"
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        }
+      }
+    }
+  }
+}

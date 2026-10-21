@@ -1,0 +1,10 @@
+{
+  "id": "primitive.text-input",
+  "kind": "primitive",
+  "description": "52px pill input on #f2f2f2, padding 0 22px, hairline shadow; focus adds a 4px rgba(0,0,0,.2) ring over .2s.",
+  "evidence": [
+    "pages.auth-layout",
+    "src.css.auth"
+  ],
+  "instantiableInPageSpec": false
+}

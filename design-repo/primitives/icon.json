@@ -1,0 +1,10 @@
+{
+  "id": "primitive.icon",
+  "kind": "primitive",
+  "description": "16px currentColor glyph from a closed set (pause, play-resume, attach, send-arrow, arrow-up, check, agreement, comment-bubble, play-chip); 20/24px variants in the citation card and empty state. Source SVGs are not reused (assetRole ui.icon).",
+  "evidence": [
+    "assets.inline-svgs",
+    "spec.0.buttons"
+  ],
+  "instantiableInPageSpec": false
+}

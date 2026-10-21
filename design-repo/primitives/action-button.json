@@ -1,0 +1,9 @@
+{
+  "id": "primitive.action-button",
+  "kind": "primitive",
+  "description": "Pill button (.action-button): brand/primary/secondary/ghost backgrounds, 48px min-height or --compact 36px/13px; hover background only under (hover:hover) and (pointer:fine); focus ring = elevation.focusShadow.",
+  "evidence": [
+    "spec.0.buttons"
+  ],
+  "instantiableInPageSpec": false
+}

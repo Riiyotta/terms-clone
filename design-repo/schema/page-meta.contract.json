@@ -1,0 +1,53 @@
+{
+  "id": "page.meta",
+  "kind": "page-meta",
+  "content": {
+    "title": {
+      "type": "text",
+      "maxWords": 5,
+      "maxChars": 37,
+      "evidence": [
+        "spec.8.head"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "maxWords": 29,
+      "maxChars": 178,
+      "evidence": [
+        "spec.8.head"
+      ],
+      "note": "the source's meta description is proprietary long-form (fingerprinted)"
+    },
+    "themeColor": {
+      "type": "const",
+      "value": "#ffffff",
+      "evidence": [
+        "spec.8.head"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "roles": [
+        "brand.mark"
+      ],
+      "evidence": [
+        "spec.8.head",
+        "assets.manifest"
+      ]
+    },
+    "socialImage": {
+      "type": "media",
+      "roles": [
+        "social.og-image"
+      ],
+      "evidence": [
+        "file.og-image"
+      ]
+    }
+  },
+  "evidence": [
+    "spec.8.head"
+  ],
+  "note": "Head metadata; not a section and not in the allowlist. The source title and description are fingerprinted long-form."
+}

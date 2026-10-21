@@ -1,0 +1,287 @@
+{
+  "id": "auth.form-mock",
+  "kind": "section",
+  "category": "AUTH",
+  "purpose": "STATIC, non-functional mock of an email-first sign-in / sign-up form on bare white (no card chrome, no nav, no footer). Forbidden in generated output: any real credential-handling integration (auth SDK, form action, network call, OAuth wiring) unless the target project supplies it itself outside the PageSpec. The screen-reader demo-only note is required.",
+  "implementedBy": "src/components/AuthMock.jsx",
+  "region": "main",
+  "tone": "light",
+  "constraints": {
+    "onePerPage": true,
+    "mustBeFirst": true,
+    "mustBeLast": true,
+    "credentialIntegration": "forbidden-unless-project-supplied",
+    "demoOnlyNoteRequired": true
+  },
+  "excludedFromGeneration": [
+    "the auth vendor's 'Secured by <vendor>' credit row and wordmark: a static mock has no provider, so a vendor credit would be false"
+  ],
+  "variants": {
+    "email-first": {
+      "anchorId": null,
+      "content": {
+        "logo": {
+          "type": "media",
+          "roles": [
+            "brand.mark"
+          ],
+          "evidence": [
+            "pages.auth-layout",
+            "src.auth.mock"
+          ]
+        },
+        "logoLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 24,
+          "evidence": [
+            "src.auth.mock"
+          ]
+        },
+        "title": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 19,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "subtitle": {
+          "type": "text",
+          "maxWords": 9,
+          "maxChars": 51,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "fieldLabel": {
+          "type": "text",
+          "maxWords": 2,
+          "maxChars": 13,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "placeholder": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 24,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "submitLabel": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 8,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "social": {
+          "type": "list",
+          "item": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "text",
+                "maxWords": 3,
+                "maxChars": 20,
+                "evidence": [
+                  "pages.auth-strings"
+                ]
+              },
+              "icon": {
+                "type": "media",
+                "roles": [
+                  "vendor.google-icon"
+                ],
+                "evidence": [
+                  "pages.auth-layout",
+                  "pages.assets"
+                ],
+                "note": "third-party trademark: vendor-supplied asset only, and only if the project really offers that sign-in"
+              }
+            }
+          },
+          "minItems": 0,
+          "maxItems": 1,
+          "evidence": [
+            "pages.auth-layout"
+          ],
+          "note": "measured one provider button below the form; omit when the project offers none"
+        },
+        "switchPrompt": {
+          "type": "text",
+          "maxWords": 4,
+          "maxChars": 24,
+          "evidence": [
+            "pages.auth-strings"
+          ]
+        },
+        "switchLink": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 2,
+              "maxChars": 7,
+              "evidence": [
+                "pages.auth-strings"
+              ]
+            },
+            "href": {
+              "type": "href",
+              "kinds": [
+                "route"
+              ],
+              "evidence": [
+                "pages.auth-strings"
+              ]
+            }
+          }
+        },
+        "legalLinks": {
+          "type": "tuple",
+          "items": [
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 7,
+                  "evidence": [
+                    "pages.auth-layout"
+                  ]
+                },
+                "href": {
+                  "type": "href",
+                  "kinds": [
+                    "route"
+                  ],
+                  "evidence": [
+                    "pages.auth-layout"
+                  ],
+                  "const": "/privacy"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "fields": {
+                "label": {
+                  "type": "text",
+                  "maxWords": 1,
+                  "maxChars": 5,
+                  "evidence": [
+                    "pages.auth-layout"
+                  ]
+                },
+                "href": {
+                  "type": "href",
+                  "kinds": [
+                    "route"
+                  ],
+                  "evidence": [
+                    "pages.auth-layout"
+                  ],
+                  "const": "/terms"
+                }
+              }
+            }
+          ],
+          "evidence": [
+            "pages.auth-layout"
+          ]
+        },
+        "demoOnlyNote": {
+          "type": "text",
+          "maxWords": 8,
+          "maxChars": 40,
+          "evidence": [
+            "src.auth.demo-note"
+          ],
+          "note": "REQUIRED sr-only note; must say the form is a demo and not functional (rule AUTH_DEMO_NOTE_REQUIRED)"
+        },
+        "behavior": {
+          "type": "object",
+          "fields": {
+            "submit": {
+              "type": "const",
+              "value": "prevent-default",
+              "evidence": [
+                "src.auth.mock"
+              ]
+            },
+            "network": {
+              "type": "const",
+              "value": "none",
+              "evidence": [
+                "src.auth.no-network"
+              ]
+            },
+            "credentialHandling": {
+              "type": "const",
+              "value": "none",
+              "evidence": [
+                "src.auth.no-network"
+              ]
+            },
+            "realIntegration": {
+              "type": "const",
+              "value": "project-supplied-only",
+              "evidence": [
+                "pages.auth-strings"
+              ]
+            }
+          },
+          "note": "const-locked: a generated page never wires a real auth provider"
+        }
+      },
+      "motion": {
+        "pattern": "field-transitions",
+        "fieldToken": "auth.field",
+        "buttonToken": "auth.button",
+        "pageMotion": false,
+        "reducedMotionFallback": "color-and-shadow-transitions-only"
+      },
+      "motionEvidence": [
+        "pages.auth-strings",
+        "pages.corrections",
+        "src.css.auth"
+      ],
+      "tones": [
+        "light"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "main flex centred, min-height 100dvh, padding 48px 24px 12vh; root max-width 420; inputs/buttons 52 tall pills; form gap 32, card gap 24; no card background, radius or shadow (rendered values)"
+    ],
+    "bp600": [
+      "align-items flex-start, padding 32px 16px 48px; root 358 wide at 390"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.auth",
+    "pages.auth-layout",
+    "pages.auth-rendered",
+    "src.auth.mock"
+  ],
+  "composes": [
+    "component.auth-mock",
+    "primitive.text-input",
+    "primitive.action-button"
+  ],
+  "evidence": [
+    "pages.auth",
+    "pages.auth-layout",
+    "pages.auth-strings",
+    "pages.auth-rendered",
+    "src.auth.mock",
+    "src.auth.demo-note"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

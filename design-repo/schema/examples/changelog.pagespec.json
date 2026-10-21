@@ -1,0 +1,247 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.changelog",
+  "route": "/changelog",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "Changelog — Clausewell",
+    "description": "Every Clausewell release, newest first, with a short note on what changed and links to the commits behind each item.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "nav",
+      "section": "shell.nav",
+      "variant": "light-wide",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Login",
+            "href": "/sign-in",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Sign up",
+            "href": "/sign-up",
+            "emphasis": "bright"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLinkLight",
+        "pillHighlightVisible": false,
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      }
+    },
+    {
+      "id": "changelog-header",
+      "section": "changelog.header",
+      "variant": "centered",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "title": "Changelog",
+        "intro": [
+          {
+            "text": "What changed in Clausewell, newest first.",
+            "href": null,
+            "mark": "none"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "releases",
+      "section": "changelog.releases",
+      "variant": "dated-list",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "releases": [
+          {
+            "dateLabel": "October 5, 2026",
+            "datetime": "2026-10-05",
+            "entries": [
+              {
+                "title": "Download a PDF before anyone signs.",
+                "body": [
+                  {
+                    "text": "Export the current draft as a PDF at any time, so reviewers outside the app can read it.",
+                    "href": null,
+                    "mark": "none"
+                  }
+                ],
+                "commits": [
+                  {
+                    "sha": "a1b2c3d",
+                    "href": "https://code.clausewell.example/commit/a1b2c3d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dateLabel": "September 30, 2026",
+            "datetime": "2026-09-30",
+            "entries": [
+              {
+                "title": "Undo a deleted comment.",
+                "body": [
+                  {
+                    "text": "Clausewell keeps a deleted note for ten seconds, and one click on Restore puts it back in the margin.",
+                    "href": null,
+                    "mark": "none"
+                  }
+                ],
+                "commits": [
+                  {
+                    "sha": "b2c3d4e",
+                    "href": "https://code.clausewell.example/commit/b2c3d4e"
+                  },
+                  {
+                    "sha": "c3d4e5f",
+                    "href": "https://code.clausewell.example/commit/c3d4e5f"
+                  }
+                ]
+              },
+              {
+                "title": "Drop files straight into chat.",
+                "body": [
+                  {
+                    "text": "Drag a document onto the assistant panel to attach it to your next question.",
+                    "href": null,
+                    "mark": "none"
+                  }
+                ],
+                "commits": [
+                  {
+                    "sha": "d4e5f60",
+                    "href": "https://code.clausewell.example/commit/d4e5f60"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Each date is the merge date, and the links open the matching commits.",
+            "href": null,
+            "mark": "none"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.commitLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "footer",
+      "section": "shell.footer",
+      "variant": "brand-two-groups-subpage",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "description": "Clausewell is a contract workspace for small teams. Draft agreements with AI, discuss clauses with the other side, and collect signatures without leaving the document.",
+        "groups": [
+          {
+            "label": "Product",
+            "links": [
+              {
+                "label": "Sign up",
+                "href": "/sign-up"
+              },
+              {
+                "label": "Login",
+                "href": "/sign-in"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "API docs",
+                "href": "/docs"
+              }
+            ]
+          },
+          {
+            "label": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Contact",
+                "href": "mailto:hello@clausewell.example"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms of Service",
+                "href": "/terms"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

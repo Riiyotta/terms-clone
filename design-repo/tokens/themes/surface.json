@@ -1,0 +1,21 @@
+{
+  "theme": "surface",
+  "usedBy": "feature.demo-card, shell.footer (page tint #fefcfb below the 840px band)",
+  "resolve": {
+    "text.primary": "{color.base.ink}",
+    "text.muted": "{color.neutral.proseMuted}",
+    "text.link": "{color.base.ink}",
+    "text.linkMuted": "{color.neutral.proseMuted}",
+    "surface.page": "{color.neutral.pageTint}",
+    "surface.control": "{color.grey.f2}",
+    "surface.controlHover": "{color.grey.e7}",
+    "text.onControl": "{color.base.black}",
+    "logo.fill": "{color.brand.accent}",
+    "accent.brand": "{color.brand.accent}"
+  },
+  "evidence": [
+    "spec.7.footer",
+    "spec.0.buttons",
+    "src.css.tokens"
+  ]
+}

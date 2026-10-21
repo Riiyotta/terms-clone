@@ -1,0 +1,10 @@
+{
+  "id": "component.smart-link",
+  "kind": "component",
+  "description": "Route links to the nine local routes use the router; any other href renders a plain anchor.",
+  "composes": [],
+  "evidence": [
+    "src.smartlink"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,303 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.docs",
+  "route": "/docs",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "API reference — Clausewell",
+    "description": "Reference for the Clausewell connector API: authentication, a first request, every endpoint, draft editing rules, errors and rate limits.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "nav",
+      "section": "shell.nav",
+      "variant": "light-narrow",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Login",
+            "href": "/sign-in",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Sign up",
+            "href": "/sign-up",
+            "emphasis": "bright"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLinkLight",
+        "pillHighlightVisible": false,
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      }
+    },
+    {
+      "id": "docs-header",
+      "section": "docs.header",
+      "variant": "title-links",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "title": "Clausewell API docs",
+        "intro": [
+          {
+            "text": "This reference covers the public connector API. Each endpoint is described in plain language for people and for agents.",
+            "href": null,
+            "mark": "none"
+          }
+        ],
+        "links": [
+          {
+            "label": "OpenAPI specification",
+            "href": "https://clausewell.example/openapi.json"
+          },
+          {
+            "label": "Agent entry point",
+            "href": "https://clausewell.example/llms.txt"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "authentication",
+      "section": "docs.section",
+      "variant": "prose-blocks",
+      "tone": "light",
+      "anchorId": "authentication",
+      "content": {
+        "title": "Authentication",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": [
+              {
+                "text": "Send every request to ",
+                "href": null,
+                "mark": "none"
+              },
+              {
+                "text": "/api/v1",
+                "href": null,
+                "mark": "code"
+              },
+              {
+                "text": " with your key in the Authorization header.",
+                "href": null,
+                "mark": "none"
+              }
+            ]
+          },
+          {
+            "kind": "pre",
+            "code": "Authorization: Bearer <your-key>"
+          },
+          {
+            "kind": "ol",
+            "items": [
+              [
+                {
+                  "text": "Open ",
+                  "href": null,
+                  "mark": "none"
+                },
+                {
+                  "text": "Connectors",
+                  "href": "/docs",
+                  "mark": "none"
+                },
+                {
+                  "text": " and create a key with a short name.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ],
+              [
+                {
+                  "text": "Copy the key once and store it somewhere safe.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "endpoints",
+      "section": "docs.section",
+      "variant": "prose-blocks",
+      "tone": "light",
+      "anchorId": "endpoints",
+      "content": {
+        "title": "Endpoints",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": [
+              {
+                "text": "All endpoints return JSON and accept the same key.",
+                "href": null,
+                "mark": "none"
+              }
+            ]
+          },
+          {
+            "kind": "cards",
+            "items": [
+              {
+                "title": "List your agreements",
+                "route": "GET /api/v1/agreements",
+                "text": [
+                  {
+                    "text": "Returns the agreements you can access, newest first, in pages of twenty.",
+                    "href": null,
+                    "mark": "none"
+                  }
+                ]
+              },
+              {
+                "title": "Create a draft",
+                "route": "POST /api/v1/drafts",
+                "text": [
+                  {
+                    "text": "Creates a private draft from a title and a Markdown body.",
+                    "href": null,
+                    "mark": "none"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "h3",
+            "id": "signers",
+            "text": "Signer fields"
+          },
+          {
+            "kind": "contract-demo",
+            "firstLine": "First line",
+            "secondLine": "Second line",
+            "paragraph": "New paragraph."
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "footer",
+      "section": "shell.footer",
+      "variant": "brand-two-groups-subpage",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "description": "Clausewell is a contract workspace for small teams. Draft agreements with AI, discuss clauses with the other side, and collect signatures without leaving the document.",
+        "groups": [
+          {
+            "label": "Product",
+            "links": [
+              {
+                "label": "Sign up",
+                "href": "/sign-up"
+              },
+              {
+                "label": "Login",
+                "href": "/sign-in"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "API docs",
+                "href": "/docs"
+              }
+            ]
+          },
+          {
+            "label": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Contact",
+                "href": "mailto:hello@clausewell.example"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms of Service",
+                "href": "/terms"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

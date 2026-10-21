@@ -1,0 +1,643 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.home",
+  "route": "/",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "Clausewell: Draft, discuss, sign.",
+    "description": "Clausewell drafts, explains and tracks your agreements so every party can comment and sign in one place.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "nav",
+      "section": "shell.nav",
+      "variant": "on-hero",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "emphasis": "muted"
+          },
+          {
+            "label": "Login",
+            "href": "/sign-in",
+            "emphasis": "bright"
+          },
+          {
+            "label": "Sign up",
+            "href": "/sign-up",
+            "emphasis": "bright"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-color",
+        "hoverToken": "hover.navLink",
+        "keyboardFocus": "instant-background-150ms-only",
+        "reducedMotionFallback": "color-change-only"
+      }
+    },
+    {
+      "id": "hero",
+      "section": "hero.typewriter-home",
+      "variant": "typewriter-chips-poetry",
+      "tone": "hero",
+      "anchorId": null,
+      "content": {
+        "headline": [
+          {
+            "text": "Start a draft with AI.",
+            "tone": "brand-muted"
+          },
+          {
+            "text": "Chat about any contract.",
+            "tone": "brand-muted"
+          },
+          {
+            "text": "Comment with counterparties.",
+            "tone": "brand-muted"
+          },
+          {
+            "text": "You’ll never open DocuSign again.",
+            "tone": "bright"
+          }
+        ],
+        "primaryCta": {
+          "label": "Sign up",
+          "href": "/sign-up"
+        },
+        "demoCta": {
+          "label": "Watch a demo",
+          "href": "#draft",
+          "behavior": "smooth-scroll-anchor",
+          "icon": {
+            "assetRole": "ui.icon",
+            "assetRef": "icons/play-triangle.svg",
+            "generationPolicy": "generate-original",
+            "alt": ""
+          }
+        },
+        "poetryPhrases": [
+          "Write an NDA for a freelancer.",
+          "Draft a design project contract.",
+          "How many weeks is our agreement with Acme?",
+          "$12,000, six weeks, 50% upfront.",
+          "Make the payment terms net 30.",
+          "Add two rounds of revisions.",
+          "mutual confidentiality, two years",
+          "ownership transfers on final payment",
+          "terminate with 14 days’ written notice",
+          "What did we agree with Studio North?",
+          "Consulting agreement, hourly, capped.",
+          "Send it to alex@acme.com to sign.",
+          "effective on the date of the last signature",
+          "Which contracts expire this quarter?",
+          "a one-page letter of intent",
+          "renews yearly unless either side opts out",
+          "governed by the laws of Delaware",
+          "Summarize the indemnity clause.",
+          "Hire a contractor for the summer.",
+          "deposit due before work begins"
+        ]
+      },
+      "motion": {
+        "pattern": "typewriter-once",
+        "headlineToken": "headline.typewriter",
+        "chipsToken": "headline.chipsReveal",
+        "poetryToken": "poetry.typing",
+        "poetryMinViewportPx": 1040,
+        "loops": false,
+        "reducedMotionFallback": "headline-complete-chips-fade-200ms-poetry-static"
+      }
+    },
+    {
+      "id": "demo-draft",
+      "section": "feature.demo-card",
+      "variant": "draft",
+      "tone": "surface",
+      "anchorId": "draft",
+      "content": {
+        "frame": {
+          "heading": "Draft with AI",
+          "subtitle": "Describe what you need. Turn a few details into a draft you can refine.",
+          "srDescription": "A prompt becomes a design services agreement, with the conversation on the left and the draft on the right."
+        },
+        "intro": {
+          "heading": "Start with what you need.",
+          "body": "A few details. A first draft."
+        },
+        "composer": {
+          "prompt": "Draft a design agreement with Acme. $12,000, six weeks, 50% upfront.",
+          "placeholder": "Describe the agreement you need…"
+        },
+        "recents": {
+          "heading": "Recent contracts:",
+          "items": [
+            {
+              "title": "Acme — Consulting agreement",
+              "date": "September 24, 2026",
+              "status": "signed",
+              "statusLabel": "Signed"
+            },
+            {
+              "title": "Studio North — Design services",
+              "date": "September 22, 2026",
+              "status": "awaiting-counterparty",
+              "statusLabel": "Awaiting counterparty"
+            },
+            {
+              "title": "Mutual non-disclosure agreement",
+              "date": "September 18, 2026",
+              "status": "draft",
+              "statusLabel": "Draft"
+            }
+          ]
+        },
+        "chat": {
+          "heading": "Your conversation",
+          "thinkingLabel": "Putting your draft together…",
+          "answer": [
+            {
+              "text": "I’ve drafted your agreement with a ",
+              "strong": false
+            },
+            {
+              "text": "six-week timeline",
+              "strong": true
+            },
+            {
+              "text": ", a ",
+              "strong": false
+            },
+            {
+              "text": "$6,000 deposit",
+              "strong": true
+            },
+            {
+              "text": ", and a ",
+              "strong": false
+            },
+            {
+              "text": "$6,000 final payment",
+              "strong": true
+            },
+            {
+              "text": ". You can refine any section before sharing it.",
+              "strong": false
+            }
+          ],
+          "readyLabel": "Ready for your review",
+          "compactPlaceholder": "Make it yours. Ask for a change…"
+        },
+        "document": {
+          "toolbarLabel": "Your draft",
+          "statusDrafting": "Drafting…",
+          "statusSaved": "Saved",
+          "title": "Design services agreement",
+          "parties": "Studio North & Acme",
+          "sections": [
+            {
+              "heading": null,
+              "body": [
+                {
+                  "text": "This agreement is between ",
+                  "strong": false
+                },
+                {
+                  "text": "Studio North",
+                  "strong": true
+                },
+                {
+                  "text": " (the Designer) and ",
+                  "strong": false
+                },
+                {
+                  "text": "Acme",
+                  "strong": true
+                },
+                {
+                  "text": " (the Client).",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "1. Scope of work",
+              "body": [
+                {
+                  "text": "The Designer will create a visual identity and website design, including two rounds of revisions.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "2. Fees and payment",
+              "body": [
+                {
+                  "text": "The total project fee is ",
+                  "strong": false
+                },
+                {
+                  "text": "$12,000",
+                  "strong": true
+                },
+                {
+                  "text": ". A ",
+                  "strong": false
+                },
+                {
+                  "text": "$6,000 deposit",
+                  "strong": true
+                },
+                {
+                  "text": " is due before work begins. The remaining ",
+                  "strong": false
+                },
+                {
+                  "text": "$6,000",
+                  "strong": true
+                },
+                {
+                  "text": " is due on delivery.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "3. Timeline",
+              "body": [
+                {
+                  "text": "The project will be completed within ",
+                  "strong": false
+                },
+                {
+                  "text": "six weeks",
+                  "strong": true
+                },
+                {
+                  "text": " of receiving the deposit and project materials.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "4. Ownership",
+              "body": [
+                {
+                  "text": "Ownership of the final approved designs transfers to the Client when payment is complete.",
+                  "strong": false
+                }
+              ]
+            }
+          ],
+          "footerNote": "Your draft is ready.",
+          "reviewButton": "Review draft"
+        }
+      },
+      "motion": {
+        "pattern": "demo-loop",
+        "engineToken": "demoLoop.engine",
+        "timelineToken": "demo.draft",
+        "loopMs": 20000,
+        "stillFrameMs": 16000,
+        "startThreshold": 0.12,
+        "pauseControl": true,
+        "reducedMotionFallback": "paused-on-finished-still-frame-16000"
+      }
+    },
+    {
+      "id": "demo-questions",
+      "section": "feature.demo-card",
+      "variant": "questions",
+      "tone": "surface",
+      "anchorId": "questions",
+      "content": {
+        "frame": {
+          "heading": "Ask your contracts",
+          "subtitle": "Find dates, details, and answers in your agreements, with the source at hand.",
+          "srDescription": "The assistant answers a question about an existing agreement and shows the clause supporting its answer."
+        },
+        "intro": {
+          "heading": "Your agreements have answers.",
+          "body": "Ask a question. Get straight to the relevant clause."
+        },
+        "composer": {
+          "question": "When does our agreement with Acme renew?",
+          "placeholder": "Ask about an agreement…"
+        },
+        "thinkingLabel": "Reading your agreement…",
+        "answer": [
+          {
+            "text": "Your agreement with Acme renews on ",
+            "strong": false
+          },
+          {
+            "text": "December 1",
+            "strong": true
+          },
+          {
+            "text": ". It renews for ",
+            "strong": false
+          },
+          {
+            "text": "another year",
+            "strong": true
+          },
+          {
+            "text": " unless either party gives ",
+            "strong": false
+          },
+          {
+            "text": "30 days’ notice",
+            "strong": true
+          },
+          {
+            "text": ".",
+            "strong": false
+          }
+        ],
+        "citation": {
+          "title": "Consulting agreement",
+          "source": "Acme · Section 4",
+          "quote": [
+            {
+              "text": "“This agreement renews on ",
+              "strong": false
+            },
+            {
+              "text": "December 1",
+              "strong": true
+            },
+            {
+              "text": " for successive one-year terms, unless either party gives ",
+              "strong": false
+            },
+            {
+              "text": "30 days’ written notice",
+              "strong": true
+            },
+            {
+              "text": ".”",
+              "strong": false
+            }
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "demo-loop",
+        "engineToken": "demoLoop.engine",
+        "timelineToken": "demo.questions",
+        "loopMs": 16000,
+        "stillFrameMs": 12000,
+        "startThreshold": 0.12,
+        "pauseControl": true,
+        "reducedMotionFallback": "paused-on-finished-still-frame-12000"
+      }
+    },
+    {
+      "id": "demo-comments",
+      "section": "feature.demo-card",
+      "variant": "comments",
+      "tone": "surface",
+      "anchorId": "comments",
+      "content": {
+        "frame": {
+          "heading": "Comment on contracts",
+          "subtitle": "Discuss a clause, agree on a change, and resolve it right in the contract.",
+          "srDescription": "A clause is selected, Alex requests a change, Sam replies, the payment term changes from 14 to 30 days, and the comment is resolved."
+        },
+        "document": {
+          "toolbarLabel": "Design services agreement",
+          "savedLabel": "Changes saved",
+          "title": "Design services agreement",
+          "parties": "Studio North & Acme",
+          "sections": [
+            {
+              "heading": "1. Scope of work",
+              "body": [
+                {
+                  "text": "The Designer will create a visual identity and website design, including two rounds of revisions.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "2. Fees and payment",
+              "body": [
+                {
+                  "text": "The total project fee is ",
+                  "strong": false
+                },
+                {
+                  "text": "$12,000",
+                  "strong": true
+                },
+                {
+                  "text": ". A ",
+                  "strong": false
+                },
+                {
+                  "text": "$6,000 deposit",
+                  "strong": true
+                },
+                {
+                  "text": " is due before work begins.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "3. Timeline",
+              "body": [
+                {
+                  "text": "The project will be completed within ",
+                  "strong": false
+                },
+                {
+                  "text": "six weeks",
+                  "strong": true
+                },
+                {
+                  "text": " of receiving the deposit and project materials.",
+                  "strong": false
+                }
+              ]
+            },
+            {
+              "heading": "4. Ownership",
+              "body": [
+                {
+                  "text": "Ownership of the final approved designs transfers to the Client when payment is complete.",
+                  "strong": false
+                }
+              ]
+            }
+          ],
+          "clause": {
+            "lead": "The remaining balance is payable within",
+            "termBefore": "14 days",
+            "termAfter": "30 days",
+            "tail": "of delivery."
+          }
+        },
+        "sidebar": {
+          "heading": "Comments",
+          "openCountLabel": "1 open",
+          "emptyState": {
+            "line1": "Select a clause.",
+            "line2": "Keep the conversation right here."
+          },
+          "railLabel": "Selected section · 2. Fees and payment",
+          "commentPlaceholder": "Leave a comment…",
+          "composerAuthorLabel": "Alex Acme",
+          "commentButton": "Comment",
+          "comment": {
+            "author": "Alex",
+            "org": "Acme",
+            "body": "Could we make this net 30? That matches our payment cycle."
+          },
+          "replyThinkingLabel": "Sam is replying…",
+          "reply": {
+            "author": "Sam",
+            "org": "Studio North",
+            "body": "Of course. I’ve updated the payment terms to 30 days."
+          },
+          "timestampLabel": "Just now",
+          "changeNote": [
+            {
+              "text": "Payment terms updated to ",
+              "strong": false
+            },
+            {
+              "text": "30 days",
+              "strong": true
+            },
+            {
+              "text": ".",
+              "strong": false
+            }
+          ],
+          "resolveButton": "Resolve",
+          "resolvedLabel": "Resolved"
+        },
+        "cursor": {
+          "assetRole": "demo.cursor",
+          "assetRef": "cursors/pointer-arrow.svg",
+          "generationPolicy": "generate-original",
+          "alt": ""
+        }
+      },
+      "motion": {
+        "pattern": "demo-loop",
+        "engineToken": "demoLoop.engine",
+        "timelineToken": "demo.comments",
+        "loopMs": 21000,
+        "stillFrameMs": 17000,
+        "startThreshold": 0.12,
+        "pauseControl": true,
+        "reducedMotionFallback": "paused-on-finished-still-frame-17000"
+      }
+    },
+    {
+      "id": "footer",
+      "section": "shell.footer",
+      "variant": "brand-two-groups",
+      "tone": "surface",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "description": "Clausewell is a contract workspace for small teams. Draft agreements with AI, discuss clauses with the other side, and collect signatures without leaving the document.",
+        "groups": [
+          {
+            "label": "Product",
+            "links": [
+              {
+                "label": "Sign up",
+                "href": "/sign-up"
+              },
+              {
+                "label": "Login",
+                "href": "/sign-in"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "API docs",
+                "href": "/docs"
+              },
+              {
+                "label": "Changelog",
+                "href": "/changelog"
+              }
+            ]
+          },
+          {
+            "label": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Contact",
+                "href": "mailto:hello@clausewell.example"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms of Service",
+                "href": "/terms"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "link-hover-instant",
+        "hoverToken": "hover.footerLink",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

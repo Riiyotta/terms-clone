@@ -1,0 +1,74 @@
+{
+  "id": "changelog.header",
+  "kind": "section",
+  "category": "HERO",
+  "purpose": "Plain centred page title and one short intro line (no typewriter, no gradient).",
+  "implementedBy": "src/pages/Changelog.jsx",
+  "region": "main",
+  "tone": "light",
+  "constraints": {
+    "onePerPage": true,
+    "mustFollowNav": true
+  },
+  "variants": {
+    "centered": {
+      "anchorId": null,
+      "content": {
+        "title": {
+          "type": "text",
+          "maxWords": 1,
+          "maxChars": 9,
+          "evidence": [
+            "pages.changelog",
+            "pages.changelog-typo"
+          ]
+        },
+        "intro": {
+          "type": "prose",
+          "maxWords": 11,
+          "maxChars": 83,
+          "maxLinks": 0,
+          "marks": [
+            "none",
+            "strong"
+          ],
+          "longForm": true,
+          "evidence": [
+            "pages.changelog-content"
+          ],
+          "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+          "note": "11 words, three short sentences; 400 16/24 #73706d"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.changelog-content"
+      ],
+      "tones": [
+        "light"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "flex column, centred, gap 24, padding 96px 0; h1 500 36/41.4 -.03em balance; intro max-width 560"
+    ],
+    "bp600": [
+      "padding 64px 0"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.changelog",
+    "src.changelog.composition"
+  ],
+  "composes": [],
+  "evidence": [
+    "pages.changelog",
+    "pages.changelog-typo",
+    "src.changelog.composition"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

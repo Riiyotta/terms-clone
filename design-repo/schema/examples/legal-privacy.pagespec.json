@@ -1,0 +1,238 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.legal",
+  "route": "/privacy",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "Privacy Policy — Clausewell",
+    "description": "Placeholder privacy policy page for Clausewell. The operator must replace it with counsel-reviewed text before publication.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "app-header",
+      "section": "shell.app-header",
+      "variant": "centered-logo",
+      "tone": "app",
+      "anchorId": null,
+      "content": {
+        "brandMark": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "brandLabel": "Clausewell",
+        "signIn": {
+          "label": "Sign in",
+          "href": "/sign-in"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "legal-switcher",
+      "section": "legal.switcher",
+      "variant": "two-links",
+      "tone": "app",
+      "anchorId": null,
+      "content": {
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "href": "/privacy"
+          },
+          {
+            "label": "Terms of Service",
+            "href": "/terms"
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "legal-intro",
+      "section": "legal.intro",
+      "variant": "title-updated-intro",
+      "tone": "app",
+      "anchorId": null,
+      "content": {
+        "title": "Privacy Policy",
+        "updatedPrefix": "Last updated",
+        "updated": {
+          "label": "1 October 2026",
+          "iso": "2026-10-01"
+        },
+        "intro": [
+          {
+            "text": "Placeholder: summarise what the service collects and why. Replace with the operator's counsel-reviewed policy before publication.",
+            "href": null,
+            "mark": "none"
+          }
+        ],
+        "operator": {
+          "legalName": "{{operator.legalName}}",
+          "postalAddress": "{{operator.postalAddress}}",
+          "country": "{{operator.country}}",
+          "governingJurisdiction": "{{operator.governingJurisdiction}}"
+        },
+        "counselReview": "required-before-publication"
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "legal-contents",
+      "section": "legal.contents",
+      "variant": "two-column-toc",
+      "tone": "app",
+      "anchorId": null,
+      "content": {
+        "heading": "On this page"
+      },
+      "motion": {
+        "pattern": "none",
+        "sticky": false,
+        "scrollSpy": false,
+        "smoothScroll": false,
+        "anchorScrollMarginTopPx": 32,
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "scope",
+      "section": "legal.section",
+      "variant": "numbered",
+      "tone": "app",
+      "anchorId": "scope",
+      "content": {
+        "title": "Who we are",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": [
+              {
+                "text": "Clausewell is operated by ",
+                "href": null,
+                "mark": "none"
+              },
+              {
+                "text": "{{operator.legalName}}",
+                "href": null,
+                "mark": "strong"
+              },
+              {
+                "text": ". Placeholder paragraph: the operator's counsel must supply the real scope text.",
+                "href": null,
+                "mark": "none"
+              }
+            ]
+          },
+          {
+            "kind": "ul",
+            "items": [
+              [
+                {
+                  "text": "Placeholder.",
+                  "href": null,
+                  "mark": "strong"
+                },
+                {
+                  "text": " List each category of information here once counsel has written it.",
+                  "href": null,
+                  "mark": "none"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "contact",
+      "section": "legal.section",
+      "variant": "numbered",
+      "tone": "app",
+      "anchorId": "contact",
+      "content": {
+        "title": "Contact us",
+        "blocks": [
+          {
+            "kind": "p",
+            "text": [
+              {
+                "text": "Write to {{operator.legalName}} at {{operator.postalAddress}}, {{operator.country}}, or email ",
+                "href": null,
+                "mark": "none"
+              },
+              {
+                "text": "privacy@clausewell.example",
+                "href": "mailto:privacy@clausewell.example",
+                "mark": "none"
+              },
+              {
+                "text": ".",
+                "href": null,
+                "mark": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    },
+    {
+      "id": "legal-footer",
+      "section": "legal.footer",
+      "variant": "contact-row",
+      "tone": "app",
+      "anchorId": null,
+      "content": {
+        "questionsLabel": "Questions?",
+        "contactHref": "mailto:privacy@clausewell.example",
+        "backToTop": {
+          "label": "Back to top",
+          "href": "#top"
+        },
+        "home": {
+          "label": "Home",
+          "href": "/"
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      }
+    }
+  ]
+}

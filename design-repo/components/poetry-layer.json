@@ -1,0 +1,12 @@
+{
+  "id": "component.poetry-layer",
+  "kind": "component",
+  "description": "aria-hidden Geist Mono 11px side grids (opacity .5) that type and erase short prompt fragments at 35ms/char with a block caret; placement by seeded mulberry32; renders nothing when the side zone < 120px (viewport below ~1040px).",
+  "composes": [],
+  "evidence": [
+    "spec.2.poetry",
+    "src.poetry.zone",
+    "qa.poetry-wide-only"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "component.squircle-card",
+  "kind": "component",
+  "description": "Figma-style smoothed-corner card (r 24, smoothing .6) with a clipped 2px #e5e5e5 stroke and three stacked drop-shadows; path recomputed on resize.",
+  "composes": [],
+  "evidence": [
+    "spec.3a.frame",
+    "src.squircle"
+  ],
+  "instantiableInPageSpec": false
+}

@@ -1,0 +1,655 @@
+{
+  "$description": "Type families, weights, sizes, leading, tracking and composite styles from CLONE_SPEC.md sections 0-7 and the components. ABC Diatype is a commercially licensed font: see docs/sensitivity-and-licensing.md.",
+  "fontFamily": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": "'diatype', 'diatype Fallback', -apple-system, system-ui, Helvetica, Arial, sans-serif",
+      "evidence": [
+        "spec.0.fonts",
+        "src.tailwind.fonts"
+      ],
+      "assetRole": "font.ui-diatype"
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+      "evidence": [
+        "spec.0.fonts",
+        "src.tailwind.fonts"
+      ],
+      "assetRole": "font.mono-geist",
+      "note": "hero poetry layer only"
+    },
+    "code": {
+      "$type": "fontFamily",
+      "$value": "monospace",
+      "evidence": [
+        "pages.docs-code",
+        "src.css.docs"
+      ],
+      "note": "generic keyword only, no stack and no webfont (docs code/pre)"
+    }
+  },
+  "fontWeight": {
+    "regular": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "evidence": [
+        "spec.0.fonts"
+      ]
+    },
+    "medium": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "evidence": [
+        "spec.0.fonts",
+        "spec.0.body"
+      ]
+    }
+  },
+  "fontSize": {
+    "11": {
+      "$type": "dimension",
+      "$value": "11px",
+      "evidence": [
+        "spec.2.poetry",
+        "spec.6.comments-layout"
+      ]
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "12px",
+      "evidence": [
+        "spec.7.footer",
+        "spec.3d.parts"
+      ]
+    },
+    "13": {
+      "$type": "dimension",
+      "$value": "13px",
+      "evidence": [
+        "spec.0.buttons",
+        "spec.3c.reveals"
+      ]
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "14px",
+      "evidence": [
+        "spec.7.footer",
+        "spec.3d.parts"
+      ]
+    },
+    "15": {
+      "$type": "dimension",
+      "$value": "15px",
+      "evidence": [
+        "spec.1.nav-layout",
+        "spec.2.chips"
+      ]
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "16px",
+      "evidence": [
+        "spec.0.body"
+      ]
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": "18px",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "24px",
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "56": {
+      "$type": "dimension",
+      "$value": "56px",
+      "evidence": [
+        "spec.2.headline"
+      ]
+    },
+    "headlineTablet": {
+      "$type": "dimension",
+      "$value": "clamp(32px, 5.4vw, 56px)",
+      "evidence": [
+        "spec.2.headline",
+        "spec.0.breakpoints"
+      ]
+    },
+    "headlineMobile": {
+      "$type": "dimension",
+      "$value": "clamp(28px, 8.5vw, 34px)",
+      "evidence": [
+        "spec.2.headline"
+      ]
+    },
+    "intro": {
+      "$type": "dimension",
+      "$value": "clamp(24px, 3vw, 32px)",
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": "32px",
+      "evidence": [
+        "pages.docs-typo",
+        "pages.legal-layout"
+      ]
+    },
+    "36": {
+      "$type": "dimension",
+      "$value": "36px",
+      "evidence": [
+        "pages.changelog-typo"
+      ]
+    },
+    "40": {
+      "$type": "dimension",
+      "$value": "40px",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "docsH3": {
+      "$type": "dimension",
+      "$value": "18.72px",
+      "evidence": [
+        "pages.docs-typo"
+      ],
+      "note": "UA 1.17em"
+    }
+  },
+  "lineHeight": {
+    "tight": {
+      "$type": "number",
+      "$value": 0.96,
+      "evidence": [
+        "spec.0.page-bg",
+        "spec.0.buttons"
+      ]
+    },
+    "solid": {
+      "$type": "number",
+      "$value": 1,
+      "evidence": [
+        "spec.2.headline"
+      ]
+    },
+    "snug": {
+      "$type": "number",
+      "$value": 1.15,
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "paperTitle": {
+      "$type": "number",
+      "$value": 1.2,
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "label": {
+      "$type": "number",
+      "$value": 1.35,
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "heading4": {
+      "$type": "number",
+      "$value": 1.4,
+      "evidence": [
+        "spec.3d.parts",
+        "spec.2.poetry"
+      ]
+    },
+    "body": {
+      "$type": "number",
+      "$value": 1.5,
+      "evidence": [
+        "spec.0.body",
+        "spec.3a.frame"
+      ]
+    },
+    "paper": {
+      "$type": "number",
+      "$value": 1.55,
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "chat": {
+      "$type": "number",
+      "$value": 1.6,
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "contract": {
+      "$type": "number",
+      "$value": 1.65,
+      "evidence": [
+        "pages.docs-content",
+        "src.css.docs"
+      ]
+    }
+  },
+  "letterSpacing": {
+    "title": {
+      "$type": "dimension",
+      "$value": "-.03em",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "heading": {
+      "$type": "dimension",
+      "$value": "-.02em",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "small": {
+      "$type": "dimension",
+      "$value": "-.01em",
+      "evidence": [
+        "src.css.tokens",
+        "spec.0.css-vars"
+      ]
+    },
+    "headline": {
+      "$type": "dimension",
+      "$value": "-.05em",
+      "evidence": [
+        "spec.2.headline"
+      ]
+    },
+    "kern": {
+      "$type": "dimension",
+      "$value": "calc(.3px - .035em)",
+      "evidence": [
+        "spec.2.headline",
+        "src.css.chips"
+      ]
+    },
+    "caps": {
+      "$type": "dimension",
+      "$value": ".04em",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "price": {
+      "$type": "dimension",
+      "$value": "-.04em",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    }
+  },
+  "typeStyle": {
+    "headline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.56}",
+        "lineHeight": "{lineHeight.solid}",
+        "letterSpacing": "{letterSpacing.headline}",
+        "whiteSpace": "nowrap"
+      },
+      "evidence": [
+        "spec.2.headline"
+      ]
+    },
+    "navLink": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.15}",
+        "lineHeight": "{lineHeight.tight}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "chip": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.15}",
+        "lineHeight": "{lineHeight.solid}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "button": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.16}",
+        "lineHeight": "{lineHeight.tight}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "buttonCompact": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.13}",
+        "lineHeight": "{lineHeight.solid}"
+      },
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "featureHeading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.18}",
+        "lineHeight": "{lineHeight.body}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.3a.frame",
+        "src.frame"
+      ]
+    },
+    "featureSubtitle": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.18}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "introHeading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.intro}",
+        "lineHeight": "{lineHeight.snug}",
+        "letterSpacing": "{letterSpacing.title}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "introBody": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.15}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "chatText": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.15}",
+        "lineHeight": "{lineHeight.chat}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "paper": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.14}",
+        "lineHeight": "{lineHeight.paper}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "paperTitle": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.24}",
+        "lineHeight": "{lineHeight.paperTitle}",
+        "letterSpacing": "{letterSpacing.heading}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "paperHeading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.14}",
+        "lineHeight": "{lineHeight.heading4}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.13}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "spec.3c.reveals"
+      ]
+    },
+    "toolbar": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.12}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "railCaps": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.11}",
+        "lineHeight": "{lineHeight.solid}",
+        "letterSpacing": "{letterSpacing.caps}",
+        "textTransform": "uppercase"
+      },
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "footerLink": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.14}",
+        "lineHeight": "{lineHeight.label}"
+      },
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerLabel": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.12}",
+        "lineHeight": "{lineHeight.label}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "footerDescription": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.12}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "poetry": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.mono}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.11}",
+        "lineHeight": "{lineHeight.heading4}",
+        "letterSpacing": "0"
+      },
+      "evidence": [
+        "spec.2.poetry",
+        "src.css.poetry"
+      ]
+    },
+    "subpageIntro": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.16}",
+        "lineHeight": "{lineHeight.label}",
+        "letterSpacing": "{letterSpacing.small}"
+      },
+      "evidence": [
+        "pages.about-typo",
+        "src.css.prose"
+      ]
+    },
+    "planPrice": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.40}",
+        "lineHeight": "{lineHeight.tight}",
+        "letterSpacing": "{letterSpacing.price}"
+      },
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "pageTitleLarge": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.36}",
+        "lineHeight": "{lineHeight.snug}",
+        "letterSpacing": "{letterSpacing.title}"
+      },
+      "evidence": [
+        "pages.changelog-typo"
+      ]
+    },
+    "pageTitle": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.32}",
+        "lineHeight": "{lineHeight.snug}",
+        "letterSpacing": "{letterSpacing.title}"
+      },
+      "evidence": [
+        "pages.docs-typo",
+        "pages.legal-layout"
+      ]
+    },
+    "sectionHeading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.24}",
+        "lineHeight": "{lineHeight.paperTitle}",
+        "letterSpacing": "{letterSpacing.heading}"
+      },
+      "evidence": [
+        "pages.docs-typo",
+        "pages.legal-layout"
+      ]
+    },
+    "docsSubheading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.sans}",
+        "fontWeight": "{fontWeight.medium}",
+        "fontSize": "{fontSize.docsH3}",
+        "lineHeight": "{lineHeight.paperTitle}",
+        "letterSpacing": "{letterSpacing.heading}"
+      },
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "code": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.code}",
+        "fontWeight": "{fontWeight.regular}",
+        "fontSize": "{fontSize.16}",
+        "lineHeight": "{lineHeight.body}"
+      },
+      "evidence": [
+        "pages.docs-typo",
+        "pages.docs-code",
+        "src.css.docs"
+      ]
+    }
+  }
+}

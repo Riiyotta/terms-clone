@@ -1,0 +1,89 @@
+{
+  "pageSpecVersion": "1.1.0",
+  "template": "template.auth",
+  "route": "/sign-in",
+  "brand": {
+    "name": "Clausewell",
+    "isFictional": true
+  },
+  "meta": {
+    "title": "Sign in — Clausewell",
+    "description": "Sign in to Clausewell with your work email address to open your agreements, drafts and comments.",
+    "themeColor": "#ffffff",
+    "favicon": {
+      "assetRole": "brand.mark",
+      "assetRef": "brand/clausewell-favicon.svg",
+      "generationPolicy": "project-supplied-only",
+      "alt": ""
+    },
+    "socialImage": {
+      "assetRole": "social.og-image",
+      "assetRef": "brand/clausewell-og.png",
+      "generationPolicy": "project-supplied-only",
+      "alt": "Clausewell contract workspace overview"
+    }
+  },
+  "nodes": [
+    {
+      "id": "auth",
+      "section": "auth.form-mock",
+      "variant": "email-first",
+      "tone": "light",
+      "anchorId": null,
+      "content": {
+        "logo": {
+          "assetRole": "brand.mark",
+          "assetRef": "brand/clausewell-mark.svg",
+          "generationPolicy": "project-supplied-only",
+          "alt": ""
+        },
+        "logoLabel": "Clausewell",
+        "title": "Sign in",
+        "subtitle": "Use your work email to continue",
+        "fieldLabel": "Email address",
+        "placeholder": "Enter your email address",
+        "submitLabel": "Continue",
+        "social": [
+          {
+            "label": "Continue with Google",
+            "icon": {
+              "assetRole": "vendor.google-icon",
+              "assetRef": "vendor/google/g-logo.svg",
+              "generationPolicy": "vendor-supplied-only",
+              "alt": ""
+            }
+          }
+        ],
+        "switchPrompt": "New to Clausewell?",
+        "switchLink": {
+          "label": "Sign up",
+          "href": "/sign-up"
+        },
+        "legalLinks": [
+          {
+            "label": "Privacy",
+            "href": "/privacy"
+          },
+          {
+            "label": "Terms",
+            "href": "/terms"
+          }
+        ],
+        "demoOnlyNote": "Demo only — sign-in is not functional.",
+        "behavior": {
+          "submit": "prevent-default",
+          "network": "none",
+          "credentialHandling": "none",
+          "realIntegration": "project-supplied-only"
+        }
+      },
+      "motion": {
+        "pattern": "field-transitions",
+        "fieldToken": "auth.field",
+        "buttonToken": "auth.button",
+        "pageMotion": false,
+        "reducedMotionFallback": "color-and-shadow-transitions-only"
+      }
+    }
+  ]
+}

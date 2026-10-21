@@ -1,0 +1,13 @@
+{
+  "id": "component.app-header",
+  "kind": "component",
+  "description": "60px static app header: centred 19.35x26 accent logo, empty side slots, 'Sign in' text link at the right.",
+  "composes": [
+    "primitive.icon"
+  ],
+  "evidence": [
+    "pages.legal-shell",
+    "src.appheader"
+  ],
+  "instantiableInPageSpec": false
+}

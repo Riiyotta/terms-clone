@@ -1,0 +1,14 @@
+{
+  "id": "component.legal-document",
+  "kind": "component",
+  "description": "Legal document body: switcher, title/updated/intro, 'On this page' contents (derived from sections, not sticky), numbered sections, contact footer row.",
+  "composes": [
+    "component.rich-text",
+    "primitive.inline-link"
+  ],
+  "evidence": [
+    "pages.legal-layout",
+    "src.legal.composition"
+  ],
+  "instantiableInPageSpec": false
+}

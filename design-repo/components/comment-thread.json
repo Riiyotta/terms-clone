@@ -1,0 +1,15 @@
+{
+  "id": "component.comment-thread",
+  "kind": "component",
+  "description": "Selection-rail card (16px radius, #ccd6ff ring) used for the compose card and the thread: rail label, quoted clause, meta rows, typed reply, change note and a Resolve -> Resolved swap.",
+  "composes": [
+    "primitive.action-button",
+    "primitive.reveal",
+    "component.thinking-indicator"
+  ],
+  "evidence": [
+    "spec.6.comments-layout",
+    "src.comments.markup"
+  ],
+  "instantiableInPageSpec": false
+}

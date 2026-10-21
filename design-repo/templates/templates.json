@@ -1,0 +1,582 @@
+{
+  "version": "1.1.0",
+  "iaCrosswalk": {
+    "source": "../ia.json (read-only; evidence id file.ia)",
+    "templates": "identical: the same 7 template ids with the same routes (verify_all route-coverage checks this when ia.json is present)",
+    "sectionGranularity": "ia.json has 21 sections, this repo 19 section types / 26 variants: (1) ia splits the three demo cards into three sections; this repo keeps the v1.0.0 decision of one feature.demo-card type with three variants (shared frame, engine and grid). (2) ia's content.docs-sections and legal.numbered-sections are one block each; here docs.section and legal.section are repeatable nodes, so each #id section is validated, anchored and counted (maxRepeat 6 / 21). (3) ia's chrome.landing-nav/landing-footer are single sections; here the shell differences are variants (tones, padding, footer link counts).",
+    "sections": {
+      "chrome.landing-nav": [
+        "shell.nav[on-hero]",
+        "shell.nav[on-hero-current]",
+        "shell.nav[light-wide]",
+        "shell.nav[light-narrow]"
+      ],
+      "chrome.landing-footer": [
+        "shell.footer[brand-two-groups]",
+        "shell.footer[brand-two-groups-subpage]"
+      ],
+      "chrome.app-header": [
+        "shell.app-header[centered-logo]"
+      ],
+      "hero.home-typewriter": [
+        "hero.typewriter-home[typewriter-chips-poetry]"
+      ],
+      "hero.page-typewriter": [
+        "hero.typewriter-intro[about]",
+        "hero.typewriter-intro[pricing]"
+      ],
+      "demo.draft-card": [
+        "feature.demo-card[draft]"
+      ],
+      "demo.questions-card": [
+        "feature.demo-card[questions]"
+      ],
+      "demo.comments-card": [
+        "feature.demo-card[comments]"
+      ],
+      "content.photo-stack": [
+        "media.photo-stack[three-cards]"
+      ],
+      "content.trust-table": [
+        "about.safety-table[prose-table]"
+      ],
+      "commerce.plan-cards": [
+        "pricing.plan-cards[four-plans]"
+      ],
+      "content.changelog-header": [
+        "changelog.header[centered]"
+      ],
+      "content.changelog-releases": [
+        "changelog.releases[dated-list]"
+      ],
+      "content.docs-header": [
+        "docs.header[title-links]"
+      ],
+      "content.docs-sections": [
+        "docs.section[prose-blocks] (repeatable node, one per #id)"
+      ],
+      "legal.doc-switcher": [
+        "legal.switcher[two-links]"
+      ],
+      "legal.doc-header": [
+        "legal.intro[title-updated-intro]"
+      ],
+      "legal.contents-card": [
+        "legal.contents[two-column-toc]"
+      ],
+      "legal.numbered-sections": [
+        "legal.section[numbered] (repeatable node, one per #id)"
+      ],
+      "legal.footer-row": [
+        "legal.footer[contact-row]"
+      ],
+      "auth.form-card": [
+        "auth.form-mock[email-first]"
+      ]
+    }
+  },
+  "classifier": {
+    "note": "Template granularity comes from a composition classifier run on the pixel-audit DOM dumps of the live original and the clone at 1440 (build-time helper classify.py, MASTER-GUIDE 3.22; no classifier existed in the project). It found 7 distinct page shapes for 9 routes and identical live/clone shapes on every route: /privacy and /terms share one shape (16 vs 21 sections), /sign-in and /sign-up share one, /about does not share home's shape.",
+    "evidence": [
+      "pages.shells",
+      "pages.reuse"
+    ]
+  },
+  "templates": {
+    "template.home": {
+      "id": "template.home",
+      "name": "Home (marketing landing with live product demos)",
+      "routes": [
+        "/"
+      ],
+      "composition": "nav, hero, three demo cards in one 'previews' grid (draft, questions, comments), footer (5 Product links incl. Changelog). Required: nav, hero, draft demo (the hero's Watch a demo targets #draft), footer. Questions and comments demos are optional (warn OPTIONAL_NODE_OMITTED) but may never be added twice, reordered or moved outside the previews group. Structural rules key on (section, variant). Classifier: A.dark-hero landing-nav | hero[home] | demo-card x3 | landing-footer.",
+      "pageBehaviour": {
+        "background": "gradient.hero.band (840px, 720 at <=600) over color.neutral.pageTint",
+        "smoothScroll": "motion.smoothScroll.anchor",
+        "scrollLinkedEffects": "none (only 0.12 IntersectionObservers start/pause the demos)",
+        "contentWidth": "layout.shell.contentWidthHero"
+      },
+      "nodes": [
+        {
+          "section": "shell.nav",
+          "variant": "on-hero",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "hero",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "hero.typewriter-home",
+          "variant": "typewriter-chips-poetry",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "hero",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "feature.demo-card",
+          "variant": "draft",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": "previews",
+          "tone": "surface",
+          "region": "main",
+          "anchorId": "draft"
+        },
+        {
+          "section": "feature.demo-card",
+          "variant": "questions",
+          "required": false,
+          "repeatable": false,
+          "position": null,
+          "group": "previews",
+          "tone": "surface",
+          "region": "main",
+          "anchorId": "questions"
+        },
+        {
+          "section": "feature.demo-card",
+          "variant": "comments",
+          "required": false,
+          "repeatable": false,
+          "position": null,
+          "group": "previews",
+          "tone": "surface",
+          "region": "main",
+          "anchorId": "comments"
+        },
+        {
+          "section": "shell.footer",
+          "variant": "brand-two-groups",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "surface",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "src.home.composition",
+        "spec.3.previews",
+        "spec.9.scroll"
+      ]
+    },
+    "template.about": {
+      "id": "template.about",
+      "name": "About (shell A: hero, photo stack, safety + services table)",
+      "routes": [
+        "/about"
+      ],
+      "composition": "nav (current = /about), two-line typewriter hero with intro, photo stack, #safety paragraph + table, sub-page footer (4 Product links). Classifier: A.dark-hero landing-nav | hero[about] | photo-stack | safety+table | landing-footer.",
+      "pageBehaviour": {
+        "background": "gradient.hero.band over color.neutral.pageTint (shell A, as home)",
+        "smoothScroll": "motion.smoothScroll.anchor (html:has(.landing--home))",
+        "scrollLinkedEffects": "none",
+        "contentWidth": "layout.shell.contentWidthHero"
+      },
+      "nodes": [
+        {
+          "section": "shell.nav",
+          "variant": "on-hero-current",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "hero",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "hero.typewriter-intro",
+          "variant": "about",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "hero",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "media.photo-stack",
+          "variant": "three-cards",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "hero",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "about.safety-table",
+          "variant": "prose-table",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "surface",
+          "region": "main",
+          "anchorId": "safety"
+        },
+        {
+          "section": "shell.footer",
+          "variant": "brand-two-groups-subpage",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "surface",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.about-structure",
+        "src.about.composition",
+        "pages.reuse"
+      ]
+    },
+    "template.pricing": {
+      "id": "template.pricing",
+      "name": "Pricing (shell A: hero + four plan cards)",
+      "routes": [
+        "/pricing"
+      ],
+      "composition": "nav (current = /pricing), three-line typewriter hero (line 1 muted brand) with intro, four plan cards, sub-page footer. Classifier: A.dark-hero landing-nav | hero | plans | plan-card x4 | landing-footer.",
+      "pageBehaviour": {
+        "background": "gradient.hero.band over color.neutral.pageTint; the plan row straddles the band end",
+        "smoothScroll": "motion.smoothScroll.anchor",
+        "scrollLinkedEffects": "none",
+        "contentWidth": "layout.shell.contentWidthHero"
+      },
+      "nodes": [
+        {
+          "section": "shell.nav",
+          "variant": "on-hero-current",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "hero",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "hero.typewriter-intro",
+          "variant": "pricing",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "hero",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "pricing.plan-cards",
+          "variant": "four-plans",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "surface",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "shell.footer",
+          "variant": "brand-two-groups-subpage",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "surface",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.pricing",
+        "src.pricing.composition",
+        "pages.reuse"
+      ]
+    },
+    "template.changelog": {
+      "id": "template.changelog",
+      "name": "Changelog (shell B: light wide 1152)",
+      "routes": [
+        "/changelog"
+      ],
+      "composition": "light-wide nav, centred header, dated releases, sub-page footer. No motion, images or sticky elements. Classifier: B.light-wide landing-nav | changelog-header | release x15 | landing-footer.",
+      "pageBehaviour": {
+        "background": "color.base.white (flat)",
+        "smoothScroll": "none",
+        "scrollLinkedEffects": "none",
+        "contentWidth": "layout.shell.contentWidthWide"
+      },
+      "nodes": [
+        {
+          "section": "shell.nav",
+          "variant": "light-wide",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "light",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "changelog.header",
+          "variant": "centered",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "light",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "changelog.releases",
+          "variant": "dated-list",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "light",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "shell.footer",
+          "variant": "brand-two-groups-subpage",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "light",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.changelog",
+        "src.changelog.composition",
+        "pages.reuse"
+      ]
+    },
+    "template.docs": {
+      "id": "template.docs",
+      "name": "API reference (shell C: light narrow 720)",
+      "routes": [
+        "/docs"
+      ],
+      "composition": "light-narrow nav (stacks at <=600), docs header, 1-6 reference sections each with its own #id, sub-page footer. Classifier: C.light-narrow landing-nav | docs-main | doc-section x6 (with endpoint cards and a contract demo) | landing-footer.",
+      "pageBehaviour": {
+        "background": "color.base.white",
+        "smoothScroll": "none",
+        "scrollLinkedEffects": "none",
+        "contentWidth": "layout.shell.contentWidthNarrow"
+      },
+      "nodes": [
+        {
+          "section": "shell.nav",
+          "variant": "light-narrow",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "light",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "docs.header",
+          "variant": "title-links",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "light",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "docs.section",
+          "variant": "prose-blocks",
+          "required": true,
+          "repeatable": true,
+          "position": null,
+          "group": null,
+          "tone": "light",
+          "region": "main",
+          "anchorId": "{slug}",
+          "maxRepeat": 6
+        },
+        {
+          "section": "shell.footer",
+          "variant": "brand-two-groups-subpage",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "light",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.docs",
+        "src.docs.composition",
+        "pages.reuse"
+      ]
+    },
+    "template.legal": {
+      "id": "template.legal",
+      "name": "Legal document (shell D: app header, 768 container)",
+      "routes": [
+        "/privacy",
+        "/terms"
+      ],
+      "composition": "app header, switcher, title + updated + intro (with operator slots and counsel-review flag), 'On this page' contents (not sticky), 1-21 numbered sections, contact footer row. No landing nav or footer, no motion. Shared by /privacy and /terms: the classifier gives both D.app app-header | legal-switcher | legal-contents | legal-section x+ | legal-footer (16 vs 21 sections).",
+      "pageBehaviour": {
+        "background": "color.base.white",
+        "smoothScroll": "none (html scroll-behavior auto)",
+        "scrollLinkedEffects": "none (no scroll spy)",
+        "contentWidth": "layout.shell.legalContainer"
+      },
+      "nodes": [
+        {
+          "section": "shell.app-header",
+          "variant": "centered-logo",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "app",
+          "region": "header",
+          "anchorId": null
+        },
+        {
+          "section": "legal.switcher",
+          "variant": "two-links",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "app",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "legal.intro",
+          "variant": "title-updated-intro",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "app",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "legal.contents",
+          "variant": "two-column-toc",
+          "required": true,
+          "repeatable": false,
+          "position": null,
+          "group": null,
+          "tone": "app",
+          "region": "main",
+          "anchorId": null
+        },
+        {
+          "section": "legal.section",
+          "variant": "numbered",
+          "required": true,
+          "repeatable": true,
+          "position": null,
+          "group": null,
+          "tone": "app",
+          "region": "main",
+          "anchorId": "{slug}",
+          "maxRepeat": 21
+        },
+        {
+          "section": "legal.footer",
+          "variant": "contact-row",
+          "required": true,
+          "repeatable": false,
+          "position": "last",
+          "group": null,
+          "tone": "app",
+          "region": "footer",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.legal-shell",
+        "pages.legal-layout",
+        "src.legal.composition",
+        "src.legal.pages"
+      ],
+      "pageAnchors": [
+        "top"
+      ],
+      "pageAnchorsNote": "main#top wraps the document; legal.footer's 'Back to top' targets it",
+      "requiredProjectSlots": [
+        "operator.legalName",
+        "operator.postalAddress",
+        "operator.country",
+        "operator.governingJurisdiction"
+      ],
+      "legalNotice": "Generated legal pages require real, counsel-reviewed text. Placeholder legal copy is not legal advice. Operator details are required project-supplied slots that a generator must never invent."
+    },
+    "template.auth": {
+      "id": "template.auth",
+      "name": "Auth (shell E: centred static form mock)",
+      "routes": [
+        "/sign-in",
+        "/sign-up"
+      ],
+      "composition": "one centred 420px static form mock; no nav, header, footer or gradient. Shared by /sign-in and /sign-up (identical layout, strings differ). Classifier: E.auth auth-form for both.",
+      "pageBehaviour": {
+        "background": "color.base.white",
+        "smoothScroll": "none",
+        "scrollLinkedEffects": "none",
+        "contentWidth": "layout.shell.authMaxWidth",
+        "scroll": "doc height = viewport; nothing scrolls"
+      },
+      "nodes": [
+        {
+          "section": "auth.form-mock",
+          "variant": "email-first",
+          "required": true,
+          "repeatable": false,
+          "position": "first",
+          "group": null,
+          "tone": "light",
+          "region": "main",
+          "anchorId": null
+        }
+      ],
+      "evidence": [
+        "pages.auth",
+        "pages.auth-layout",
+        "src.auth.mock"
+      ],
+      "authNotice": "Static, non-functional mock. No auth SDK, no form action, no network. A real credential-handling integration is forbidden in generated output unless the project supplies it itself. The demo-only screen-reader note is required."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# never commit the packaged zip next to the live folder it is built from (MASTER-GUIDE 3.6 / 3.23)
+design-repo.zip
+*.zip
+.DS_Store
+__MACOSX/
+__pycache__/
+*.pyc

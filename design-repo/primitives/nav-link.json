@@ -1,0 +1,10 @@
+{
+  "id": "primitive.nav-link",
+  "kind": "primitive",
+  "description": "Transparent pill link 15px/.96, .5 white at rest, .85 when active (resting active = Sign up) or hovered; colour .25s ease-in-out. The pill highlight exists but is invisible.",
+  "evidence": [
+    "spec.1.nav-layout",
+    "spec.1.nav-color-hover"
+  ],
+  "instantiableInPageSpec": false
+}

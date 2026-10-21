@@ -1,0 +1,11 @@
+{
+  "id": "component.thinking-indicator",
+  "kind": "component",
+  "description": "3x3 dot grid with a diagonal opacity wave (.72s, (row+col)*90ms) plus a 13px #888 label; paused while hidden or when the card is not running.",
+  "composes": [],
+  "evidence": [
+    "spec.3c.reveals",
+    "src.parts.thinking"
+  ],
+  "instantiableInPageSpec": false
+}

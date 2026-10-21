@@ -1,0 +1,10 @@
+{
+  "id": "primitive.commit-link",
+  "kind": "primitive",
+  "description": "12px/18px #73706d '↗ <sha>' link, padding-block 4 (26 tall); hover/active #000 + underline offset 3, instant.",
+  "evidence": [
+    "pages.changelog-typo",
+    "src.css.commit-link"
+  ],
+  "instantiableInPageSpec": false
+}

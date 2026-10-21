@@ -1,0 +1,148 @@
+{
+  "id": "legal.intro",
+  "kind": "section",
+  "category": "LEGAL",
+  "purpose": "Document title, 'Last updated' date and one intro paragraph. Carries the REQUIRED project-supplied operator slots and the counsel-review acknowledgement: a generated legal page needs real, counsel-reviewed text; placeholder legal copy is not legal advice.",
+  "implementedBy": "src/components/LegalDocument.jsx",
+  "region": "main",
+  "tone": "app",
+  "constraints": {
+    "onePerPage": true
+  },
+  "legalNotice": "Generated legal pages require real legal text reviewed by the operator's own counsel before publication. Placeholder legal copy (including this repo's and the clone's) is NOT legal advice. Operator details are project-supplied slots: a generator must never invent a legal name, postal address, country or governing jurisdiction.",
+  "variants": {
+    "title-updated-intro": {
+      "anchorId": null,
+      "content": {
+        "title": {
+          "type": "text",
+          "maxWords": 3,
+          "maxChars": 16,
+          "evidence": [
+            "pages.legal-layout",
+            "pages.legal-terms"
+          ]
+        },
+        "updatedPrefix": {
+          "type": "text",
+          "maxWords": 2,
+          "maxChars": 12,
+          "evidence": [
+            "pages.legal-layout"
+          ]
+        },
+        "updated": {
+          "type": "object",
+          "fields": {
+            "label": {
+              "type": "text",
+              "maxWords": 3,
+              "maxChars": 17,
+              "evidence": [
+                "pages.legal-layout"
+              ]
+            },
+            "iso": {
+              "type": "text",
+              "maxWords": 1,
+              "maxChars": 10,
+              "evidence": [
+                "pages.legal-layout"
+              ],
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            }
+          }
+        },
+        "intro": {
+          "type": "prose",
+          "maxWords": 26,
+          "maxChars": 195,
+          "maxLinks": 0,
+          "marks": [
+            "none",
+            "strong"
+          ],
+          "longForm": true,
+          "evidence": [
+            "pages.legal-privacy",
+            "pages.legal-terms"
+          ],
+          "charsBudget": "derived: ceil(7.5 x maxWords); long-form was not transcribed",
+          "note": "privacy 26w, terms 25w"
+        },
+        "operator": {
+          "type": "object",
+          "fields": {
+            "legalName": {
+              "type": "const",
+              "value": "{{operator.legalName}}",
+              "evidence": [
+                "src.content.operator",
+                "pages.legal-privacy"
+              ]
+            },
+            "postalAddress": {
+              "type": "const",
+              "value": "{{operator.postalAddress}}",
+              "evidence": [
+                "src.content.operator"
+              ]
+            },
+            "country": {
+              "type": "const",
+              "value": "{{operator.country}}",
+              "evidence": [
+                "src.content.operator-country"
+              ]
+            },
+            "governingJurisdiction": {
+              "type": "const",
+              "value": "{{operator.governingJurisdiction}}",
+              "evidence": [
+                "src.content.jurisdiction"
+              ]
+            }
+          },
+          "note": "REQUIRED project-supplied slots. The PageSpec carries only these binding tokens; the project resolves them from its own records. A generator must never write a real or invented value here or in body text (use the same {{operator.*}} tokens)."
+        },
+        "counselReview": {
+          "type": "const",
+          "value": "required-before-publication",
+          "evidence": [
+            "src.content.legal-placeholder"
+          ]
+        }
+      },
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "no-motion"
+      },
+      "motionEvidence": [
+        "pages.legal-layout"
+      ],
+      "tones": [
+        "app"
+      ]
+    }
+  },
+  "responsive": {
+    "desktop": [
+      "header stack gap 16 (title block gap 8); h1 500 32/36.8 -.03em; updated 400 14/21 #666; intro 400 16/24"
+    ]
+  },
+  "responsiveEvidence": [
+    "pages.legal-layout",
+    "src.legal.composition"
+  ],
+  "composes": [
+    "component.legal-document"
+  ],
+  "evidence": [
+    "pages.legal-layout",
+    "pages.legal-privacy",
+    "pages.legal-terms",
+    "src.legal.composition",
+    "src.content.legal-placeholder"
+  ],
+  "copyPolicy": "Short UI fields: budgets are the measured verbatim strings (CLONE_SPEC_PAGES.md). Long-form fields (type 'prose', longForm true) carry STRUCTURE and BUDGETS only: maxWords = the spec's word count, maxChars = ceil(7.5 x maxWords) (derived; the long-form was never transcribed), maxLinks = measured link slots. Write original copy; never source terms.so's long-form (fingerprinted in schema/protected-content.json). Enforced per instance by MAX_WORDS, MAX_CHARS and LINK_SLOTS."
+}

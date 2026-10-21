@@ -1,0 +1,1328 @@
+{
+  "version": "1.1.0",
+  "$description": "External citation ledger. 'ref' is relative to design-repo/ (e.g. ../CLONE_SPEC.md:120-140). verify_all.py resolves each ref when the source project sits beside the repo (or --source-root is given): file exists, range within file length, anchor inside the range. When the source is absent (standalone copy, zip) it WARNS, never fails. 'volatile' marks src/ citations re-located by anchor because another agent edits src/ concurrently.",
+  "sourceProject": {
+    "name": "terms.so home clone (React 18, Vite 5, Tailwind 3, react-router-dom 6)",
+    "original": "https://terms.so/ (home route only)",
+    "measuredOn": "2026-10-20 (Playwright 1440/1280/390), audited later",
+    "authority": [
+      "CLONE_SPEC.md",
+      "MOTION_TIMINGS.md",
+      "src/index.css",
+      "src/components + src/hooks",
+      "reference/ASSET_MANIFEST.md",
+      "CLONE_SPEC_PAGES.md (scope facts only)"
+    ]
+  },
+  "qaCorrections": {
+    "qa.watch-demo-anchor": {
+      "claim": "'Watch a demo' is a smooth-scroll link to #draft, not a video or modal.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.2.chips",
+        "src.hero.markup"
+      ]
+    },
+    "qa.typewriter-once": {
+      "claim": "Headline is a one-time typewriter (~31.7ms/char, no caret, no loop); line starts ~240/1160/2140/3480ms; chips at 5680ms over .48s cubic-bezier(.23,1,.32,1) with an 8px rise.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.2.typewriter",
+        "src.headline.timing"
+      ]
+    },
+    "qa.poetry-wide-only": {
+      "claim": "Poetry layer: Geist Mono 11px, opacity .5, 35ms/char; renders only above ~1040px viewport width.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.2.poetry",
+        "src.poetry.zone"
+      ]
+    },
+    "qa.demo-loop": {
+      "claim": "Demo engine: 40ms tick, 12% IntersectionObserver start; fade-out at D-680 (.24s cubic-bezier(.77,0,.175,1)), rewind at D-440, fade-in at D-320 (.32s ease-out). Loops 20000/16000/21000.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.3b.engine",
+        "src.timeline.consts"
+      ]
+    },
+    "qa.breakpoints": {
+      "claim": "Breakpoints 1000, 760, 600 plus 480.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ]
+    },
+    "qa.reduced-motion-deviation": {
+      "claim": "Reduced motion: the clone shows each demo's finished still frame; the live original freezes on a near-empty first frame. Recorded as a deliberate deviation.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.3b.reduced-motion",
+        "src.timeline.reduced"
+      ]
+    },
+    "qa.hover-real-mouse": {
+      "claim": "Hover verified with a real mouse: nav .5->.85 white over .25s; Sign up chip #fff->#f2f2f2; Watch chip .1->.18 white; pause button #f2f2f2->#e7e7e7 over .15s; footer links instant to #989490.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "spec.1.nav-color-hover",
+        "spec.2.chips",
+        "spec.7.footer-hover"
+      ]
+    },
+    "qa.footer-links-by-route": {
+      "claim": "Footer Product links: home 5 including Changelog; every sub-page with a landing footer 4.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.footer-by-route",
+        "src.footer.changelog"
+      ]
+    },
+    "qa.light-nav-colours": {
+      "claim": "Light shells: nav links #655c53 muted, #161512 for the current page, Login and Sign up; the pill highlight is invisible (transparent, no shadow).",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.nav-shared",
+        "src.css.shell-vars"
+      ]
+    },
+    "qa.about-mobile-padding": {
+      "claim": "/about mobile top padding is 64px, not the spec prose's 72px (live h1 y148 - main y84).",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.about-structure",
+        "src.about.mobile-pad"
+      ]
+    },
+    "qa.table-border": {
+      "claim": "Table cell borders are .75px and compute to 0.5px in Chromium at DPR 1; keep .75px.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.table-border",
+        "src.css.table"
+      ]
+    },
+    "qa.docs-code": {
+      "claim": "Docs code and pre use the generic monospace keyword at 16/24.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.docs-code",
+        "src.css.docs"
+      ]
+    },
+    "qa.pricing-plans": {
+      "claim": "Pricing: 4 plans Free $0, Plus $10, Pro $20, Max $50 per month; no toggle, no feature list, no badge; the ' / month' span carries the leading space.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.pricing-card",
+        "src.pricing.period"
+      ]
+    },
+    "qa.focus-rings": {
+      "claim": "Focus: landing links 1px #777 outline at 3px offset; action buttons and pills the shadow ring; the current nav link no ring; a focused nav link has outline-offset 0 and keyboard focus puts the rail in instant mode (background .15s only).",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "src.css.focus",
+        "src.css.nav-instant",
+        "pages.corr-nav-focus"
+      ]
+    },
+    "qa.photo-stack-motion": {
+      "claim": "Photo stack hover transition .35s cubic-bezier(.2,.8,.2,1); photo-toss .45s; registered custom properties interpolate.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.photo-stack-motion",
+        "src.css.photo-stack",
+        "src.css.photo-toss"
+      ]
+    },
+    "qa.subpage-typewriter": {
+      "claim": "/about and /pricing reuse the home typewriter with the default timings for the first N lines; the live /pricing timing (L1 8ch over ~600ms, L2 from +917ms, L3 from +1900ms, done +2700ms, measured from the first char) matches those defaults to within one frame.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.headline-typewriter",
+        "src.headline.schedule",
+        "pages.corr-pricing-typewriter"
+      ]
+    },
+    "qa.auth-static": {
+      "claim": "Auth is a static, non-functional mock: no Clerk, preventDefault, no network, sr-only 'Demo only' note.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "src.auth.no-network",
+        "src.auth.demo-note"
+      ]
+    },
+    "qa.legal-static": {
+      "claim": "Legal pages: no motion; the contents card is not sticky; anchors jump instantly and land 32px from the top.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.legal-layout",
+        "src.css.legal",
+        "pages.corr-legal-anchors"
+      ]
+    },
+    "qa.changelog-static": {
+      "claim": "Changelog: no motion or images; 15 releases, 61 entries.",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.changelog-content",
+        "src.changelog.composition"
+      ]
+    },
+    "qa.nav-resting-pill": {
+      "claim": "The resting nav pill is always 'Sign up', on /about and /pricing too; the current page is bright through aria-current (spec section 0's 'About is active' is wrong).",
+      "source": "orchestrator brief: two later Playwright audits against the live site (no audit file on disk)",
+      "corroboratedBy": [
+        "pages.corr-nav-pill",
+        "src.navbar.current"
+      ]
+    }
+  },
+  "evidenceConflicts": [
+    {
+      "id": "conflict.loop-fade",
+      "between": [
+        "mt.loop-fade",
+        "spec.3b.engine"
+      ],
+      "finding": "MOTION_TIMINGS.md describes one 320ms ease-out wrapper fade; CLONE_SPEC.md 3b measures fade-out .24s cubic-bezier(.77,0,.175,1) and fade-in .32s ease-out.",
+      "resolution": "CLONE_SPEC.md wins (live-measured; MOTION_TIMINGS.md itself defers to it; src/index.css and the later audits agree)."
+    },
+    {
+      "id": "conflict.reduced-motion-frame",
+      "between": [
+        "spec.3b.reduced-motion",
+        "qa.reduced-motion-deviation"
+      ],
+      "finding": "CLONE_SPEC.md 3b (and MOTION_TIMINGS.md) say reduced motion freezes on the still frame 16000/12000/17000; a later audit found the live original freezes on a near-empty first frame.",
+      "resolution": "The clone keeps the finished still frame on purpose. Recorded as a deliberate deviation in motion.reducedMotion.demos and every demo variant's reducedMotionFallback."
+    },
+    {
+      "id": "conflict.footer-changelog",
+      "between": [
+        "spec.7.footer",
+        "pages.footer-by-route"
+      ],
+      "finding": "An earlier CLONE_SPEC_PAGES.md draft said no Changelog link exists in the footer; the current text (re-verified live 2026-10-21) says home has 5 Product links incl. Changelog, sub-pages 4.",
+      "resolution": "v1.1.0: two footer variants. brand-two-groups (home) has exactly 5 Product links and must include /changelog; brand-two-groups-subpage (about, pricing, changelog, docs) has exactly 4 and must not. Footer.jsx shows Changelog only with showChangelog (home). Enforced by the schema counts and rule FOOTER_PRODUCT_LINKS."
+    },
+    {
+      "id": "conflict.nav-resting-pill",
+      "between": [
+        "pages.nav-shared",
+        "pages.corr-nav-pill",
+        "src.navbar.current"
+      ],
+      "finding": "CLONE_SPEC_PAGES.md 0 says the current page link gets [data-pill-active] ('On /about, About is active'); the motion audit (section 10) measured the resting pill on 'Sign up' on every page, with the current link kept bright by aria-current.",
+      "resolution": "Section 10 wins (later, live-measured; Navbar.jsx now rests on Sign up). shell.nav[on-hero-current] keeps currentHref -> aria-current + bright, and no longer claims the current link is the resting pill."
+    },
+    {
+      "id": "conflict.pricing-typewriter",
+      "between": [
+        "pages.headline-typewriter",
+        "pages.corr-pricing-typewriter",
+        "src.headline.schedule"
+      ],
+      "finding": "Section 0 says /pricing uses the default timings for the first 3 lines but was not separately logged; section 10 times it live as L1 600ms, L2 +917ms/700ms, L3 +1900ms/800ms, done +2700ms, which looks different from the 700/760/880 durations.",
+      "resolution": "No real conflict: measured from the first char, the default slots start at +0/+920/+1900 and an n-char line shows its last char at (n-1)/n of its duration (8ch: 612, 14ch: 706, 11ch: 800ms), giving done at +2700. The defaults stand; hero.typewriter-intro[pricing] records the live corroboration."
+    },
+    {
+      "id": "conflict.about-mobile-padding",
+      "between": [
+        "pages.about-structure",
+        "src.about.mobile-pad",
+        "qa.about-mobile-padding"
+      ],
+      "finding": "CLONE_SPEC_PAGES.md 1 prose says /about at 390 has main padding 72px 0 56px; the same paragraph's measurements (main y84, h1 y148) imply 64px, and the later audit confirmed 64 against live.",
+      "resolution": "64px (measurement + audit beat prose). About.jsx uses lt600:pt-16; hero.typewriter-intro[about] responsive and spacing.aboutHeroPadTopMobile say 64. /pricing keeps 72 (measured y84 -> h1 y156)."
+    },
+    {
+      "id": "conflict.photo-custom-properties",
+      "between": [
+        "pages.photo-stack-motion",
+        "src.css.photo-toss"
+      ],
+      "finding": "CLONE_SPEC_PAGES.md 1 says --lift/--grow/--tilt are plain custom properties and are not interpolated; src/index.css now registers them with @property because a later live measurement (--grow 1.051 / --lift -11.9px at 17ms) showed live interpolates them.",
+      "resolution": "The later live measurement wins: motion.photo.toss lists the registered properties. Durations and easing (.35s / .45s cubic-bezier(.2,.8,.2,1)) agree in both sources."
+    },
+    {
+      "id": "conflict.auth-card-chrome",
+      "between": [
+        "pages.auth-rendered",
+        "pages.auth-layout"
+      ],
+      "finding": "Clerk's SSR appearance config asks for a card (radius 24, padding 32, shadow); the rendered DOM applies none of it.",
+      "resolution": "Build to the rendered values (the spec says so): auth.form-mock has no card chrome. The intended config is not tokenised."
+    },
+    {
+      "id": "conflict.shell-count",
+      "between": [
+        "pages.shells",
+        "pages.legal-shell",
+        "pages.auth"
+      ],
+      "finding": "CLONE_SPEC_PAGES.md 0 is headed 'Page shells (three variants)' but the routes use five shells (three landing shells plus the app shell D and the auth shell E).",
+      "resolution": "Five shells; templates were split by the composition classifier (7 page shapes for 9 routes), not by shell count."
+    },
+    {
+      "id": "conflict.signup-subtitle-period",
+      "between": [
+        "pages.auth-strings",
+        "src.auth.mock"
+      ],
+      "finding": "The spec lists the /sign-up subtitle without a final period; AuthMock.jsx renders it with one. The pixel-audit DOM dump truncates the string, so it cannot settle it.",
+      "resolution": "Unresolved and immaterial here: the repo stores no auth strings (examples use original copy); the subtitle budget (9 words / 51 chars) fits either form."
+    },
+    {
+      "id": "conflict.auth-vendor-credit",
+      "between": [
+        "pages.auth-layout",
+        "src.auth.mock"
+      ],
+      "finding": "Live shows 'Secured by' plus a 48x14 vendor wordmark SVG; the clone renders the vendor name as text.",
+      "resolution": "Neither is generated: auth.form-mock excludes the vendor credit row because a static mock has no provider."
+    },
+    {
+      "id": "conflict.hover-coverage",
+      "between": [
+        "spec.10.uncertain",
+        "qa.hover-real-mouse"
+      ],
+      "finding": "CLONE_SPEC.md 10 says only nav hover was mouse-tested; other hover values came from CSS rules.",
+      "resolution": "The later audit verified the chip, pause-button and footer-link hovers with a real mouse; values unchanged."
+    },
+    {
+      "id": "conflict.breakpoint-540",
+      "between": [
+        "spec.0.breakpoints",
+        "src.tailwind.screens"
+      ],
+      "finding": "CLONE_SPEC.md mentions 'max-width:540/480px: minor'; no 540 rule exists in src/ and no 540 behaviour is described.",
+      "resolution": "540 is left out (ungrounded). 800 is kept as a minor breakpoint (tailwind lt800, one font-size change)."
+    }
+  ],
+  "citations": {
+    "assets.inline-svgs": {
+      "ref": "../reference/ASSET_MANIFEST.md:17-28",
+      "anchor": "logo-mark.svg",
+      "claim": "inline SVG set: logo mark and eight 24-viewBox icons"
+    },
+    "assets.manifest": {
+      "ref": "../reference/ASSET_MANIFEST.md:5-15",
+      "anchor": "| Asset |",
+      "claim": "network assets: two Diatype OTFs, Geist Mono subsets, play.svg, macOS cursor PNG, favicons"
+    },
+    "assets.no-raster": {
+      "ref": "../reference/ASSET_MANIFEST.md:30-30",
+      "anchor": "No video",
+      "claim": "no video, raster content images, canvas or Lottie on the home page"
+    },
+    "file.about-photo-desk": {
+      "ref": "../public/about/studio-desk.jpg",
+      "kind": "file-exists",
+      "claim": "About page studio photo (real workplace)"
+    },
+    "file.about-photo-review": {
+      "ref": "../public/about/studio-review.jpg",
+      "kind": "file-exists",
+      "claim": "About page studio photo (real people)"
+    },
+    "file.about-photo-review-ref": {
+      "ref": "../reference/assets-pages/studio-review.0x-qr3l0valhi.jpg",
+      "kind": "file-exists",
+      "claim": "reference copy of the live About photo (real people)"
+    },
+    "file.about-photo-table": {
+      "ref": "../public/about/studio-table.jpg",
+      "kind": "file-exists",
+      "claim": "About page studio photo (real workplace)"
+    },
+    "file.app-icon": {
+      "ref": "../public/icon.svg",
+      "kind": "file-exists",
+      "claim": "brand icon used as the auth-page logo"
+    },
+    "file.cursor": {
+      "ref": "../public/cursors/macos-arrow@2x.png",
+      "kind": "file-exists",
+      "claim": "macOS arrow cursor bitmap used by the comments demo"
+    },
+    "file.font-diatype-medium": {
+      "ref": "../public/fonts/ABCDiatype-Medium.otf",
+      "kind": "file-exists",
+      "claim": "ABC Diatype Medium (commercial)"
+    },
+    "file.font-diatype-regular": {
+      "ref": "../public/fonts/ABCDiatype-Regular.otf",
+      "kind": "file-exists",
+      "claim": "ABC Diatype Regular (commercial)"
+    },
+    "file.font-geist": {
+      "ref": "../public/fonts/GeistMono.woff2",
+      "kind": "file-exists",
+      "claim": "Geist Mono latin subset"
+    },
+    "file.google-icon": {
+      "ref": "../public/auth/google.svg",
+      "kind": "file-exists",
+      "claim": "Google 'G' icon used by the auth mock (third-party trademark)"
+    },
+    "file.google-icon-ref": {
+      "ref": "../reference/assets-pages/clerk-google.svg",
+      "kind": "file-exists",
+      "claim": "reference copy of the vendor's Google icon"
+    },
+    "file.ia": {
+      "ref": "../ia.json",
+      "kind": "file-exists",
+      "claim": "project IA (7 templates, 21 sections), read-only cross-reference"
+    },
+    "file.og-image": {
+      "ref": "../public/opengraph-image.png",
+      "kind": "file-exists",
+      "claim": "social share image present in public/"
+    },
+    "mt.comments": {
+      "ref": "../MOTION_TIMINGS.md:36-43",
+      "anchor": "## Comment on contracts",
+      "claim": "comments loop 21000, still 17000"
+    },
+    "mt.draft": {
+      "ref": "../MOTION_TIMINGS.md:19-28",
+      "anchor": "## Draft with AI",
+      "claim": "draft loop 20000, still 16000, keyframes"
+    },
+    "mt.engine": {
+      "ref": "../MOTION_TIMINGS.md:7-17",
+      "anchor": "## Shared demo loop engine",
+      "claim": "loop engine summary from the bundle"
+    },
+    "mt.headline": {
+      "ref": "../MOTION_TIMINGS.md:45-53",
+      "anchor": "## Hero headline",
+      "claim": "per-line delay/duration, chips 1200ms after the last line"
+    },
+    "mt.loop-fade": {
+      "ref": "../MOTION_TIMINGS.md:15-15",
+      "anchor": "320ms with ease-out",
+      "claim": "MOTION_TIMINGS states a single 320ms ease-out wrapper fade (superseded by CLONE_SPEC 3b: out .24s ease-in-out, in .32s ease-out)"
+    },
+    "mt.poetry": {
+      "ref": "../MOTION_TIMINGS.md:55-60",
+      "anchor": "## Hero \"poetry\"",
+      "claim": "poetry 11px, opacity .5, 35ms/char, up to 12 phrases"
+    },
+    "mt.questions": {
+      "ref": "../MOTION_TIMINGS.md:30-34",
+      "anchor": "## Ask your contracts",
+      "claim": "questions loop 16000, still 12000"
+    },
+    "mt.reduced": {
+      "ref": "../MOTION_TIMINGS.md:11-11",
+      "anchor": "prefers-reduced-motion",
+      "claim": "reduced motion: clock frozen at a still time showing the finished state"
+    },
+    "pages.about-content": {
+      "ref": "../CLONE_SPEC_PAGES.md:76-87",
+      "anchor": "### Content shape (write original copy)",
+      "claim": "about content shape: headline lines, intro 16w+27w (2 links), safety 15w+41w (1 link), table 7 rows with word counts and link counts",
+      "volatile": true
+    },
+    "pages.about-photos": {
+      "ref": "../CLONE_SPEC_PAGES.md:94-103",
+      "anchor": "### Photo stack",
+      "claim": "About page photo stack: three studio photos of the team and workplace",
+      "volatile": true
+    },
+    "pages.about-structure": {
+      "ref": "../CLONE_SPEC_PAGES.md:42-59",
+      "anchor": "## 1. /about",
+      "claim": "about structure at 1440 and the 390 measurements (main y84, h1 y148)",
+      "volatile": true
+    },
+    "pages.about-table": {
+      "ref": "../CLONE_SPEC_PAGES.md:89-92",
+      "anchor": "### Table styling",
+      "claim": "landing-table styling: fixed layout, .75px #e5e5e5 cells, padding 24 (16 at <=600), surface shadow",
+      "volatile": true
+    },
+    "pages.about-typo": {
+      "ref": "../CLONE_SPEC_PAGES.md:64-74",
+      "anchor": "| h1 lines (`span.landing-headline-line`",
+      "claim": "about typography: headline, intro lead/muted, safety, table cells",
+      "volatile": true
+    },
+    "pages.assets": {
+      "ref": "../CLONE_SPEC_PAGES.md:465-479",
+      "anchor": "## 7. Assets (new for these routes)",
+      "claim": "new assets: three studio photos (real people), clerk-google.svg, icon.svg",
+      "volatile": true
+    },
+    "pages.auth": {
+      "ref": "../CLONE_SPEC_PAGES.md:422-426",
+      "anchor": "/sign-in and /sign-up (Clerk)",
+      "claim": "auth shell E: no nav/header/footer, main.auth centred, <=600 top-aligned",
+      "volatile": true
+    },
+    "pages.auth-layout": {
+      "ref": "../CLONE_SPEC_PAGES.md:439-452",
+      "anchor": "### Layout at 1440 (root 420 wide",
+      "claim": "auth layout: logo, title, subtitle, field, Continue, Google button, footer rows",
+      "volatile": true
+    },
+    "pages.auth-rendered": {
+      "ref": "../CLONE_SPEC_PAGES.md:429-437",
+      "anchor": "### What actually renders vs the SSR appearance config",
+      "claim": "rendered Clerk form has no card chrome; applied variables",
+      "volatile": true
+    },
+    "pages.auth-strings": {
+      "ref": "../CLONE_SPEC_PAGES.md:454-461",
+      "anchor": "Strings:",
+      "claim": "auth strings per route, 390 layout, Clerk default motion only, static mock is enough",
+      "volatile": true
+    },
+    "pages.changelog": {
+      "ref": "../CLONE_SPEC_PAGES.md:172-196",
+      "anchor": "## 3. /changelog",
+      "claim": "changelog shell B structure, releases grid 176/656, commit links, <=600 one column",
+      "volatile": true
+    },
+    "pages.changelog-content": {
+      "ref": "../CLONE_SPEC_PAGES.md:210-234",
+      "anchor": "- Intro: 11 words, three short sentences",
+      "claim": "15 releases, 61 entries, 80 commit links; titles 3-10 words, bodies 10-34 words; no motion",
+      "volatile": true
+    },
+    "pages.changelog-typo": {
+      "ref": "../CLONE_SPEC_PAGES.md:201-207",
+      "anchor": "| h1 | 500 36px/41.4px",
+      "claim": "changelog typography incl. instant commit-link hover and the 15-word note",
+      "volatile": true
+    },
+    "pages.copyright": {
+      "ref": "../CLONE_SPEC_PAGES.md:7-7",
+      "anchor": "Copyright note",
+      "claim": "long prose on sub-pages is not transcribed; short UI strings are",
+      "volatile": true
+    },
+    "pages.corr-legal-anchors": {
+      "ref": "../CLONE_SPEC_PAGES.md:520-520",
+      "anchor": "- **§5 legal anchors:**",
+      "claim": "legal anchors jump instantly; scroll-margin-top 32px",
+      "volatile": true
+    },
+    "pages.corr-nav-focus": {
+      "ref": "../CLONE_SPEC_PAGES.md:512-512",
+      "anchor": "- **§0 nav focus:**",
+      "claim": "keyboard focus sets data-instant: background .15s only; focused nav link outline-offset 0",
+      "volatile": true
+    },
+    "pages.corr-nav-pill": {
+      "ref": "../CLONE_SPEC_PAGES.md:511-511",
+      "anchor": "- **§0 nav pill:**",
+      "claim": "resting data-pill-active is always Sign up; the current page stays bright through aria-current",
+      "volatile": true
+    },
+    "pages.corr-pricing-typewriter": {
+      "ref": "../CLONE_SPEC_PAGES.md:515-519",
+      "anchor": "- **/pricing typewriter (timed live):**",
+      "claim": "pricing typewriter timed live: L1 8ch/600ms, L2 +917 700ms, L3 +1900 800ms, done +2700",
+      "volatile": true
+    },
+    "pages.corrections": {
+      "ref": "../CLONE_SPEC_PAGES.md:507-520",
+      "anchor": "## 10. Corrections from the motion audit",
+      "claim": "motion-audit corrections superseding sections 0/1/5/6: resting pill Sign up, data-instant keyboard focus, registered photo props, auth transitions, pricing typewriter timed live, instant legal anchors",
+      "volatile": true
+    },
+    "pages.docs": {
+      "ref": "../CLONE_SPEC_PAGES.md:238-255",
+      "anchor": "## 4. /docs",
+      "claim": "docs shell C single column; no sidebar/TOC/sticky/tabs/copy/highlighting",
+      "volatile": true
+    },
+    "pages.docs-code": {
+      "ref": "../CLONE_SPEC_PAGES.md:499-499",
+      "anchor": "Docs `code` uses the generic `monospace`",
+      "claim": "docs code uses generic monospace at 16px",
+      "volatile": true
+    },
+    "pages.docs-content": {
+      "ref": "../CLONE_SPEC_PAGES.md:273-315",
+      "anchor": "`p` = paragraph with its word count.",
+      "claim": "docs content shape: header links, six sections, block kinds and word counts, endpoint cards",
+      "volatile": true
+    },
+    "pages.docs-typo": {
+      "ref": "../CLONE_SPEC_PAGES.md:257-270",
+      "anchor": "### Typography (all `#161512`)",
+      "claim": "docs typography, generic monospace code 16/24, pre #f7f7f7 radius 20, endpoint card",
+      "volatile": true
+    },
+    "pages.footer-by-route": {
+      "ref": "../CLONE_SPEC_PAGES.md:36-36",
+      "anchor": "Footer links differ by route",
+      "claim": "home footer Product has 5 links incl. Changelog; sub-pages have 4",
+      "volatile": true
+    },
+    "pages.footer-columns": {
+      "ref": "../CLONE_SPEC_PAGES.md:29-33",
+      "anchor": "Footer: same component everywhere",
+      "claim": "footer columns per content width (960 / 1152 / 720) and the 390 grid",
+      "volatile": true
+    },
+    "pages.headline-typewriter": {
+      "ref": "../CLONE_SPEC_PAGES.md:38-38",
+      "anchor": "Headline typewriter: `/about` and `/pricing` reuse",
+      "claim": "about/pricing reuse HeroHeadline with DEFAULT_TIMING for the first N lines; completionDelay 1200; no chips; no poetry",
+      "volatile": true
+    },
+    "pages.legal-layout": {
+      "ref": "../CLONE_SPEC_PAGES.md:337-366",
+      "anchor": "### Layout",
+      "claim": "legal layout: 768 container, switcher, header, contents card (not sticky), numbered sections, footer row; no motion",
+      "volatile": true
+    },
+    "pages.legal-privacy": {
+      "ref": "../CLONE_SPEC_PAGES.md:368-389",
+      "anchor": "### /privacy content shape",
+      "claim": "privacy: intro 26w, 16 sections with block word counts",
+      "volatile": true
+    },
+    "pages.legal-shell": {
+      "ref": "../CLONE_SPEC_PAGES.md:319-335",
+      "anchor": "## 5. /privacy",
+      "claim": "legal pages use the app shell D (60px header, centred logo, Sign in), no landing nav/footer",
+      "volatile": true
+    },
+    "pages.legal-terms": {
+      "ref": "../CLONE_SPEC_PAGES.md:391-418",
+      "anchor": "### /terms content shape",
+      "claim": "terms: intro 25w, 21 sections with block word counts",
+      "volatile": true
+    },
+    "pages.nav-shared": {
+      "ref": "../CLONE_SPEC_PAGES.md:21-27",
+      "anchor": "Shared nav facts on all shells:",
+      "claim": "nav links, light-shell colours (#655c53 muted, #161512 current/Login/Sign up), invisible pill highlight, light-shell CSS vars",
+      "volatile": true
+    },
+    "pages.photo-stack-motion": {
+      "ref": "../CLONE_SPEC_PAGES.md:105-113",
+      "anchor": "- Card CSS: `position:absolute",
+      "claim": "photo card transform, .35s cubic-bezier(.2,.8,.2,1) transition, hover lift, photo-toss .45s, focus outline offset 4",
+      "volatile": true
+    },
+    "pages.photo-stack-state": {
+      "ref": "../CLONE_SPEC_PAGES.md:114-117",
+      "anchor": "- State: `order` = array of indices",
+      "claim": "photo stack reorder state and aria-labels",
+      "volatile": true
+    },
+    "pages.pricing": {
+      "ref": "../CLONE_SPEC_PAGES.md:123-137",
+      "anchor": "## 2. /pricing",
+      "claim": "pricing structure; no toggle, no feature list, no badge; headline line 1 muted brand; intro 9w + 43w",
+      "volatile": true
+    },
+    "pages.pricing-card": {
+      "ref": "../CLONE_SPEC_PAGES.md:149-168",
+      "anchor": "### Plan card",
+      "claim": "plan card styles, children order, 4 plans Free $0 / Plus $10 / Pro $20 / Max $50 per month, no card hover",
+      "volatile": true
+    },
+    "pages.reuse": {
+      "ref": "../CLONE_SPEC_PAGES.md:483-492",
+      "anchor": "## 8. Reuse map",
+      "claim": "reuse map of nav/footer/gradient/typewriter/intro/button across routes",
+      "volatile": true
+    },
+    "pages.shells": {
+      "ref": "../CLONE_SPEC_PAGES.md:11-19",
+      "anchor": "## 0. Page shells",
+      "claim": "sub-page shells; /privacy, /terms and auth routes use other shells",
+      "volatile": true
+    },
+    "pages.table-border": {
+      "ref": "../CLONE_SPEC_PAGES.md:501-501",
+      "anchor": "`.landing-table` borders are `.75px`",
+      "claim": "table borders are .75px; Chromium at DPR 1 computes 0.5px",
+      "volatile": true
+    },
+    "pages.uncertain": {
+      "ref": "../CLONE_SPEC_PAGES.md:496-503",
+      "anchor": "## 9. Uncertainties / not measured",
+      "claim": "uncertainties: auth steps not reachable, pricing typewriter not separately logged, table border .75px",
+      "volatile": true
+    },
+    "spec.0.body": {
+      "ref": "../CLONE_SPEC.md:21-21",
+      "anchor": "letter-spacing:-0.01em",
+      "claim": "body 16px/1.5, -0.01em, #000 on #fff; headings and strong are 500"
+    },
+    "spec.0.breakpoints": {
+      "ref": "../CLONE_SPEC.md:55-59",
+      "anchor": "### Breakpoints used",
+      "claim": "max-width 1000 / 760 / 600 / 540-480 behaviour"
+    },
+    "spec.0.buttons": {
+      "ref": "../CLONE_SPEC.md:61-74",
+      "anchor": "### Buttons",
+      "claim": ".action-button variants brand/primary/secondary/ghost and --compact"
+    },
+    "spec.0.css-vars": {
+      "ref": "../CLONE_SPEC.md:23-45",
+      "anchor": "--accent:#e53d00",
+      "claim": ":root and .landing--home custom properties (accent, easings, tracking, shadows, hero alphas)"
+    },
+    "spec.0.fonts": {
+      "ref": "../CLONE_SPEC.md:13-19",
+      "anchor": "### Fonts",
+      "claim": "Diatype 400/500 for all text; Geist Mono 400 for the hero poetry layer only"
+    },
+    "spec.0.page-bg": {
+      "ref": "../CLONE_SPEC.md:47-53",
+      "anchor": "--hero-gradient",
+      "claim": "hero gradient band 100% x 840 over #fefcfb; .landing and .landing-col (960)"
+    },
+    "spec.1.nav-color-hover": {
+      "ref": "../CLONE_SPEC.md:93-99",
+      "anchor": "### Hover",
+      "claim": "links .5 white at rest, .85 when active or hovered, color .25s ease-in-out"
+    },
+    "spec.1.nav-layout": {
+      "ref": "../CLONE_SPEC.md:78-91",
+      "anchor": "## 1. Nav",
+      "claim": "nav box, logo, four-link rail, link sizes at desktop and 390"
+    },
+    "spec.10.uncertain": {
+      "ref": "../CLONE_SPEC.md:414-417",
+      "anchor": "## 10. Uncertainties",
+      "claim": "at measure time only nav hover was mouse-tested; later audits covered the rest"
+    },
+    "spec.2.chips": {
+      "ref": "../CLONE_SPEC.md:123-126",
+      "anchor": "### CTA chips",
+      "claim": "Sign up chip and Watch a demo chip; Watch a demo is an in-page anchor to #draft (no modal, no video)"
+    },
+    "spec.2.headline": {
+      "ref": "../CLONE_SPEC.md:115-121",
+      "anchor": "### Headline typography",
+      "claim": "four lines, 56px/1, -.05em, nowrap; brand lines .26 white plus-lighter; kern spans"
+    },
+    "spec.2.hero-layout": {
+      "ref": "../CLONE_SPEC.md:103-113",
+      "anchor": "## 2. Hero",
+      "claim": "hero main flex column, gap 64, padding 150 0 80; 390 values"
+    },
+    "spec.2.poetry": {
+      "ref": "../CLONE_SPEC.md:143-164",
+      "anchor": "poetry",
+      "claim": "poetry layer geometry, 11px Geist Mono, opacity .5, 35ms/char, renders only when zone >= 120"
+    },
+    "spec.2.typewriter": {
+      "ref": "../CLONE_SPEC.md:128-141",
+      "anchor": "typewriter headline",
+      "claim": "typewriter once on mount, per-line delay/duration, done at 5680, chips .48s ease-out 8px"
+    },
+    "spec.3.previews": {
+      "ref": "../CLONE_SPEC.md:168-169",
+      "anchor": "Feature demos wrapper",
+      "claim": "previews grid gap 96 (64 at <=760), padding-bottom 32"
+    },
+    "spec.3a.frame": {
+      "ref": "../CLONE_SPEC.md:171-200",
+      "anchor": "### 3a. Shared card frame",
+      "claim": "shared squircle card frame, header grid, playback button, preview area"
+    },
+    "spec.3a.header-copy": {
+      "ref": "../CLONE_SPEC.md:193-198",
+      "anchor": "| draft | Draft with AI |",
+      "claim": "feature header headings and subtitles for the three demos"
+    },
+    "spec.3b.engine": {
+      "ref": "../CLONE_SPEC.md:202-214",
+      "anchor": "### 3b. Timeline engine",
+      "claim": "40ms tick, 0.12 IntersectionObserver, fade-out D-680 / rewind D-440 / fade-in D-320, 22ms stream"
+    },
+    "spec.3b.reduced-motion": {
+      "ref": "../CLONE_SPEC.md:212-212",
+      "anchor": "prefers-reduced-motion",
+      "claim": "reduced motion: paused, frozen at a still frame (draft 16000, questions 12000, comments 17000)"
+    },
+    "spec.3c.reveals": {
+      "ref": "../CLONE_SPEC.md:216-232",
+      "anchor": "### 3c. Shared reveal transitions",
+      "claim": "reveal transitions (.24s ease-out, 8px), question bubble, launch, workspace, press, thinking dots"
+    },
+    "spec.3d.parts": {
+      "ref": "../CLONE_SPEC.md:234-248",
+      "anchor": "### 3d. Shared sub-components",
+      "claim": "composer, bubbles, intro, toolbar, paper, chat heading, success and selection colours"
+    },
+    "spec.4.draft-layout": {
+      "ref": "../CLONE_SPEC.md:252-286",
+      "anchor": "## 4. Demo 1",
+      "claim": "draft demo layers, intro, composer, recents, chat, document copy"
+    },
+    "spec.4.draft-timeline": {
+      "ref": "../CLONE_SPEC.md:288-304",
+      "anchor": "| 160 | recents",
+      "claim": "draft demo timeline 0..20000"
+    },
+    "spec.5.questions-layout": {
+      "ref": "../CLONE_SPEC.md:308-320",
+      "anchor": "## 5. Demo 2",
+      "claim": "questions demo layout, intro, bubbles, citation card, composer slide"
+    },
+    "spec.5.questions-timeline": {
+      "ref": "../CLONE_SPEC.md:322-331",
+      "anchor": "| 600 → 2000 | question typed",
+      "claim": "questions demo timeline 0..16000"
+    },
+    "spec.6.comments-layout": {
+      "ref": "../CLONE_SPEC.md:335-364",
+      "anchor": "## 6. Demo 3",
+      "claim": "comments demo layout: clause, marker, cursor, compose card, thread card"
+    },
+    "spec.6.comments-timeline": {
+      "ref": "../CLONE_SPEC.md:366-382",
+      "anchor": "| 800 | cursor appears",
+      "claim": "comments demo timeline 0..21000"
+    },
+    "spec.7.footer": {
+      "ref": "../CLONE_SPEC.md:386-398",
+      "anchor": "## 7. Footer",
+      "claim": "footer grid, brand description, Product (5) and Company (4) groups, link styles"
+    },
+    "spec.7.footer-hover": {
+      "ref": "../CLONE_SPEC.md:397-397",
+      "anchor": "no transition (instant)",
+      "claim": "footer link hover is an instant colour change to #989490"
+    },
+    "spec.8.head": {
+      "ref": "../CLONE_SPEC.md:402-407",
+      "anchor": "Head: title",
+      "claim": "head title, meta description, theme-color, favicon/icon/apple-icon"
+    },
+    "spec.9.scroll": {
+      "ref": "../CLONE_SPEC.md:409-412",
+      "anchor": "## 9. Scroll behavior",
+      "claim": "no scroll-linked effects; smooth anchor scrolling unless reduced motion"
+    },
+    "src.about.composition": {
+      "ref": "../src/pages/About.jsx:13-58",
+      "anchor": "export default function About",
+      "claim": "about composition: nav(current), headline+intro, photo stack, safety + table, footer (4)",
+      "volatile": true
+    },
+    "src.about.mobile-pad": {
+      "ref": "../src/pages/About.jsx:12-12",
+      "anchor": "Mobile top padding is 64",
+      "claim": "about mobile top padding is 64 (measured), not the 72 in the spec prose",
+      "volatile": true
+    },
+    "src.app.routes": {
+      "ref": "../src/App.jsx:26-36",
+      "anchor": "<Routes>",
+      "claim": "the nine mounted routes",
+      "volatile": true
+    },
+    "src.appheader": {
+      "ref": "../src/components/AppHeader.jsx:5-20",
+      "anchor": "export default function AppHeader",
+      "claim": "app header: centred 19.35x26 logo, Sign in link right",
+      "volatile": true
+    },
+    "src.auth.demo-note": {
+      "ref": "../src/components/AuthMock.jsx:47-47",
+      "anchor": "Demo only — sign-in is not functional.",
+      "claim": "required screen-reader demo-only note",
+      "volatile": true
+    },
+    "src.auth.mock": {
+      "ref": "../src/components/AuthMock.jsx:27-90",
+      "anchor": "export default function AuthMock",
+      "claim": "static auth mock markup; form preventDefault; Google button does nothing",
+      "volatile": true
+    },
+    "src.auth.no-network": {
+      "ref": "../src/components/AuthMock.jsx:3-5",
+      "anchor": "STATIC VISUAL MOCK",
+      "claim": "no Clerk script, no network calls, form never submits",
+      "volatile": true
+    },
+    "src.changelog.composition": {
+      "ref": "../src/pages/Changelog.jsx:7-56",
+      "anchor": "export default function Changelog",
+      "claim": "changelog composition: light-wide nav, header, releases, note, footer",
+      "volatile": true
+    },
+    "src.comments.markup": {
+      "ref": "../src/components/CommentsPreview.jsx:96-104",
+      "anchor": "className=\"pv-clause relative",
+      "claim": "comments clause markup",
+      "volatile": true
+    },
+    "src.comments.timeline": {
+      "ref": "../src/components/CommentsPreview.jsx:42-65",
+      "anchor": "usePreviewTimeline(21000, 17000)",
+      "claim": "comments timeline 21000 / still 17000",
+      "volatile": true
+    },
+    "src.content.jurisdiction": {
+      "ref": "../src/content/terms.js:180-180",
+      "anchor": "governed by the laws of [Governing jurisdiction]",
+      "claim": "governing jurisdiction is a placeholder in the clone",
+      "volatile": true
+    },
+    "src.content.legal-placeholder": {
+      "ref": "../src/content/privacy.js:2-2",
+      "anchor": "It is not legal advice",
+      "claim": "legal body text is original placeholder copy, not legal advice; bracketed operator placeholders",
+      "volatile": true
+    },
+    "src.content.operator": {
+      "ref": "../src/content/terms.js:207-207",
+      "anchor": "or by post to [Operator legal name], [Operator postal address]",
+      "claim": "operator legal name and postal address are placeholders in the clone",
+      "volatile": true
+    },
+    "src.content.operator-country": {
+      "ref": "../src/content/privacy.js:150-150",
+      "anchor": "Terms is run from [Operator country]",
+      "claim": "operator country is a placeholder in the clone",
+      "volatile": true
+    },
+    "src.content.pricing": {
+      "ref": "../src/content/pricing.js:11-15",
+      "anchor": "export const plans",
+      "claim": "four plans, prices and token lines (verbatim short UI)",
+      "volatile": true
+    },
+    "src.css.auth": {
+      "ref": "../src/index.css:593-623",
+      "anchor": ".auth-card-box {",
+      "claim": "auth mock: no card chrome, input/button shadows, .2s field / .1s button transitions",
+      "volatile": true
+    },
+    "src.css.chips": {
+      "ref": "../src/index.css:228-231",
+      "anchor": ".landing-chips {",
+      "claim": "chips reveal .48s ease-out from 8px",
+      "volatile": true
+    },
+    "src.css.commit-link": {
+      "ref": "../src/index.css:552-554",
+      "anchor": ".changelog-commit:active",
+      "claim": "commit link instant hover: #000, underline offset 3",
+      "volatile": true
+    },
+    "src.css.docs": {
+      "ref": "../src/index.css:558-572",
+      "anchor": ".connector-guide a:not(.action-button)",
+      "claim": "docs links, generic monospace code/pre, pre #f7f7f7 r20, cards, contract demo",
+      "volatile": true
+    },
+    "src.css.dots-keyframes": {
+      "ref": "../src/index.css:438-441",
+      "anchor": "@keyframes home-opening-dot",
+      "claim": "thinking-dot keyframes",
+      "volatile": true
+    },
+    "src.css.focus": {
+      "ref": "../src/index.css:197-224",
+      "anchor": ".landing a:focus-visible",
+      "claim": "focus: landing links 1px #777 outline offset 3; pills/chips shadow ring; current nav link no ring; focused nav link outline-offset 0",
+      "volatile": true
+    },
+    "src.css.footer-link": {
+      "ref": "../src/index.css:273-274",
+      "anchor": ".footer-link:hover",
+      "claim": "footer link hover colour, no transition",
+      "volatile": true
+    },
+    "src.css.hero-height-mobile": {
+      "ref": "../src/index.css:103-103",
+      "anchor": ":root { --hero-height: 720px; }",
+      "claim": "hero band 720px at <=600",
+      "volatile": true
+    },
+    "src.css.legal": {
+      "ref": "../src/index.css:575-587",
+      "anchor": ".app-shell a {",
+      "claim": "legal: black underlined links, accent header logo, TOC card shadow, 2 columns (1 at <=600), sections",
+      "volatile": true
+    },
+    "src.css.loop": {
+      "ref": "../src/index.css:305-311",
+      "anchor": ".pv-feature { --preview-padding: 44px",
+      "claim": "preview padding per breakpoint; loop wrapper fade states",
+      "volatile": true
+    },
+    "src.css.nav-instant": {
+      "ref": "../src/index.css:217-217",
+      "anchor": ".pill-navigation-rail[data-instant] .nav-link",
+      "claim": "keyboard focus: rail links transition background .15s only",
+      "volatile": true
+    },
+    "src.css.nav-link": {
+      "ref": "../src/index.css:215-215",
+      "anchor": ".nav-link { transition: color .25s",
+      "claim": "nav link colour transition .25s ease-in-out",
+      "volatile": true
+    },
+    "src.css.photo-stack": {
+      "ref": "../src/index.css:477-538",
+      "anchor": ".photo-stack {",
+      "claim": "photo stack geometry, transition .35s cubic-bezier(.2,.8,.2,1), hover, toss .45s, focus offset 4, <=600, reduced motion",
+      "volatile": true
+    },
+    "src.css.photo-toss": {
+      "ref": "../src/index.css:645-650",
+      "anchor": "@property --grow",
+      "claim": "registered --grow/--lift/--tilt and the photo-toss keyframes",
+      "volatile": true
+    },
+    "src.css.plan-card": {
+      "ref": "../src/index.css:542-549",
+      "anchor": ".landing-card {",
+      "claim": "plan card border/padding/shadow; no hover rule",
+      "volatile": true
+    },
+    "src.css.poetry": {
+      "ref": "../src/index.css:238-270",
+      "anchor": ".landing-poetry {",
+      "claim": "poetry layer CSS: 11px mono, opacity .5",
+      "volatile": true
+    },
+    "src.css.print": {
+      "ref": "../src/index.css:625-626",
+      "anchor": "@media print {",
+      "claim": "print hides legal nav, TOC and footer",
+      "volatile": true
+    },
+    "src.css.prose": {
+      "ref": "../src/index.css:448-449",
+      "anchor": ".landing-prose {",
+      "claim": "landing prose: cap trim, 500, 1.35; links underline from-font",
+      "volatile": true
+    },
+    "src.css.reduced-motion": {
+      "ref": "../src/index.css:426-434",
+      "anchor": ".landing-chips { transition: opacity .2s; transform: none !important; }",
+      "claim": "reduced-motion overrides for chips and previews",
+      "volatile": true
+    },
+    "src.css.reveals": {
+      "ref": "../src/index.css:325-344",
+      "anchor": ".pv-reveal, .pv-question, .pv-launch",
+      "claim": "shared reveal transitions",
+      "volatile": true
+    },
+    "src.css.shell-vars": {
+      "ref": "../src/index.css:135-164",
+      "anchor": ".landing {",
+      "claim": "shell vars: --content-width 720/1152/960, --nav-link, --nav-link-muted, --nav-logo per shell",
+      "volatile": true
+    },
+    "src.css.subpage-vars": {
+      "ref": "../src/index.css:78-94",
+      "anchor": "/* Sub-pages (CLONE_SPEC_PAGES) */",
+      "claim": "sub-page custom properties: --hero-prose-muted, --landing-card-shadow, --photo-*, --changelog-muted, --code-bg, --auth-*",
+      "volatile": true
+    },
+    "src.css.table": {
+      "ref": "../src/index.css:452-473",
+      "anchor": ".landing-table {",
+      "claim": "landing table rules",
+      "volatile": true
+    },
+    "src.css.tokens": {
+      "ref": "../src/index.css:15-100",
+      "anchor": ":root {",
+      "claim": "custom properties: the token source of truth",
+      "volatile": true
+    },
+    "src.docs.blocks": {
+      "ref": "../src/pages/Docs.jsx:14-48",
+      "anchor": "function Block({ block })",
+      "claim": "docs block kinds: p, pre, ol/ul, h3, cards, contractDemo",
+      "volatile": true
+    },
+    "src.docs.composition": {
+      "ref": "../src/pages/Docs.jsx:53-80",
+      "anchor": "export default function Docs",
+      "claim": "docs composition: light-narrow nav, header, sections, footer",
+      "volatile": true
+    },
+    "src.draft.sections": {
+      "ref": "../src/components/DraftPreview.jsx:30-65",
+      "anchor": "const SECTIONS",
+      "claim": "draft document sections and reveal times",
+      "volatile": true
+    },
+    "src.draft.timeline": {
+      "ref": "../src/components/DraftPreview.jsx:72-87",
+      "anchor": "usePreviewTimeline(20000, 16000)",
+      "claim": "draft timeline 20000 / still 16000",
+      "volatile": true
+    },
+    "src.footer.changelog": {
+      "ref": "../src/components/Footer.jsx:28-45",
+      "anchor": "export default function Footer",
+      "claim": "Changelog link shown only when showChangelog (home)",
+      "volatile": true
+    },
+    "src.footer.groups": {
+      "ref": "../src/components/Footer.jsx:6-23",
+      "anchor": "const GROUPS",
+      "claim": "footer link groups",
+      "volatile": true
+    },
+    "src.footer.markup": {
+      "ref": "../src/components/Footer.jsx:28-55",
+      "anchor": "export default function Footer",
+      "claim": "footer markup and responsive grid",
+      "volatile": true
+    },
+    "src.frame": {
+      "ref": "../src/components/PreviewFrame.jsx:5-44",
+      "anchor": "export default function PreviewFrame",
+      "claim": "shared demo frame: header, playback button, sr-only description, loop wrapper",
+      "volatile": true
+    },
+    "src.headline.lines": {
+      "ref": "../src/components/HeroHeadline.jsx:5-9",
+      "anchor": "LINES = [",
+      "claim": "headline lines and kern segments",
+      "volatile": true
+    },
+    "src.headline.schedule": {
+      "ref": "../src/components/HeroHeadline.jsx:24-29",
+      "anchor": "function schedule(lineCount)",
+      "claim": "pages with fewer lines use the first N entries of the timing table",
+      "volatile": true
+    },
+    "src.headline.timing": {
+      "ref": "../src/components/HeroHeadline.jsx:11-17",
+      "anchor": "const TIMING",
+      "claim": "headline timing schedule, done at 5680",
+      "volatile": true
+    },
+    "src.hero.markup": {
+      "ref": "../src/components/Hero.jsx:7-21",
+      "anchor": "export default function Hero",
+      "claim": "hero markup; Watch a demo is an anchor to #draft",
+      "volatile": true
+    },
+    "src.home.composition": {
+      "ref": "../src/pages/Home.jsx:9-20",
+      "anchor": "export default function Home",
+      "claim": "home composition: Navbar, Hero, three previews in one grid, Footer with Changelog",
+      "volatile": true
+    },
+    "src.intro": {
+      "ref": "../src/components/LandingIntro.jsx:4-13",
+      "anchor": "export default function LandingIntro",
+      "claim": "landing intro: bold lead + muted continuation",
+      "volatile": true
+    },
+    "src.legal.composition": {
+      "ref": "../src/components/LegalDocument.jsx:26-80",
+      "anchor": "export default function LegalDocument",
+      "claim": "legal document: app header, switcher, header, TOC, numbered sections, footer row",
+      "volatile": true
+    },
+    "src.legal.pages": {
+      "ref": "../src/pages/Privacy.jsx:7-7",
+      "anchor": "<LegalDocument doc={privacy} />",
+      "claim": "/privacy and /terms render the same LegalDocument",
+      "volatile": true
+    },
+    "src.navbar.current": {
+      "ref": "../src/components/Navbar.jsx:23-28",
+      "anchor": "export default function Navbar",
+      "claim": "current page link resting active; aria-current",
+      "volatile": true
+    },
+    "src.navbar.instant": {
+      "ref": "../src/components/Navbar.jsx:31-65",
+      "anchor": "const [instant, setInstant]",
+      "claim": "data-instant set on keyboard focus, cleared on pointer entry",
+      "volatile": true
+    },
+    "src.navbar.links": {
+      "ref": "../src/components/Navbar.jsx:8-13",
+      "anchor": "const LINKS",
+      "claim": "four nav links; Login and Sign up bright",
+      "volatile": true
+    },
+    "src.navbar.markup": {
+      "ref": "../src/components/Navbar.jsx:23-79",
+      "anchor": "export default function Navbar",
+      "claim": "nav markup and responsive classes",
+      "volatile": true
+    },
+    "src.navbar.shells": {
+      "ref": "../src/components/Navbar.jsx:17-20",
+      "anchor": "const SHELL_CLASSES",
+      "claim": "nav padding/gap per shell; narrow stacks into a column at <=600",
+      "volatile": true
+    },
+    "src.package": {
+      "ref": "../package.json:11-21",
+      "anchor": "\"dependencies\"",
+      "claim": "React 18, react-router-dom 6, Vite 5, Tailwind 3",
+      "volatile": true
+    },
+    "src.parts.agreements": {
+      "ref": "../src/components/PreviewParts.jsx:126-149",
+      "anchor": "const AGREEMENTS",
+      "claim": "recent agreements rows",
+      "volatile": true
+    },
+    "src.parts.composer": {
+      "ref": "../src/components/PreviewParts.jsx:6-39",
+      "anchor": "export function Composer",
+      "claim": "composer component",
+      "volatile": true
+    },
+    "src.parts.messages": {
+      "ref": "../src/components/PreviewParts.jsx:69-116",
+      "anchor": "export function UserMessage",
+      "claim": "user bubble and streaming answer (22ms/char)",
+      "volatile": true
+    },
+    "src.parts.paper": {
+      "ref": "../src/components/PreviewParts.jsx:156-183",
+      "anchor": "export function DocumentToolbar",
+      "claim": "document toolbar, paper, title, section",
+      "volatile": true
+    },
+    "src.parts.thinking": {
+      "ref": "../src/components/PreviewParts.jsx:45-57",
+      "anchor": "const DOT_DELAYS",
+      "claim": "thinking dot grid",
+      "volatile": true
+    },
+    "src.photostack": {
+      "ref": "../src/components/PhotoStack.jsx:4-7",
+      "anchor": "const PHOTOS = [",
+      "claim": "photo slots: per-index dx/dy/rot/w/aspect and alt",
+      "volatile": true
+    },
+    "src.photostack.markup": {
+      "ref": "../src/components/PhotoStack.jsx:24-34",
+      "anchor": "role=\"group\"",
+      "claim": "group label and per-card aria-labels",
+      "volatile": true
+    },
+    "src.photostack.order": {
+      "ref": "../src/components/PhotoStack.jsx:14-19",
+      "anchor": "const onCardClick",
+      "claim": "front card goes to the back; another card comes to the front",
+      "volatile": true
+    },
+    "src.poetry.params": {
+      "ref": "../src/components/HeroPoetry.jsx:5-7",
+      "anchor": "const PARAMS",
+      "claim": "poetry params: count 12, 11px, typeMs 35, hold 15000",
+      "volatile": true
+    },
+    "src.poetry.phrases": {
+      "ref": "../src/components/HeroPoetry.jsx:9-29",
+      "anchor": "const PHRASES",
+      "claim": "poetry phrase pool (20)",
+      "volatile": true
+    },
+    "src.poetry.reduced": {
+      "ref": "../src/components/HeroPoetry.jsx:184-189",
+      "anchor": "if (prefersReducedMotion()) {",
+      "claim": "reduced motion: 12 phrases static, no caret",
+      "volatile": true
+    },
+    "src.poetry.zone": {
+      "ref": "../src/components/HeroPoetry.jsx:116-124",
+      "anchor": "const geometry = useMemo",
+      "claim": "poetry renders only when the side zone >= MIN_ZONE (120px)",
+      "volatile": true
+    },
+    "src.pricing.composition": {
+      "ref": "../src/pages/Pricing.jsx:13-42",
+      "anchor": "export default function Pricing",
+      "claim": "pricing composition: nav(current), headline+intro, four plan cards, footer (4)",
+      "volatile": true
+    },
+    "src.pricing.period": {
+      "ref": "../src/pages/Pricing.jsx:31-31",
+      "anchor": "> / month</span>",
+      "claim": "the muted period span carries the leading space",
+      "volatile": true
+    },
+    "src.questions.timeline": {
+      "ref": "../src/components/QuestionsPreview.jsx:19-35",
+      "anchor": "usePreviewTimeline(16000, 12000)",
+      "claim": "questions timeline 16000 / still 12000",
+      "volatile": true
+    },
+    "src.richtext": {
+      "ref": "../src/components/RichText.jsx:7-7",
+      "anchor": "const TOKEN",
+      "claim": "inline markup: links, code, bold",
+      "volatile": true
+    },
+    "src.smartlink": {
+      "ref": "../src/components/SmartLink.jsx:4-4",
+      "anchor": "export const LOCAL_ROUTES",
+      "claim": "the nine local routes",
+      "volatile": true
+    },
+    "src.squircle": {
+      "ref": "../src/components/Squircle.jsx:60-87",
+      "anchor": "export default function Squircle",
+      "claim": "squircle card with ResizeObserver path",
+      "volatile": true
+    },
+    "src.tailwind.fonts": {
+      "ref": "../tailwind.config.js:8-11",
+      "anchor": "fontFamily: {",
+      "claim": "font stacks",
+      "volatile": true
+    },
+    "src.tailwind.radius": {
+      "ref": "../tailwind.config.js:77-83",
+      "anchor": "borderRadius: {",
+      "claim": "radii pill/chip/card/composer/thread/citation",
+      "volatile": true
+    },
+    "src.tailwind.screens": {
+      "ref": "../tailwind.config.js:13-18",
+      "anchor": "screens: {",
+      "claim": "max-width screens 1000/800/760/600/480",
+      "volatile": true
+    },
+    "src.timeline.consts": {
+      "ref": "../src/hooks/usePreviewTimeline.js:4-8",
+      "anchor": "const TICK = 40",
+      "claim": "engine constants: 40ms tick, 680/440/320, 0.12",
+      "volatile": true
+    },
+    "src.timeline.loopstate": {
+      "ref": "../src/hooks/usePreviewTimeline.js:63-72",
+      "anchor": "const fadeOutAt = duration - FADE_OUT",
+      "claim": "loop state machine",
+      "volatile": true
+    },
+    "src.timeline.reduced": {
+      "ref": "../src/hooks/usePreviewTimeline.js:18-25",
+      "anchor": "export function usePreviewTimeline",
+      "claim": "reduced motion starts paused at the still frame",
+      "volatile": true
+    }
+  }
+}

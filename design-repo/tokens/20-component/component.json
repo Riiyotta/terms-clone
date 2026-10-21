@@ -1,0 +1,800 @@
+{
+  "$description": "Approved application of foundation tokens to components. Every $value is a reference.",
+  "button": {
+    "brand": {
+      "background": {
+        "$type": "reference",
+        "$value": "{color.brand.accent}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "hover": {
+        "$type": "reference",
+        "$value": "{color.brand.accentHover}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "text": {
+        "$type": "reference",
+        "$value": "{color.base.white}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      }
+    },
+    "primary": {
+      "background": {
+        "$type": "reference",
+        "$value": "{color.base.black}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "hover": {
+        "$type": "reference",
+        "$value": "{color.grey.222}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "text": {
+        "$type": "reference",
+        "$value": "{color.base.white}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      }
+    },
+    "secondary": {
+      "background": {
+        "$type": "reference",
+        "$value": "{color.grey.f2}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "hover": {
+        "$type": "reference",
+        "$value": "{color.grey.e7}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "text": {
+        "$type": "reference",
+        "$value": "{color.base.black}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      }
+    },
+    "ghost": {
+      "hover": {
+        "$type": "reference",
+        "$value": "{color.grey.f0}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      },
+      "text": {
+        "$type": "reference",
+        "$value": "{color.grey.666}",
+        "evidence": [
+          "spec.0.buttons"
+        ]
+      }
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.pill}",
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "focus": {
+      "$type": "reference",
+      "$value": "{elevation.focusShadow}",
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "type": {
+      "$type": "reference",
+      "$value": "{typeStyle.button}",
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    },
+    "typeCompact": {
+      "$type": "reference",
+      "$value": "{typeStyle.buttonCompact}",
+      "evidence": [
+        "spec.0.buttons"
+      ]
+    }
+  },
+  "chip": {
+    "primaryBackground": {
+      "$type": "reference",
+      "$value": "{color.base.white}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "primaryHover": {
+      "$type": "reference",
+      "$value": "{color.grey.f2}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "primaryText": {
+      "$type": "reference",
+      "$value": "{color.base.ink}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "watchBackground": {
+      "$type": "reference",
+      "$value": "{color.hero.chip}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "watchHover": {
+      "$type": "reference",
+      "$value": "{color.hero.chipHover}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "watchText": {
+      "$type": "reference",
+      "$value": "{color.hero.chipText}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.chip}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    },
+    "type": {
+      "$type": "reference",
+      "$value": "{typeStyle.chip}",
+      "evidence": [
+        "spec.2.chips"
+      ]
+    }
+  },
+  "navLink": {
+    "rest": {
+      "$type": "reference",
+      "$value": "{color.hero.linkMuted}",
+      "evidence": [
+        "spec.1.nav-color-hover"
+      ]
+    },
+    "active": {
+      "$type": "reference",
+      "$value": "{color.hero.link}",
+      "evidence": [
+        "spec.1.nav-color-hover"
+      ]
+    },
+    "type": {
+      "$type": "reference",
+      "$value": "{typeStyle.navLink}",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.pill}",
+      "evidence": [
+        "spec.1.nav-layout"
+      ]
+    }
+  },
+  "footerLink": {
+    "rest": {
+      "$type": "reference",
+      "$value": "{color.base.ink}",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    },
+    "hover": {
+      "$type": "reference",
+      "$value": "{color.neutral.proseMuted}",
+      "evidence": [
+        "spec.7.footer-hover"
+      ]
+    },
+    "focusOutline": {
+      "$type": "reference",
+      "$value": "{color.neutral.focusOutline}",
+      "evidence": [
+        "spec.7.footer"
+      ]
+    }
+  },
+  "card": {
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.card}",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "border": {
+      "$type": "reference",
+      "$value": "{color.neutral.homeCardBorder}",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.squircleDropShadow}",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "headerRule": {
+      "$type": "reference",
+      "$value": "{color.neutral.hairline}",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    },
+    "background": {
+      "$type": "reference",
+      "$value": "{color.base.white}",
+      "evidence": [
+        "spec.3a.frame"
+      ]
+    }
+  },
+  "composer": {
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.composer}",
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.shadowComposer}",
+      "evidence": [
+        "spec.3d.parts"
+      ]
+    }
+  },
+  "citation": {
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.citation}",
+      "evidence": [
+        "spec.5.questions-layout"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.shadowCard}",
+      "evidence": [
+        "spec.5.questions-layout"
+      ]
+    }
+  },
+  "thread": {
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.thread}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.shadowSelectionCard}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "railBackground": {
+      "$type": "reference",
+      "$value": "{color.feedback.selectionBg}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    }
+  },
+  "statusPill": {
+    "signedBackground": {
+      "$type": "reference",
+      "$value": "{color.status.signedBg}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "signedText": {
+      "$type": "reference",
+      "$value": "{color.status.signed}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "waitingBackground": {
+      "$type": "reference",
+      "$value": "{color.status.waitingBg}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "waitingText": {
+      "$type": "reference",
+      "$value": "{color.status.waiting}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "draftBackground": {
+      "$type": "reference",
+      "$value": "{color.status.draftBg}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "draftText": {
+      "$type": "reference",
+      "$value": "{color.status.draft}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.pill}",
+      "evidence": [
+        "spec.4.draft-layout"
+      ]
+    }
+  },
+  "clause": {
+    "highlight": {
+      "$type": "reference",
+      "$value": "{color.feedback.selectionBg}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "updated": {
+      "$type": "reference",
+      "$value": "{color.feedback.updatedBg}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "marker": {
+      "$type": "reference",
+      "$value": "{color.feedback.selectionRule}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "markerIcon": {
+      "$type": "reference",
+      "$value": "{color.feedback.selectionMarker}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    },
+    "success": {
+      "$type": "reference",
+      "$value": "{color.feedback.success}",
+      "evidence": [
+        "spec.6.comments-layout"
+      ]
+    }
+  },
+  "navLinkLight": {
+    "rest": {
+      "$type": "reference",
+      "$value": "{color.neutral.nav}",
+      "evidence": [
+        "pages.nav-shared"
+      ]
+    },
+    "active": {
+      "$type": "reference",
+      "$value": "{color.base.ink}",
+      "evidence": [
+        "pages.nav-shared"
+      ]
+    },
+    "logo": {
+      "$type": "reference",
+      "$value": "{color.brand.accent}",
+      "evidence": [
+        "pages.shells"
+      ]
+    },
+    "type": {
+      "$type": "reference",
+      "$value": "{typeStyle.navLink}",
+      "evidence": [
+        "pages.nav-shared"
+      ]
+    }
+  },
+  "focus": {
+    "landingLinkOutlineColor": {
+      "$type": "reference",
+      "$value": "{color.neutral.focusOutline}",
+      "evidence": [
+        "src.css.focus"
+      ]
+    },
+    "ring": {
+      "$type": "reference",
+      "$value": "{elevation.focusShadow}",
+      "evidence": [
+        "src.css.focus"
+      ]
+    },
+    "photoCardOutlineColor": {
+      "$type": "reference",
+      "$value": "{color.neutral.focusOutline}",
+      "evidence": [
+        "src.css.photo-stack"
+      ]
+    }
+  },
+  "planCard": {
+    "background": {
+      "$type": "reference",
+      "$value": "{color.base.white}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "border": {
+      "$type": "reference",
+      "$value": "{color.neutral.hairline}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.landingCardShadow}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.thread}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "price": {
+      "$type": "reference",
+      "$value": "{typeStyle.planPrice}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "muted": {
+      "$type": "reference",
+      "$value": "{color.neutral.proseMuted}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    },
+    "cta": {
+      "$type": "reference",
+      "$value": "{color.brand.accent}",
+      "evidence": [
+        "pages.pricing-card"
+      ]
+    }
+  },
+  "landingTable": {
+    "border": {
+      "$type": "reference",
+      "$value": "{color.neutral.surfaceBorder}",
+      "evidence": [
+        "pages.about-table"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.surfaceShadow}",
+      "evidence": [
+        "pages.about-table"
+      ]
+    },
+    "headText": {
+      "$type": "reference",
+      "$value": "{color.neutral.proseMuted}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    },
+    "rowHeader": {
+      "$type": "reference",
+      "$value": "{color.base.ink}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    },
+    "cell": {
+      "$type": "reference",
+      "$value": "{color.neutral.proseMuted}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    }
+  },
+  "photoCard": {
+    "background": {
+      "$type": "reference",
+      "$value": "{color.neutral.photoCardBg}",
+      "evidence": [
+        "pages.photo-stack-motion"
+      ]
+    },
+    "shadow": {
+      "$type": "reference",
+      "$value": "{elevation.photoShadow}",
+      "evidence": [
+        "pages.photo-stack-motion"
+      ]
+    },
+    "shadowHover": {
+      "$type": "reference",
+      "$value": "{elevation.photoShadowHover}",
+      "evidence": [
+        "pages.photo-stack-motion"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.photoCard}",
+      "evidence": [
+        "pages.photo-stack-motion"
+      ]
+    }
+  },
+  "heroIntro": {
+    "lead": {
+      "$type": "reference",
+      "$value": "{color.hero.text}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    },
+    "muted": {
+      "$type": "reference",
+      "$value": "{color.hero.proseMuted}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    },
+    "type": {
+      "$type": "reference",
+      "$value": "{typeStyle.subpageIntro}",
+      "evidence": [
+        "pages.about-typo"
+      ]
+    }
+  },
+  "changelog": {
+    "muted": {
+      "$type": "reference",
+      "$value": "{color.neutral.changelogMuted}",
+      "evidence": [
+        "pages.changelog-typo"
+      ]
+    },
+    "title": {
+      "$type": "reference",
+      "$value": "{color.base.black}",
+      "evidence": [
+        "pages.changelog-typo"
+      ]
+    },
+    "rule": {
+      "$type": "reference",
+      "$value": "{color.neutral.surfaceBorder}",
+      "evidence": [
+        "pages.changelog"
+      ]
+    }
+  },
+  "docs": {
+    "codeBackground": {
+      "$type": "reference",
+      "$value": "{color.neutral.codeBg}",
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "codeRadius": {
+      "$type": "reference",
+      "$value": "{radius.composer}",
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "cardBorder": {
+      "$type": "reference",
+      "$value": "{color.neutral.surfaceBorder}",
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "cardRadius": {
+      "$type": "reference",
+      "$value": "{radius.composer}",
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "code": {
+      "$type": "reference",
+      "$value": "{typeStyle.code}",
+      "evidence": [
+        "pages.docs-typo"
+      ]
+    },
+    "contractText": {
+      "$type": "reference",
+      "$value": "{color.grey.555}",
+      "evidence": [
+        "pages.docs-content"
+      ]
+    }
+  },
+  "legal": {
+    "text": {
+      "$type": "reference",
+      "$value": "{color.base.black}",
+      "evidence": [
+        "pages.legal-layout"
+      ]
+    },
+    "muted": {
+      "$type": "reference",
+      "$value": "{color.grey.666}",
+      "evidence": [
+        "pages.legal-layout"
+      ]
+    },
+    "rule": {
+      "$type": "reference",
+      "$value": "{color.neutral.hairline}",
+      "evidence": [
+        "pages.legal-layout"
+      ]
+    },
+    "tocShadow": {
+      "$type": "reference",
+      "$value": "{elevation.shadowCard}",
+      "evidence": [
+        "pages.legal-layout"
+      ]
+    },
+    "tocRadius": {
+      "$type": "reference",
+      "$value": "{radius.thread}",
+      "evidence": [
+        "pages.legal-layout"
+      ]
+    },
+    "logo": {
+      "$type": "reference",
+      "$value": "{color.brand.accent}",
+      "evidence": [
+        "pages.legal-shell"
+      ]
+    }
+  },
+  "auth": {
+    "primary": {
+      "$type": "reference",
+      "$value": "{color.brand.accent}",
+      "evidence": [
+        "pages.auth-rendered"
+      ]
+    },
+    "primaryHover": {
+      "$type": "reference",
+      "$value": "{color.brand.accentHover}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "input": {
+      "$type": "reference",
+      "$value": "{color.grey.f2}",
+      "evidence": [
+        "pages.auth-rendered"
+      ]
+    },
+    "socialHover": {
+      "$type": "reference",
+      "$value": "{color.grey.e7}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "socialText": {
+      "$type": "reference",
+      "$value": "{color.auth.socialText}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "muted": {
+      "$type": "reference",
+      "$value": "{color.neutral.nav}",
+      "evidence": [
+        "pages.auth-rendered"
+      ]
+    },
+    "ring": {
+      "$type": "reference",
+      "$value": "{color.auth.ring}",
+      "evidence": [
+        "pages.auth-rendered"
+      ]
+    },
+    "inputShadow": {
+      "$type": "reference",
+      "$value": "{elevation.authInputShadow}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "primaryShadow": {
+      "$type": "reference",
+      "$value": "{elevation.authPrimaryShadow}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "socialShadow": {
+      "$type": "reference",
+      "$value": "{elevation.authSocialShadow}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "footerBorder": {
+      "$type": "reference",
+      "$value": "{color.auth.footerBorder}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    },
+    "radius": {
+      "$type": "reference",
+      "$value": "{radius.pill}",
+      "evidence": [
+        "pages.auth-layout"
+      ]
+    }
+  }
+}
